@@ -1,0 +1,278 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ChatAI-Plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ChatAI-Plasmoid\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+#: NEEDS WORK
+msgid "Open"
+msgstr "Otwórz"
+
+msgid "ChatAI"
+msgstr "ChatAI"
+
+msgid "Back"
+msgstr "Wstecz"
+
+msgid "Forward"
+msgstr "Dalej"
+
+msgid "Reload"
+msgstr "Odśwież"
+
+#: NEEDS WORK
+msgid "Save as PDF"
+msgstr "Zapisz jako plik PDF"
+
+#: NEEDS WORK
+msgid "Save as MHTML"
+msgstr "Zapisz jako plik MHTML"
+
+#: NEEDS WORK
+msgid "Open Link in Browser"
+msgstr "Otwórz łącze w przeglądarce"
+
+msgid "Copy Link Address"
+msgstr "Skopiuj adres łącza"
+
+msgid "Download in progress"
+msgstr "Pobieranie w toku"
+
+msgid "The file "
+msgstr "Plik"
+
+msgid "Open file"
+msgstr "Otwórz plik"
+
+msgid "Open folder"
+msgstr "Otwórz folder"
+
+msgid "Close"
+msgstr "Zamknij"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Go back to previous page"
+msgstr "Wróć do poprzedniej strony"
+
+msgid "Go forward to next page"
+msgstr "Przejdź do następnej strony"
+
+msgid "Return to homepage/default chat"
+msgstr "Powrót do strony głównej czatu"
+
+msgid "Reload current page"
+msgstr "Odśwież bieżącą stronę"
+
+msgid "Select or enter chat website URL"
+msgstr "Wybierz lub wprowadź adres URL strony czatu"
+
+msgid "Header will hide automatically when not in use"
+msgstr "Nagłówek zostanie automatycznie ukryty, gdy nie będzie używany."
+
+msgid "Header will stay visible"
+msgstr "Nagłówek pozostanie widoczny"
+
+msgid "Manage downloads and download folder"
+msgstr "Zarządzaj pobranymi plikami i folderem pobierania"
+
+msgid "Open Download Folder"
+msgstr "Otwórz folder pobierania"
+
+msgid "Choose Download Folder"
+msgstr "Wybierz folder pobierania"
+
+msgid "Widget will stay open when clicking outside"
+msgstr "Widget pozostanie otwarty po kliknięciu poza nim"
+
+msgid "Widget will close when clicking outside"
+msgstr "Widget zamknie się po kliknięciu poza nim"
+
+msgid "Close the webview and release memory"
+msgstr "Zamknij widok sieciowy i zwolnij pamięć"
+
+msgid "Custom URL..."
+msgstr "Niestandardowy adres URL..."
+
+msgid "Icon:"
+msgstr "Ikona:"
+
+msgid "Use website favicon"
+msgstr "Favicon strony internetowej"
+
+msgid "Default adaptive icon"
+msgstr "Domyślna ikona (Dynamiczna)"
+
+msgid "Default dark icon"
+msgstr "Domyślna ikona (Ciemna)"
+
+msgid "Default light icon"
+msgstr "Domyślny ikona (Jasna)"
+
+msgid "Outlined icon"
+msgstr "Obrys ikony"
+
+msgid "Filled icon"
+msgstr "Ikona wypełniona"
+
+msgid "Colorful icon"
+msgstr "Kolorowa ikona"
+
+msgid "Header Options"
+msgstr "Opcje nagłówka"
+
+msgid "Hide header"
+msgstr "Ukryj nagłówek"
+
+msgid "Auto-hide header (show on mouse hover)"
+msgstr "Automatyczne ukrywanie nagłówka (pokaż po najechaniu myszą)"
+
+msgid "Hide Keep Open button"
+msgstr "Ukryj przycisk przypięcia"
+
+msgid "Hide Custom URL button"
+msgstr "Ukryj przycisk niestandardowego URL"
+
+msgid "Hide Auto-Hide button"
+msgstr "Ukryj przycisk automatycznego ukrywania"
+
+msgid "Hide Close button"
+msgstr "Ukryj przycisk zamykania"
+
+msgid "Hide Home button"
+msgstr "Ukryj przycisk strony głównej"
+
+msgid "Hide Download button"
+msgstr "Ukryj przycisk pobierania"
+
+msgid "Hide navigation buttons"
+msgstr "Ukryj przyciski nawigacji"
+
+msgid "Hide refresh button"
+msgstr "Ukryj przycisk odświażania"
+
+msgid "You can still use the Go back to... and Keep open actions by right-clicking the widget icon."
+msgstr ""
+"Możesz nadal używać akcji wróc do... oraz przypnij, klikając prawym przyciskiem myszy ikonę "
+"widżetu."
+
+msgid "Predefined Sites"
+msgstr "Predefiniowane witryny"
+
+msgid ""
+"Claude.ai only allows account creation or Google login in well-known browsers. To use it in this "
+"Plasmoid, you need to use login credentials previously created in a traditional browser."
+msgstr ""
+"Claude.ai pozwala na tworzenie konta oraz logowanie za pomocą Google tylko w znanych przeglądarkach. "
+"Aby używać go w tym Plazmoidzie, musisz użyć danych logowania utworzonych wcześniej w tradycyjnej "
+"przeglądarce."
+
+msgid "Custom Sites"
+msgstr "Niestandardowe witryny"
+
+msgid "Site Name"
+msgstr "Nazwa witryny"
+
+msgid "Site URL"
+msgstr "Adres URL witryny"
+
+msgid "No custom sites added yet"
+msgstr "Nie dodano jeszcze żadnych niestandardowych witryn"
+
+msgid "Permissions"
+msgstr "Uprawnienia"
+
+msgid "Load website on Plasma startup"
+msgstr "Załaduj stronę internetową przy uruchomieniu Plazmy"
+
+msgid "Allow notifications"
+msgstr "Zezwól na powiadomienia"
+
+msgid "If notifications are not working create the file:"
+msgstr "Jeśli powiadomienia nie działają, utwórz plik:"
+
+msgid "containing the following text:"
+msgstr "zawierający następujący tekst:"
+
+msgid "Allow geolocation access"
+msgstr "Zezwól na dostęp do geolokalizacji"
+
+msgid "Allow using microphone"
+msgstr "Zezwól na dostęp do mikrofonu"
+
+msgid "Allow using webcam"
+msgstr "Zezwól na dostęp do kamery internetowej"
+
+msgid "Allow screen sharing"
+msgstr "Zezwól na udostępnianie ekranu"
+
+msgid "Web Features"
+msgstr "Funkcje internetowe"
+
+msgid "Enable spatial navigation"
+msgstr "Włącz nawigację przestrzenną"
+
+#: NEEDS WORK
+msgid "Allows navigation between focusable elements using arrow keys"
+msgstr "Pozwala na nawigację między elementami, które można ustawić w fokusie, za pomocą klawiszy strzałek."
+
+msgid "Allow JavaScript to paste from clipboard"
+msgstr "Zezwól JavaScript na wklejanie ze schowka"
+
+msgid "Allow JavaScript to open new windows"
+msgstr "Zezwól JavaScript na otwieranie nowych okien"
+
+msgid "Allow JavaScript to access clipboard"
+msgstr "Zezwól JavaScript na dostęp do schowka"
+
+msgid "Allow unknown URL schemes"
+msgstr "Zezwól na nieznane wzorce URL"
+
+msgid "Require user gesture for media playback"
+msgstr "Wymagaj interakcji użytkownika do odtwarzania mediów"
+
+#: NEEDS WORK
+msgid "Enable focus on navigation"
+msgstr "Włącz fokus na nawigacji"
+
+#: NEEDS WORK
+msgid "Notification Settings"
+msgstr "Ustawienia powiadomień"
+
+msgid "Download Folder"
+msgstr "Folder pobierania"
+
+msgid "Cache Management"
+msgstr "Zarządzanie pamięcią podręczną"
+
+msgid "Open Cache Folder"
+msgstr "Otwórz folder pamięci podręcznej"
+
+msgid "Open Profile Folder"
+msgstr "Otwórz folder profilu"
+
+msgid ""
+"Cache location: %1\n"
+"Profile location: %2"
+msgstr ""
+"Lokalizacja pamięci podręcznej: %1  \n"
+"Lokalizacja profilu: %2"
+
+msgid "General"
+msgstr "Ogólne"
+
+msgid "Appearance"
+msgstr "Wygląd"

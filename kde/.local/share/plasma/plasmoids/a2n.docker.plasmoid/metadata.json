@@ -1,0 +1,24 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "a2n.dev@pm.me",
+                "Name": "Bouteiller <a2n> Alan"
+            }
+        ],
+        "Category": "System Information",
+        "Description": "A lightweight Docker companion that detects service launches and displays container details",
+        "Icon": "update-none",
+        "Id": "a2n.docker.plasmoid",
+        "License": "GPL-3.0+",
+        "Name": "Docker companion",
+        "Version": "1.0.0",
+        "Website": "https://github.com/bouteillerAlan/dockercompanion",
+        "Depends": [],
+        "EnabledByDefault": false
+    },
+    "X-Plasma-NotificationArea": true,
+    "X-Plasma-NotificationAreaCategory": "SystemServices",
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "KPackageStructure": "Plasma/Applet"
+}
