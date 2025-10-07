@@ -46,7 +46,6 @@ return {
   },
   config = function(_, opts)
     require("bufferline").setup(opts)
-    opts.highlights = require("catppuccin.special.bufferline").get_theme()
     -- Fix bufferline when restoring a session
     vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
       callback = function()

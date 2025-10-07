@@ -36,12 +36,12 @@ DialogHeight=1008
 DialogWidth=1920
 
 [Containments][1][General]
-positions={"1920x1080":["5","17","desktop:/lua.lua","4","2","desktop:/github-authtoken.txt","0","0"]}
+positions={"1920x1080":["1","17","desktop:/lua.lua","0","0","desktop:/github-authtoken.txt","0","1"]}
 sortMode=-1
 
 [Containments][1][Wallpaper][a2n.blur][General]
 ActiveColorColor=#000000
-Image=/home/y2w8/المستندات/خلفيات/mocha-astronaut.png
+Image=/home/y2w8/Documents/خلفيات/tux-mocha.png
 SlidePaths=/usr/share/wallpapers/
 
 [Containments][1][Wallpaper][org.kde.image][General]
@@ -239,7 +239,7 @@ plugin=com.github.omarluq.kgithub
 
 [Containments][56][Applets][83][Configuration]
 PreloadWeight=100
-popupHeight=372
+popupHeight=200
 popupWidth=810
 
 [Containments][56][Applets][83][Configuration][ConfigDialog]
@@ -289,7 +289,7 @@ DialogHeight=540
 DialogWidth=720
 
 [Containments][6][Applets][42][Configuration][General]
-launchers=applications:com.flatpost.flatpostapp.desktop,applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:steam.desktop,applications:vesktop.desktop,applications:brave-browser.desktop,applications:godot.desktop,applications:heroic.desktop,applications:code.desktop,applications:org.nickvision.tubeconverter.desktop,applications:appimagekit_7d8c439ba17dfd95bc3887080085a673-Obsidian.desktop,applications:idea.desktop
+launchers=applications:com.flatpost.flatpostapp.desktop,applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:steam.desktop,applications:vesktop.desktop,applications:godot.desktop,applications:brave-browser.desktop,applications:heroic.desktop,applications:org.nickvision.tubeconverter.desktop,applications:appimagekit_7d8c439ba17dfd95bc3887080085a673-Obsidian.desktop,applications:idea.desktop
 wheelEnabled=AllTask
 
 [Containments][6][Applets][54]
@@ -483,8 +483,8 @@ immutability=1
 plugin=plasmusic-toolbar
 
 [Containments][6][Applets][86][Configuration]
-PreloadWeight=65
-popupHeight=487
+PreloadWeight=70
+popupHeight=509
 popupWidth=560
 
 [Containments][6][General]
@@ -492,4 +492,4 @@ AppletOrder=7;72;55;42;86;8;54;35
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=desktop:VALORANT.desktop,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454,desktop:/github-authtoken.txt,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454,desktop:/lua.lua,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454,desktop:github-authtoken.txt,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454,file:///home/y2w8/سطح المكتب/github-authtoken.txt,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454,file:///home/y2w8/سطح المكتب/to search.txt,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454
+screenMapping=file:///home/y2w8/سطح المكتب/github-authtoken.txt,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454,desktop:VALORANT.desktop,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454,file:///home/y2w8/سطح المكتب/to search.txt,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454,desktop:/lua.lua,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454,desktop:github-authtoken.txt,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454,desktop:/github-authtoken.txt,0,e5301a3c-4f5c-47e4-bfc8-c0f588962454

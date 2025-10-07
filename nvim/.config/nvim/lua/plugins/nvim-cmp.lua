@@ -11,6 +11,7 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
       {
@@ -52,7 +53,7 @@ return {
       local luasnip = require("luasnip")
       local defaults = require("cmp.config.default")()
       local auto_select = true
-      return {
+      local opts = {
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -101,6 +102,7 @@ return {
           { name = "lazydev" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
+          { name = "cmdline" },
           { name = "path" },
         }, {
           { name = "buffer" },
@@ -134,6 +136,24 @@ return {
         },
         sorting = defaults.sorting,
       }
+      -- ✅ إعدادات command line
+      cmp.setup.cmdline({ "/", "?" }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = "buffer" },
+        },
+      })
+
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, {
+          { name = "cmdline" },
+        }),
+      })
+
+      return opts
     end,
     main = "lazyvim.util.cmp",
   },

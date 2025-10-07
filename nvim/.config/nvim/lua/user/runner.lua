@@ -25,72 +25,7 @@ function M.run(cmd)
     M.term:send("clear && " .. cmd)
   end
 end
-local telescope_ok, telescope = pcall(require, "telescope")
-if not telescope_ok then
-  print("Telescope is not installed!")
-  return {}
-end
 
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local conf = require("telescope.config").values
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-local entry_display = require("telescope.pickers.entry_display")
-
--- دالة select مع icons بدون ألوان إضافية
-function M.select(options, opts, callback)
-  opts = opts or {}
-  local prompt = opts.prompt or "اختر خيار"
-  local icons = opts.icons or {} -- table { [1]="🔥", [2]="💡", ... }
-
-  local displayer = entry_display.create({
-    separator = " ",
-    items = {
-      { width = 2 }, -- مساحة للـ icon
-      { remaining = true }, -- العنصر نفسه
-    },
-  })
-
-  local make_display = function(entry)
-    local icon = icons[entry.index] or " " -- افتراضي فراغ
-    local text = entry.value
-    return displayer({
-      { icon }, -- نترك اللون الافتراضي
-      text,
-    })
-  end
-
-  local finder = finders.new_table({
-    results = options,
-    entry_maker = function(entry, index)
-      return {
-        value = entry,
-        display = make_display,
-        ordinal = entry,
-        index = index,
-      }
-    end,
-  })
-
-  pickers
-    .new({}, {
-      prompt_title = prompt,
-      finder = finder,
-      sorter = conf.generic_sorter({}),
-      attach_mappings = function(prompt_bufnr, map)
-        actions.select_default:replace(function()
-          local selection = action_state.get_selected_entry()
-          actions.close(prompt_bufnr)
-          if callback then
-            callback(selection.value, selection.index)
-          end
-        end)
-        return true
-      end,
-    })
-    :find()
-end
 local function get_file_ext()
   return vim.fn.expand("%:e")
 end
@@ -303,8 +238,19 @@ function M.java()
     return
   end
 
-  M.select({ "🚀 Run", "🛠️ Build", "📦 Build & Run", "⚙️ Edit Config" }, {
+  vim.ui.select({ "🚀 Run", "🛠️ Build", "📦 Build & Run", "⚙️ Edit Config" }, {
     prompt = "Main Option:",
+    separator = "",
+    layout_strategy = "center",
+    layout_config = { height = 3, width = 30 },
+    picker_opts = {
+      layout_config = {
+        height = 10,
+        width = 30,
+      },
+      prompt_title = "",
+      sorting_strategy = "ascending",
+    },
   }, function(choice, index)
     if choice:match("Run") then
       run_with_config(cfg)

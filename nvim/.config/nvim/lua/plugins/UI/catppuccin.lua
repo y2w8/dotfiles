@@ -52,7 +52,6 @@ return {
   end,
   specs = {
     {
-      -- FIX: problem from lazy vim configs
       "akinsho/bufferline.nvim",
       optional = true,
       opts = function(_, opts)
