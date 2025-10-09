@@ -127,7 +127,7 @@ return {
 
     return {
       defaults = {
-        prompt_prefix = " ",
+        prompt_prefix = "❯ ",
         selection_caret = " ",
         -- open files in the first window that is an actual file.
         -- use the current window if no other window is available.
@@ -142,6 +142,16 @@ return {
           end
           return 0
         end,
+        layout_strategy = "flex",
+        layout_config = {
+          flex = {
+            horizontal = { mirror = false },
+            vertical = { mirror = false },
+          },
+        },
+        border = true,
+        sorting_strategy = "ascending",
+        winblend = 0,
         mappings = {
           i = {
             ["<c-t>"] = open_with_trouble,

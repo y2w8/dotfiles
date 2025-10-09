@@ -48,7 +48,8 @@ return {
     require("catppuccin").setup(opts)
     local palette = require("catppuccin.palettes").get_palette("mocha")
     vim.g.catppuccin_colors = palette
-    vim.cmd.colorscheme("catppuccin") -- أو "catppuccin-mocha"
+    vim.cmd.colorscheme("catppuccin-mocha") -- أو "catppuccin-mocha"
+    vim.cmd([[highlight FloatBorder guifg=#f5e0dc ]]) -- Set your desired border color
   end,
   specs = {
     {

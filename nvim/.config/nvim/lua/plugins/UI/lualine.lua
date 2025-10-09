@@ -1,6 +1,29 @@
 local colors = require("catppuccin.palettes").get_palette("mocha")
 local mini_icons = require("mini.icons")
 
+local function mode_color(inverted)
+  inverted = inverted or false
+  if not inverted then
+    local mode_color = {
+      n = { fg = colors.base, bg = colors.rosewater }, -- Normal
+      i = { fg = colors.base, bg = colors.green }, -- Insert
+      v = { fg = colors.base, bg = colors.mauve }, -- Visual
+      V = { fg = colors.base, bg = colors.mauve }, -- Visual line
+      c = { fg = colors.base, bg = colors.peach }, -- Command
+    }
+    return mode_color[vim.fn.mode()] or { fg = colors.base, bg = colors.lavender }
+  else
+    local mode_color = {
+      n = { fg = colors.rosewater, bg = colors.surface0 }, -- Normal
+      i = { fg = colors.green, bg = colors.surface0 }, -- Insert
+      v = { fg = colors.mauve, bg = colors.surface0 }, -- Visual
+      V = { fg = colors.mauve, bg = colors.surface0 }, -- Visual line
+      c = { fg = colors.peach, bg = colors.surface0 }, -- Command
+    }
+    return mode_color[vim.fn.mode()] or { fg = colors.lavender, bg = colors.surface0 }
+  end
+end
+
 local function get_filetype_bg()
   local filetype = vim.bo.filetype
   local lang = {
@@ -76,8 +99,6 @@ return {
     lualine_require.require = require
 
     local icons = LazyVim.config.icons
-    -- TODO: add cwd and current file with the icon in status line
-    -- FIX: tmux and nvim status line
     vim.o.laststatus = vim.g.lualine_laststatus
 
     local opts = {
@@ -92,19 +113,17 @@ return {
           {
             "mode",
             icons_enabled = true,
-            icon = { "" },
+
+            icon = {
+              " ",
+              color = function()
+                return mode_color()
+              end,
+            },
             color = function()
-              -- هنا تحدد اللون بناءً على الـ mode الحالي
-              local mode_color = {
-                n = { fg = "#1e1e2e", bg = colors.rosewater }, -- Normal
-                i = { fg = "#1e1e2e", bg = colors.green }, -- Insert
-                v = { fg = "#1e1e2e", bg = colors.mauve }, -- Visual
-                V = { fg = "#1e1e2e", bg = colors.mauve }, -- Visual line
-                c = { fg = "#1e1e2e", bg = colors.peach }, -- Command
-              }
-              return mode_color[vim.fn.mode()] or { fg = "#1e1e2e", bg = "#b4befe" }
+              return mode_color(true)
             end,
-            padding = { left = 1, right = 1 },
+            padding = { left = 0, right = 0 },
             separator = { left = "", right = "" },
           },
         },
@@ -112,7 +131,7 @@ return {
           {
             "branch",
             color = { fg = colors.mauve, bg = colors.mantle },
-            icon = { align = "right" },
+            icon = { align = "left", icon = "󰘬 " },
           },
         },
 
@@ -129,8 +148,8 @@ return {
               hint = icons.diagnostics.Hint,
             },
           },
-          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-          { LazyVim.lualine.pretty_path() },
+          -- { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+          -- { LazyVim.lualine.pretty_path() },
         },
         lualine_x = {
           Snacks.profiler.status(),
@@ -179,39 +198,55 @@ return {
         },
         lualine_y = {},
         lualine_z = {
+          {
+            -- Icon with its own colors
+            function()
+              local icon = mini_icons.get("filetype", vim.bo.filetype) or ""
+              return icon .. " "
+            end,
+            color = function()
+              -- Define colors for the icon
+              local icon_info = get_filetype_bg() -- Get filetype color info
+              return { fg = colors.base, bg = icon_info.bg } -- Use different colors for icon
+            end,
+            separator = { left = "", right = "" },
+            padding = { left = 0, right = 0.5 },
+          },
           -- Current file
           {
             function()
-              local icon = mini_icons.get("filetype", vim.bo.filetype) or ""
               local filename = vim.fn.expand("%:t")
-              return icon .. " " .. shorten_filename(filename, 15, true)
+              return shorten_filename(filename, 15, true)
             end,
             color = function()
               local icon_info = get_filetype_bg()
-              return { fg = colors.base, bg = icon_info.bg }
+              return { fg = icon_info.bg, bg = colors.surface0 }
+            end,
+            separator = { left = "", right = "" },
+          },
+          -- Project icon
+          {
+            function()
+              return " "
+            end,
+            color = function()
+              return mode_color()
             end,
             separator = { left = "", right = "" },
-            padding = { left = 1, right = 1 },
+            padding = { left = 0, right = 0.8 },
           },
           -- Project name
+
           {
             function()
               local project = get_project_name()
-              return " " .. project
+              return " " .. project
             end,
             color = function()
-              -- هنا تحدد اللون بناءً على الـ mode الحالي
-              local mode_color = {
-                n = { fg = "#1e1e2e", bg = colors.rosewater }, -- Normal
-                i = { fg = "#1e1e2e", bg = colors.green }, -- Insert
-                v = { fg = "#1e1e2e", bg = colors.mauve }, -- Visual
-                V = { fg = "#1e1e2e", bg = colors.mauve }, -- Visual line
-                c = { fg = "#1e1e2e", bg = colors.peach }, -- Command
-              }
-              return mode_color[vim.fn.mode()] or { fg = "#1e1e2e", bg = "#b4befe" }
+              return mode_color(true)
             end,
-            separator = { left = "", right = "" },
-            padding = { left = 1, right = 1 },
+            separator = { left = "", right = "" },
+            padding = 0,
           },
         },
       },

@@ -61,22 +61,22 @@ return {
     },
 
     {
-      "<leader>qQ",
+      "<leader>Q",
       "<cmd>qa<cr>",
       desc = "Quit All",
     },
     {
-      "<leader>qW",
-      "<cmd>wa | qa<cr>",
-      desc = "Save & Quit All",
+      "<leader>W",
+      "<cmd>wa<cr>",
+      desc = "Save All",
     },
     {
-      "<leader>qw",
-      "<cmd>wq<cr>",
-      desc = "Save & Quit Buffer",
+      "<leader>w",
+      "<cmd>w<cr>",
+      desc = "Save Buffer",
     },
     {
-      "<leader>qq",
+      "<leader>q",
       "<cmd>q<cr>",
       desc = "Quit Buffer",
     },

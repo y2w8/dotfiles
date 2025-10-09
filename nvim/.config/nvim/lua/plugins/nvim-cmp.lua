@@ -128,6 +128,16 @@ return {
             return item
           end,
         },
+        window = {
+          completion = {
+            border = "rounded", -- Rounded edges
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+          },
+          documentation = {
+            border = "rounded", -- Rounded edges
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+          },
+        },
         experimental = {
           -- only show ghost text when we show ai completions
           ghost_text = vim.g.ai_cmp and {
