@@ -1,0 +1,42 @@
+[global]
+action = "notify-send"
+icon_theme = "Qogir-Dark"
+enable_recursive_icon_lookup = true
+frame_width = 2
+frame_color = "#f5e0dc"
+separator_color= frame
+highlight = "#f5e0dc"
+corner_radius = 5
+progress_bar_corner_radius = 5
+corners = top-left,bottom
+progress_bar_corners = top-left,bottom-right
+gap_size = 5
+offset = (15, 25)
+format = "<i>%a</i>\n<b>󰁕 %s</b>\n<i>%b</i>"
+mouse_left_click = do_action
+mouse_middle_click = close_current 
+mouse_right_click = context
+enable_markup = true
+actions = true
+
+[urgency_low]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#a6e3a1"
+highlight = "#a6e3a1"
+format = "<i>%a</i>\n<b><span foreground='#a6e3a1'>󰁕 %s</span></b>\n<i>%b</i>"
+default_icon = "~/.config/dunst/icons/check.svg"
+
+[urgency_normal]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+format = "<i>%a</i>\n<b><span foreground='#f5e0dc'>󰁕 %s</span></b>\n<i>%b</i>"
+default_icon = "~/.config/dunst/icons/bell.svg"
+
+[urgency_critical]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#f38ba8"
+highlight = "#f38ba8"
+format = "<i>%a</i>\n<b><span foreground='#f38ba8'>󰁕 %s</span></b>\n<i>%b</i>"
+default_icon = "~/.config/dunst/icons/alert.svg"
