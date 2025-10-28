@@ -4,7 +4,7 @@ return {
   lazy = true, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
   event = "VimEnter",
   opts = function()
-    local logo = [[
+    local nvim = [[
                                                                         
                                                                         
                                                                         
@@ -21,6 +21,23 @@ return {
                                                                         
                                                                         
 ]]
+    local logo = {
+      [[                                    ██████                                    ]],
+      [[                                ████▒▒▒▒▒▒████                                ]],
+      [[                              ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                              ]],
+      [[                            ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                            ]],
+      [[                          ██▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒                              ]],
+      [[                          ██▒▒▒▒▒▒  ▒▒▓▓▒▒▒▒▒▒  ▓▓▓▓                          ]],
+      [[                          ██▒▒▒▒▒▒  ▒▒▓▓▒▒▒▒▒▒  ▒▒▓▓                          ]],
+      [[                        ██▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒    ██                        ]],
+      [[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
+      [[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
+      [[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
+      [[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
+      [[                        ██▒▒██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒██▒▒▒▒██                        ]],
+      [[                        ████  ██▒▒██  ██▒▒▒▒██  ██▒▒██                        ]],
+      [[                        ██      ██      ████      ████                        ]],
+    }
 
     local telescope_ok, telescope = pcall(require, "telescope")
     if not telescope_ok then
@@ -141,7 +158,7 @@ return {
       },
 
       config = {
-        header = vim.split(logo, "\n"),
+        header = logo,
         -- stylua: ignore
         center = {
           { action = 'lua LazyVim.pick()()',                           desc = " Find File",       icon = " ", key = "f" },

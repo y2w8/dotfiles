@@ -16,7 +16,7 @@ return {
     local opts = {
       bottom = {
         {
-          ft = "toggleterm",
+          ft = "betterTerm",
           size = { height = 0.4 },
           filter = function(buf, win)
             return vim.api.nvim_win_get_config(win).relative == ""

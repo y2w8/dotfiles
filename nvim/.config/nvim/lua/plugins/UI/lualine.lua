@@ -105,7 +105,7 @@ return {
       options = {
         theme = "catppuccin",
         globalstatus = vim.o.laststatus == 3,
-        -- disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
+        disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
         section_separators = { left = "", right = "" },
       },
       sections = {
@@ -128,10 +128,21 @@ return {
           },
         },
         lualine_b = {
+
           {
             "branch",
+            separator = "",
+            padding = { left = 0, right = 1 },
             color = { fg = colors.mauve, bg = colors.mantle },
-            icon = { align = "left", icon = "󰘬 " },
+            fmt = function(str)
+              -- put icon after branch name
+              if str ~= "" then
+                return str .. " 󰘬"
+              else
+                return ""
+              end
+            end,
+            icon = "", -- disable default icon
           },
         },
 
@@ -200,9 +211,14 @@ return {
         lualine_z = {
           {
             -- Icon with its own colors
+
             function()
-              local icon = mini_icons.get("filetype", vim.bo.filetype) or ""
-              return icon .. " "
+              local icon = mini_icons.get("filetype", vim.bo.filetype)
+              if type(icon) == "table" then
+                icon = icon.icon or ""
+              end
+              icon = icon or ""
+              return tostring(icon) .. " "
             end,
             color = function()
               -- Define colors for the icon
