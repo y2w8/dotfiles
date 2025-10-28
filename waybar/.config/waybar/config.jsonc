@@ -1,0 +1,200 @@
+{
+  "layer": "top", // Waybar at top layer
+  "position": "top",
+  "autohide": true,
+  "autohide-blocked": false,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+
+  "modules-left": [
+    "custom/launcher",
+    "custom/ws1",
+    "custom/ws2",
+    "custom/ws3",
+    "cpu",
+    "memory",
+    "disk",
+    "temperature",
+  ],
+  "modules-center": ["wlr/taskbar"],
+  "modules-right": [
+    "custom/music",
+    "pulseaudio",
+    "network",
+    "custom/updates",
+    "backlight",
+    "battery",
+    "power-profiles-daemon",
+    "custom/weather",
+    "clock",
+    "tray",
+    "custom/power",
+  ],
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 14,
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": ["Alacritty"],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition",
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal",
+    },
+  },
+  "custom/updates": {
+    "exec": "bash $HOME/.config/waybar/scripts/checkupdates.sh", // <--- path to script
+    "on-click-right": "bash $HOME/.config/waybar/scripts/checkupdates.sh", // refresh on right click
+    "on-click-middle": "bash -c 'pkexec update-nobara && notify-send --hint=int:highlight:1 \"Updates Completed  \" \"Your system is up to date!\"'", // update on middle click
+    "interval": 900, // refresh every 15 minutes
+    "return-type": "json",
+    "format": "{icon}",
+    "format-alt": "{icon} {text}",
+    "format-icons": {
+      "has-updates": "", // icon when updates needed
+      "updated": "", // icon when all packages updated
+    },
+  },
+  "custom/ws1": {
+    "exec": "~/.config/scripts/workspaces-manager module 1",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "~/.config/scripts/workspaces-manager goto 1",
+    "on-click-right": "~/.config/scripts/workspaces-manager remove_at 1",
+    "on-scroll-up": "~/.config/scripts/workspaces-manager prev",
+    "on-scroll-down": "~/.config/scripts/workspaces-manager next",
+  },
+  "custom/ws2": {
+    "exec": "~/.config/scripts/workspaces-manager module 2",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "~/.config/scripts/workspaces-manager goto 2",
+    "on-click-right": "~/.config/scripts/workspaces-manager remove_at 2",
+    "on-scroll-up": "~/.config/scripts/workspaces-manager prev",
+    "on-scroll-down": "~/.config/scripts/workspaces-manager next",
+  },
+  "custom/ws3": {
+    "exec": "~/.config/scripts/workspaces-manager module 3",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "~/.config/scripts/workspaces-manager goto 3",
+    "on-click-right": "~/.config/scripts/workspaces-manager remove_at 3",
+    "on-scroll-up": "~/.config/scripts/workspaces-manager prev",
+    "on-scroll-down": "~/.config/scripts/workspaces-manager next",
+  },
+  "custom/launcher": {
+    "format": "\u2004",
+    "tooltip": false,
+    "on-click": "~/.config/rofi/launchers/type-1/launcher.sh",
+  },
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": true,
+    "tooltip-format": "CPU : {usage}%\nNúcleos: {cores}",
+  },
+  "memory": {
+    "format": "{}% ",
+    "interval": 5,
+    "tooltip": true,
+    "tooltip-format": "RAM : {used} / {total} ({percentage}%)",
+  },
+  "disk": {
+    "format": "{percentage_used}% ",
+    "tooltip": true,
+    "tooltip-format": "Disk: {used} / {total} ({percentage_used}%)",
+  },
+  "temperature": {
+    "format": "{temperatureC}°C {icon}",
+    "tooltip": true,
+    "tooltip-format": "Temperature : {temperatureC}°C\nSafe side > 80°C",
+    "format-icons": ["\u2004"],
+  },
+  "tray": {
+    "fill": true,
+    "hide": {
+      "empty": true,
+      "full": false,
+    },
+    "icon-size": 21,
+    "spacing": 10,
+  },
+  "custom/music": {
+    "format": " ",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 40,
+  },
+  "clock": {
+    "timezone": "Asia/Riyadh",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": " \u2009{:%d/%m/%Y}",
+    "format": " \u2009{:%H:%M}",
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": "",
+    },
+  },
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "",
+    "format-ethernet": "󰈀",
+    "tooltip-format": "{essid} ({signalStrength}%)\n{ifname}: {ipaddr}/{cidr}\n{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "",
+    "format-alt": "",
+  },
+  "custom/weather": {
+    "exec": "python ~/.config/waybar/scripts/weather.py",
+    "restart-interval": 300,
+    "return-type": "json",
+    "on-click": "xdg-open https://weather.com/en-IN/weather/today/l/$(location_id)",
+    // "format-alt": "{alt}",
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "on-click": "/home/y2w8/.config/rofi/applets/bin/brightness.sh",
+    "format": "{icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "tooltip-format": "brightness: {percent}% ",
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{icon}",
+    "format-charging": "",
+    "format-plugged": "󰚥",
+    "format-alt": "{icon}",
+    "format-icons": ["", "", "", "", ""],
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", ""],
+    },
+    "on-click": "pavucontrol",
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh",
+    "format": "",
+  },
+}
