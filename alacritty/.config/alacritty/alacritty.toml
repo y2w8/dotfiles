@@ -1,0 +1,24 @@
+[general]
+# لو عندك import، خليه فوق
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
+[window.padding]
+x = 2
+y = 2
+
+[font]
+normal.family = "JetBrainsMono Nerd Font"
+normal.style  = "Regular"
+bold.family   = "JetBrainsMono Nerd Font"
+bold.style    = "Bold"
+italic.family = "JetBrainsMono Nerd Font"
+italic.style  = "Italic"
+bold_italic.family = "JetBrainsMono Nerd Font"
+bold_italic.style  = "Bold Italic"
+size = 14.0
+
+
+[terminal.shell]
+program = "/usr/bin/zsh"
+args = ["-i", "--login"]
+
