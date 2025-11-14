@@ -141,7 +141,7 @@ return {
       },
 
       config = {
-        header = nvim,
+        header = vim.split(nvim, "\n"),
         -- stylua: ignore
         center = {
           { action = 'lua LazyVim.pick()()',                           desc = " Find File",       icon = " ", key = "f" },
