@@ -239,6 +239,10 @@ keymap = [
   ], run = "cd ~", desc = "Go home" },
   { on = [
     "g",
+    "l",
+  ], run = "cd ~/.local", desc = "Go ~/.local" },
+  { on = [
+    "g",
     "c",
   ], run = "cd ~/.config", desc = "Go ~/.config" },
   { on = [

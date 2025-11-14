@@ -126,6 +126,15 @@ Splitter State=\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x9d\
 [General]
 BrowserApplication=brave-browser.desktop
 ColorSchemeHash=3aedebd67dad5d75f286cba89d070ff78604c3ce
+TerminalApplication=/usr/bin/ghostty --gtk-single-instance=true
+TerminalService=com.mitchellh.ghostty.desktop
+XftHintStyle=hintslight
+XftSubPixel=none
+fixed=JetBrainsMono Nerd Font,9.5,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+font=JetBrainsMono Nerd Font,10.5,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+menuFont=JetBrainsMono Nerd Font,10.5,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+smallestReadableFont=JetBrainsMono Nerd Font,8.5,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+toolBarFont=JetBrainsMono Nerd Font,10.5,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 
 [Icons]
 Theme=Qogir-Dark
@@ -165,6 +174,7 @@ MaximumRemoteSize=0
 [WM]
 activeBackground=30,30,46
 activeBlend=205,214,244
+activeFont=JetBrainsMono Nerd Font,9.5,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 activeForeground=205,214,244
 inactiveBackground=17,17,27
 inactiveBlend=166,173,200

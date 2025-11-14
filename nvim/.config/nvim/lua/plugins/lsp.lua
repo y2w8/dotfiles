@@ -186,6 +186,9 @@ return {
             },
           },
           jdtls = {},
+          rust_analyzer = {
+            mason = true
+          }
         },
         -- you can do any additional lsp server setup here
         -- return true if you don't want this server to be setup with lspconfig
@@ -201,6 +204,9 @@ return {
           jdtls = function()
             return true -- avoid duplicate servers
           end,
+  ["rust_analyzer"] = function(_, _)
+    return true  -- prevent duplicate setup
+  end,
         },
       }
       return ret

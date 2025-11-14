@@ -52,7 +52,7 @@ local function get_filetype_bg()
     ruby = { bg = colors.red },
     swift = { bg = colors.peach },
     kotlin = { bg = colors.pink },
-    default = { bg = colors.mantle },
+    default = { bg = colors.rosewater },
   }
   return lang[filetype] or lang.default
 end

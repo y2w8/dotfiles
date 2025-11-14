@@ -6,7 +6,9 @@ require("relative-motions"):setup({
 require("duckdb"):setup({})
 require("sshfs"):setup()
 require("recycle-bin"):setup()
-require("omp"):setup({ config = "/home/y2w8/.config/ohmyposh/mocha.omp.json" })
+require("folder-rules"):setup()
+require("starship"):setup()
+-- require("omp"):setup({ config = "/home/y2w8/.config/ohmyposh/mocha.omp.json" })
 require("full-border"):setup({
 	-- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
 	type = ui.Border.ROUNDED,

@@ -73,5 +73,10 @@ use = "AnirudhG07/rich-preview"
 rev = "831234e"
 hash = "ed3363e256e210593f0f8e4cec3e36a9"
 
+[[plugin.deps]]
+use = "Rolv-Apneseth/starship"
+rev = "a63550b"
+hash = "c2021386289a0cbb3e152a052f67c177"
+
 [flavor]
 deps = []

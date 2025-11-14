@@ -59,13 +59,15 @@
   background-color: @surface0;
   padding: 0.5rem 0.8rem;
   margin: 0.4rem 0rem 0.4rem 0rem;
+  
 }
 tooltip {
   background-color: @surface0; /* Dark background */
   color: @text; /* White text */
   border-radius: 1rem; /* Rounded corners */
   padding: 0.5rem 0.8em;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  
 }
 
 #clock {

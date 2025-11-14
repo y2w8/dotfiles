@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- LazyVim auto format
-vim.g.autoformat = true
+vim.g.autoformat = false
 
 -- Snacks animations
 -- Set to `false` to globally disable all snacks animations
@@ -19,11 +19,11 @@ vim.g.lazyvim_picker = "telescope"
 -- Can be one of: nvim-cmp, blink.cmp
 -- Leave it to "auto" to automatically use the completion engine
 -- enabled with `:LazyExtras`
-vim.g.lazyvim_cmp = "auto"
+vim.g.lazyvim_cmp = "nvim-cmp"
 
 -- if the completion engine supports the AI source,
 -- use that instead of inline suggestions
-vim.g.ai_cmp = true
+vim.g.ai_cmp = false
 
 -- LazyVim root dir detection
 -- Each entry can be:

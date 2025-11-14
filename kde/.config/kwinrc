@@ -1,6 +1,7 @@
 [Desktops]
 Id_1=0e1602e2-2080-43f3-920f-a2726059fe8b
-Number=1
+Id_2=d2dffd90-e2d6-427d-b8f5-95087cfe3458
+Number=2
 Rows=1
 
 [Effect-blur]
@@ -29,17 +30,24 @@ CommandAll3=Toggle raise and lower
 [Plugins]
 blurEnabled=false
 contrastEnabled=false
-forceblurEnabled=true
+minimizeallEnabled=true
+poloniumEnabled=false
 scriptMinimizeOthersEnabled=true
-translucencyEnabled=true
+sheetEnabled=true
 
 [Tiling]
 padding=4
 
 [Tiling][0e1602e2-2080-43f3-920f-a2726059fe8b][3114f691-730a-4d75-9c7b-e9a6c4b161bf]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.5},{"width":0.5}]}
 
 [Tiling][0e1602e2-2080-43f3-920f-a2726059fe8b][6952997a-b948-4d08-afac-291ebf329656]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][37cf52f1-6b71-4392-b24f-df0f75da58c4][3114f691-730a-4d75-9c7b-e9a6c4b161bf]
+tiles={"layoutDirection":"horizontal","tiles":[]}
+
+[Tiling][d2dffd90-e2d6-427d-b8f5-95087cfe3458][3114f691-730a-4d75-9c7b-e9a6c4b161bf]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Wayland]
