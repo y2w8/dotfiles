@@ -3,6 +3,7 @@ return {
   lazy = false,
   name = "catppuccin",
   opts = {
+    transparent_background = true,
     flavour = "mocha",
     integrations = {
       aerial = true,
