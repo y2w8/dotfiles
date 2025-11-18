@@ -13,7 +13,8 @@ SDL_VIDEODRIVER "wayland,x11"
 }
 
 spawn-sh-at-startup "qs -c noctalia-shell"
-spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "bash -c wl-paste --watch cliphist store &"
+spawn-at-startup "systemctl --user start plasma-polkit-agent.service"
 spawn-at-startup "/usr/lib/xdg-desktop-portal-gtk"
 spawn-at-startup "/usr/lib/xdg-desktop-portal-gnome"
 
@@ -79,7 +80,7 @@ layout {
     gaps 16
 
     center-focused-column "never"
-
+    background-color "#1e1e2e"
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
@@ -153,6 +154,12 @@ animations {
 
       zoom 0.6
   }
+
+gestures {
+    hot-corners {
+        off
+    }
+}
 
 xwayland-satellite {
     // off
