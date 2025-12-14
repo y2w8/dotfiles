@@ -49,6 +49,7 @@ return {
     -- :checkhealth render-markdown
     -- https://github.com/MeanderingProgrammer/render-markdown.nvim/issues/138#issuecomment-2295422741
     opts = {
+      render_modes = true,
       file_types = { "markdown", "octo" },
       bullet = {
         -- Turn on / off list bullet rendering
@@ -75,9 +76,11 @@ return {
           -- Highlight for the checked icon
           highlight = "RenderMarkdownChecked",
           -- Highlight for item associated with checked checkbox
-          scope_highlight = nil,
+          scope_highlight = '@markup.strikethrough',
         },
+
         custom = {
+          todo = { raw = "[-]", rendered = "󰥔 ", highlight = "@markup.list.todo", scope_highlight = nil },
           blocked = {
             highlight = "RenderMarkdownWarn",
             raw = "[!]",
@@ -107,40 +110,54 @@ return {
       },
       heading = {
         sign = false,
-        icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
+        width = "block",
+        position = "right",
+        left_pad = 1,
+        icons = {
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+        },
+        -- icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
         backgrounds = {
-          "Headline1",
-          "Headline2",
-          "Headline3",
-          "Headline4",
-          "Headline5",
-          "Headline6",
+          "@markup.heading.1.markdown",
+          "@markup.heading.2.markdown",
+          "@markup.heading.3.markdown",
+          "@markup.heading.4.markdown",
+          "@markup.heading.5.markdown",
+          "@markup.heading.6.markdown",
         },
         foregrounds = {
-          "Headline1",
-          "Headline2",
-          "Headline3",
-          "Headline4",
-          "Headline5",
-          "Headline6",
+          "@markup.heading.1.markdown",
+          "@markup.heading.2.markdown",
+          "@markup.heading.3.markdown",
+          "@markup.heading.4.markdown",
+          "@markup.heading.5.markdown",
+          "@markup.heading.6.markdown",
         },
       },
       completions = { lsp = { enabled = true } },
       latex = {
         enabled = true,
-        render_modes = false,
-        converter = { "utftex", "latex2text" },
-        highlight = "RenderMarkdownMath",
-        position = "center",
-        top_pad = 0,
-        bottom_pad = 0,
+        -- converter = { "utftex", "latex2text" },
+        -- highlight = "RenderMarkdownMath",
+        position = 'above',
+        -- top_pad = 0,
+        -- bottom_pad = 0,
       },
-      pipe_table = { preset = "round" },
+      pipe_table = { preset = "heavy" },
       code = {
         position = "right",
         width = "block",
         border = "thin",
+        language_left = "█",
         language_right = "█",
+        language_border = "▁",
+        above = "▁",
+        below = "▔",
         left_pad = 2,
         right_pad = 14,
         inline_left = "█",
@@ -322,13 +339,14 @@ return {
       "norg",
     },
     config = function()
-       require("autolist").setup({
+      require("autolist").setup {
         lists = {
           markdown = {
-            ">%s*"
-          }
-        }
-      })
+            ">%s*",
+            "%-%s*%[[ xX%!%-%~]?%]%s*",
+          },
+        },
+      }
 
       vim.keymap.set("i", "<tab>", "<cmd>AutolistTab<cr>")
       vim.keymap.set("i", "<s-tab>", "<cmd>AutolistShiftTab<cr>")
