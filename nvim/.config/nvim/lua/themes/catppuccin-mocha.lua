@@ -249,8 +249,9 @@ local polish_hl = {
     SnacksPickerFile = { link = "TelescopeResultsFile" },
 
     RenderMarkdownCode = { bg = M.base_30.line },
+    RenderMarkdownCodeBorder = { bg = M.palette.surface1 },
     RenderMarkdownCodeInline = { bg = M.base_30.line },
-    RenderMarkdownTableRow = { fg = M.base_30.blue },
+    RenderMarkdownTableRow = { fg = M.palette.surface1 },
   },
   semantic_tokens = {
     ["@lsp.type.enumMember"] = { fg = M.palette.teal },
@@ -360,8 +361,8 @@ local polish_hl = {
     ["@markup.strikethrough"] = { fg = M.palette.text, style = { "strikethrough" } }, -- strikethrough text
     ["@markup.underline"] = { link = "Underlined" }, -- underlined text
 
-    ["@markup.heading"] = { fg = M.palette.blue }, -- titles like: # Example
-    ["@markup.heading.markdown"] = { style = { "bold" } }, -- bold headings in markdown, but not in HTML or other markup
+    ["@markup.heading"] = { fg = M.palette.surface1 }, -- titles like: # Example
+    ["@markup.heading.markdown"] = { fg = M.palette.lavender, style = { "bold" } }, -- bold headings in markdown, but not in HTML or other markup
 
     ["@markup.math"] = { fg = M.palette.blue }, -- math environments (e.g. `$ ... $` in LaTeX)
     ["@markup.quote"] = { fg = M.palette.pink }, -- block quotes
@@ -376,7 +377,8 @@ local polish_hl = {
 
     ["@markup.list"] = { fg = M.palette.teal },
     ["@markup.list.checked"] = { fg = M.palette.green }, -- todo notes
-    ["@markup.list.unchecked"] = { fg = M.palette.overlay1 }, -- todo notes
+    ["@markup.list.unchecked"] = { fg = M.palette.red }, -- todo notes
+    ["@markup.list.todo"] = { fg = M.palette.blue }, -- todo notes
 
     -- Diff
     ["@diff.plus"] = { link = "diffAdded" }, -- added text (for diff files)
@@ -399,12 +401,12 @@ local polish_hl = {
     ["@variable.parameter.bash"] = { fg = M.palette.green },
 
     -- markdown
-    ["@markup.heading.1.markdown"] = { link = "Headline1" },
-    ["@markup.heading.2.markdown"] = { link = "Headline2" },
-    ["@markup.heading.3.markdown"] = { link = "Headline3" },
-    ["@markup.heading.4.markdown"] = { link = "Headline4" },
-    ["@markup.heading.5.markdown"] = { link = "Headline5" },
-    ["@markup.heading.6.markdown"] = { link = "Headline6" },
+    ["@markup.heading.1.markdown"] = { fg = M.palette.base, bg = M.palette.blue, bold = true },
+    ["@markup.heading.2.markdown"] = { fg = M.palette.base, bg = M.palette.mauve, bold = true },
+    ["@markup.heading.3.markdown"] = { fg = M.palette.base, bg = M.palette.peach, bold = true },
+    ["@markup.heading.4.markdown"] = { fg = M.palette.base, bg = M.palette.green, bold = true },
+    ["@markup.heading.5.markdown"] = { fg = M.palette.base, bg = M.palette.yellow, bold = true },
+    ["@markup.heading.6.markdown"] = { fg = M.palette.base, bg = M.palette.teal, bold = true },
 
     -- Java
     ["@constant.java"] = { fg = M.palette.teal },
@@ -528,27 +530,6 @@ polish_hl["@method.call.php"] = polish_hl["@function.method.call.php"]
 
 M.polish_hl = convert_style(polish_hl)
 
-local hl_markdown = {
-  Headline1 = { fg = M.palette.blue },
-  Headline2 = { fg = M.palette.mauve },
-  Headline3 = { fg = M.palette.peach },
-  Headline4 = { fg = M.palette.green },
-  Headline5 = { fg = M.palette.yellow },
-  Headline6 = { fg = M.palette.teal },
-}
-
--- function to apply highlight groups
-local function apply_markdown_highlights()
-  -- english comments
-  for group, opts in pairs(hl_markdown) do
-    vim.api.nvim_set_hl(0, group, {
-      fg = opts.fg,
-      bg = opts.bg,
-      bold = true,
-    })
-  end
-end
-apply_markdown_highlights()
 local function apply_dashboard_hl(tbl)
   for group, opts in pairs(tbl) do
     -- apply the highlight
