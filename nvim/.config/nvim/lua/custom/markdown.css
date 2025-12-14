@@ -1,0 +1,146 @@
+:root {
+  --catppuccin-rosewater: #f5e0dc;
+  --catppuccin-flamingo: #f2cdcd;
+  --catppuccin-pink: #f5c2e7;
+  --catppuccin-mauve: #cba6f7;
+  --catppuccin-red: #f38ba8;
+  --catppuccin-maron: #eba0ac;
+  --catppuccin-peach: #fab387;
+  --catppuccin-yellow: #f9e2af;
+  --catppuccin-green: #a6e3a1;
+  --catppuccin-teal: #94e2d5;
+  --catppuccin-sky: #89dceb;
+  --catppuccin-sapphire: #74c7ec;
+  --catppuccin-blue: #89b4fa;
+  --catppuccin-lavender: #b4befe;
+
+  --catppuccin-text: #cdd6f4;
+  --catppuccin-subtext1: #bac2de;
+  --catppuccin-subtext0: #a6adc8;
+  --catppuccin-overlay2: #9399b2;
+  --catppuccin-overlay1: #7f849c;
+  --catppuccin-overlay0: #6c7086;
+  --catppuccin-surface2: #585b70;
+  --catppuccin-surface1: #45475a;
+  --catppuccin-surface0: #313244;
+  --catppuccin-base: #1e1e2e;
+  --catppuccin-mantle: #181825;
+  --catppuccin-crust: #11111b;
+}
+
+#page-ctn {
+  margin: 0 auto;
+  max-width: fit-content;
+  color: var(--catppuccin-base);
+}
+/* Base font */
+.markdown-body {
+  font-family: sans-serif;
+  direction: rtl;
+  color: var(--catppuccin-text);
+  background-color: var(--catppuccin-base);
+  line-height: 1.6;
+  font-size: 20px;
+  padding: 1rem;
+  transition:
+    background-color var(--color-transtion-time) ease,
+    color var(--color-transtion-time) ease;
+}
+
+/* Headers */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  /* separator like GitHub */
+  margin-bottom: 1rem;
+  color: var(--catppuccin-text);
+  /* pink-ish for headers */
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: 2px solid var(--catppuccin-surface0);
+
+  padding-bottom: 0.9rem;
+}
+
+/* Paragraph */
+.markdown-body p {
+  font-size: 20px;
+  color: var(--catppuccin-subtext1);
+}
+
+.markdown-body hr {
+  border: 0.5px solid var(--catppuccin-subtext1);
+}
+
+/* Links */
+.markdown-body a {
+  color: var(--catppuccin-blue);
+  /* catppuccin blue */
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+/* Code blocks */
+.markdown-body pre {
+  background-color: var(--catppuccin-surface0);
+  /* dark code bg */
+  padding: 0.75rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.markdown-body code {
+  font-family: "JetBrainsMono Nerd Font";
+  background-color: var(--catppuccin-surface0);
+  color: var(--catppuccin-subtext0);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+/* Lists */
+.markdown-body ul,
+.markdown-body ol {
+  margin-left: 1.5rem;
+}
+
+/* Blockquote */
+.markdown-body blockquote {
+  border-right: 4px solid var(--catppuccin-rosewater);
+  padding-right: 1rem;
+  color: var(--catppuccin-text);
+  margin: 0;
+}
+
+/* Tables */
+.markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1rem;
+  background-color: #181825;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid #313244;
+  padding: 0.75rem 1rem;
+}
+
+.markdown-body th {
+  background-color: #313244;
+  border: 1px solid var(--catppuccin-base);
+  color: #f5e0dc;
+}
+
+.markdown-body tr:nth-child(even) {
+  background-color: #1e1e2e;
+}

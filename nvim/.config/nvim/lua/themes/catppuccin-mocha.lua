@@ -1,0 +1,564 @@
+local M = {}
+local function convert_style(tbl)
+  if type(tbl) ~= "table" then
+    return tbl
+  end
+  local new_tbl = {}
+  for k, v in pairs(tbl) do
+    if k == "style" and type(v) == "table" then
+      for _, style_name in ipairs(v) do
+        new_tbl[style_name] = true
+      end
+    elseif type(v) == "table" then
+      new_tbl[k] = convert_style(v) -- recurse
+    else
+      new_tbl[k] = v
+    end
+  end
+  return new_tbl
+end
+M.bg = "#000000"
+M.fg = "#ffffff"
+M.day_brightness = 0.3
+
+local hex_to_rgb = function(hex_str)
+  local hex = "[abcdef0-9][abcdef0-9]"
+  local pat = "^#(" .. hex .. ")(" .. hex .. ")(" .. hex .. ")$"
+  hex_str = string.lower(hex_str)
+
+  assert(string.find(hex_str, pat) ~= nil, "hex_to_rgb: invalid hex_str: " .. tostring(hex_str))
+
+  local red, green, blue = string.match(hex_str, pat)
+  return { tonumber(red, 16), tonumber(green, 16), tonumber(blue, 16) }
+end
+
+function M.blend(fg, bg, alpha)
+  bg = hex_to_rgb(bg)
+  fg = hex_to_rgb(fg)
+
+  local blendChannel = function(i)
+    local ret = (alpha * fg[i] + ((1 - alpha) * bg[i]))
+    return math.floor(math.min(math.max(0, ret), 255) + 0.5)
+  end
+
+  return string.format("#%02X%02X%02X", blendChannel(1), blendChannel(2), blendChannel(3))
+end
+
+function M.darken(hex, amount, bg)
+  return M.blend(hex, bg or M.bg, math.abs(amount))
+end
+function M.lighten(hex, amount, fg)
+  return M.blend(hex, fg or M.fg, math.abs(amount))
+end
+function M.vary_color(palettes, default)
+  local flvr = require("catppuccin").flavour
+
+  if palettes[flvr] ~= nil then
+    return palettes[flvr]
+  end
+  return default
+end
+M.background = {
+  light = "latte",
+  dark = "mocha",
+}
+M.transparent_background = false
+M.float = {
+  transparent = false,
+  solid = false,
+}
+M.show_end_of_buffer = false
+-- term_colors = false,
+-- kitty = vim.env.KITTY_WINDOW_ID and true or false,
+M.dim_inactive = {
+  enabled = false,
+  shade = "dark",
+  percentage = 0.15,
+}
+-- no_italic = false,
+-- no_bold = false,
+-- no_underline = false,
+M.palette = {
+  rosewater = "#F5E0DC",
+  flamingo = "#F2CDCD",
+  pink = "#F5C2E7",
+  mauve = "#CBA6F7",
+  red = "#F38BA8",
+  maroon = "#EBA0AC",
+  peach = "#FAB387",
+  yellow = "#F9E2AF",
+  green = "#A6E3A1",
+  teal = "#94E2D5",
+  sky = "#89DCEB",
+  sapphire = "#74C7EC",
+  blue = "#89B4FA",
+  lavender = "#B4BEFE",
+
+  text = "#CDD6F4",
+  subtext1 = "#BAC2DE",
+  subtext0 = "#A6ADC8",
+  overlay2 = "#9399B2",
+  overlay1 = "#7F849C",
+  overlay0 = "#6C7086",
+  surface2 = "#585B70",
+  surface1 = "#45475A",
+  surface0 = "#313244",
+
+  base = "#1E1E2E",
+  mantle = "#181825",
+  crust = "#11111B",
+}
+
+M.base_30 = {
+  white = "#D9E0EE",
+  darker_black = M.palette.mantle,
+  black = "#1E1D2D", --  nvim bg
+  black2 = "#252434",
+  one_bg = "#2d2c3c", -- real bg of onedark
+  one_bg2 = "#363545",
+  one_bg3 = "#3e3d4d",
+  grey = "#474656",
+  grey_fg = "#4e4d5d",
+  grey_fg2 = "#555464",
+  light_grey = "#605f6f",
+  red = M.palette.red,
+  baby_pink = M.palette.maroon,
+  pink = M.palette.pink,
+  line = M.palette.surface0, -- for lines like vertsplit
+  green = M.palette.green,
+  vibrant_green = "#b6f4be",
+  nord_blue = "#8bc2f0",
+  blue = M.palette.blue,
+  yellow = M.palette.yellow,
+  sun = "#ffe9b6",
+  purple = M.palette.mauve,
+  dark_purple = "#c7a0dc",
+  teal = M.palette.teal,
+  orange = M.palette.peach,
+  cyan = M.palette.sky,
+  statusline_bg = "#232232",
+  lightbg = "#2f2e3e",
+  lightbg2 = M.palette.surface2,
+  pmenu_bg = M.palette.rosewater,
+  folder_bg = M.palette.rosewater,
+  lavender = M.palette.lavender,
+}
+
+M.base_16 = {
+  base00 = M.palette.base,
+  base01 = M.palette.mantle,
+  base02 = M.palette.surface0,
+  base03 = M.palette.surface1,
+  base04 = M.palette.surface2,
+  base05 = M.palette.text,
+  base06 = M.palette.rosewater,
+  base07 = M.palette.lavender,
+  base08 = M.palette.red,
+  base09 = M.palette.peach,
+  base0A = M.palette.yellow,
+  base0B = M.palette.green,
+  base0C = M.palette.teal,
+  base0D = M.palette.blue,
+  base0E = M.palette.mauve,
+  base0F = M.palette.flamingo,
+}
+
+M.styles = {
+  comments = { "italic" },
+  conditionals = { "italic" },
+  loops = {},
+  functions = {},
+  keywords = {},
+  strings = {},
+  variables = {},
+  numbers = {},
+  booleans = {},
+  properties = {},
+  types = {},
+  operators = {},
+}
+
+local polish_hl = {
+  -- lsp = require 'custom.catppuccin.lsp',
+  -- dap = {
+  --   DapBreakpoint = { fg = M.base_30.red },
+  --   DapBreakpointCondition = { fg = M.base_30.yellow },
+  --   DapBreakPointRejected = { fg = M.base_30.orange },
+  --   DapLogPoint = { fg = M.base_30.cyan },
+  --   DapStopped = { fg = M.base_30.baby_pink },
+  -- },
+  blink = {
+    BlinkCmpMenu = { bg = M.base_30.black },
+    BlinkCmpMenuBorder = { fg = M.palette.rosewater },
+    BlinkCmpDoc = { link = "BlinkCmpMenu" },
+    BlinkCmpDocBorder = { link = "BlinkCmpMenuBorder" },
+  },
+  defaults = require "custom.catppuccin.editor",
+  custom = {
+    SnacksDashboardHeader = { fg = M.base_30.blue, bold = true },
+    SnacksDashboardIcon = { fg = M.base_30.light_grey },
+    SnacksDashboardDesc = { fg = M.base_30.light_grey },
+    SnacksDashboardSpecial = { fg = M.base_30.red },
+    SnacksDashboardFile = { fg = M.base_30.yellow },
+    SnacksDashboardTitle = { fg = M.base_30.light_grey },
+    SnacksDashboardTerminal = { fg = M.base_30.light_grey },
+    SnacksDashboardFooter = { fg = M.base_30.red },
+    SnacksDashboardKey = { fg = M.base_30.light_grey },
+
+    SnacksNotifierHistory = { bg = M.palette.mantle },
+    SnacksNotifierHistoryTitle = { fg = M.base_30.black, bg = M.base_30.green },
+    SnacksNotifierHistoryBorder = { fg = M.palette.mantle, bg = M.palette.mantle },
+
+    -- Picker window
+    SnacksPicker = { link = "TelescopeNormal" },
+    SnacksPickerBorder = { link = "TelescopeBorder" },
+    SnacksPickerHeader = { link = "TelescopePromptTitle" },
+
+    -- Input area
+    SnacksPickerInput = { link = "TelescopePromptNormal" },
+    SnacksPickerInputBorder = { link = "TelescopePromptBorder" },
+    SnacksPickerInputTitle = { link = "TelescopePromptTitle" },
+    SnacksPickerInputSearch = { link = "TelescopePromptPrefix" },
+
+    -- List area
+    SnacksPickerList = { link = "TelescopeResultsNormal" },
+    SnacksPickerListBorder = { link = "TelescopeResultsBorder" },
+    SnacksPickerListTitle = { link = "TelescopePromptTitle" },
+
+    -- Preview area
+    SnacksPickerPreview = { link = "TelescopePreviewNormal" },
+    SnacksPickerPreviewBorder = { link = "TelescopePreviewBorder" },
+    SnacksPickerPreviewTitle = { link = "TelescopePreviewTitle" },
+
+    -- Box (extra frame used by Snacks)
+    SnacksPickerBox = { link = "TelescopeNormal" },
+    SnacksPickerBoxTitle = { link = "TelescopePromptTitle" },
+    SnacksPickerBoxBorder = { link = "TelescopeBorder" },
+
+    -- Additional useful groups:
+    SnacksPickerSelection = { link = "TelescopeSelection" },
+    SnacksPickerSelectionCaret = { link = "TelescopeSelectionCaret" },
+    SnacksPickerMatching = { link = "TelescopeMatching" },
+
+    -- Scrolling highlights
+    SnacksPickerScrollbar = { link = "TelescopeResultsDiffAdd" },
+    SnacksPickerScrollbarThumb = { link = "TelescopeResultsDiffChange" },
+
+    -- Icons
+    SnacksPickerIcon = { link = "TelescopeResultsIdentifier" },
+    SnacksPickerFile = { link = "TelescopeResultsFile" },
+
+    RenderMarkdownCode = { bg = M.base_30.line },
+    RenderMarkdownCodeInline = { bg = M.base_30.line },
+    RenderMarkdownTableRow = { fg = M.base_30.blue },
+  },
+  semantic_tokens = {
+    ["@lsp.type.enumMember"] = { fg = M.palette.teal },
+    -- we assume treesitter can already handle this
+    -- - treesitter can detect variables in buffers
+    -- - lsp does not need responsibility for this, in fact it can be less
+    --   accurate in cases
+    ["@lsp.type.variable"] = {},
+
+    -- in cases where the lsp can be more specific than treesitter, we should
+    -- allow lsp to override treesitter
+    ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.function.builtin"] = { link = "@function.builtin" },
+  },
+  syntax = require "custom.catppuccin.syntax",
+  treesitter = {
+    ["@variable"] = { fg = M.palette.lavender, style = M.styles.variables or {} }, -- Any variable name that does not have another highlight.
+    ["@variable.builtin"] = { fg = M.palette.red, style = M.styles.properties or {} }, -- Variable names that are defined by the languages, like this or self.
+    ["@variable.parameter"] = { fg = M.palette.maroon, style = M.styles.variables or {} }, -- For parameters of a function.
+    ["@variable.member"] = { fg = M.palette.red }, -- For fields.
+
+    ["@constant"] = { link = "Constant" }, -- For constants
+    ["@constant.builtin"] = { fg = M.palette.peach, style = M.styles.keywords or {} }, -- For constant that are built in the language: nil in Lua.
+    ["@constant.macro"] = { link = "Macro" }, -- For constants that are defined by macros: NULL in C.
+
+    ["@module"] = { fg = M.palette.yellow, style = M.styles.miscs or { "italic" } }, -- For identifiers referring to modules and namespaces.
+    ["@label"] = { link = "Label" }, -- For labels: label: in C and :label: in Lua.
+
+    -- Literals
+    ["@string"] = { link = "String" }, -- For strings.
+    ["@string.documentation"] = { fg = M.palette.teal, style = M.styles.strings or {} }, -- For strings documenting code (e.g. Python docstrings).
+    ["@string.regexp"] = { fg = M.palette.pink, style = M.styles.strings or {} }, -- For regexes.
+    ["@string.escape"] = { fg = M.palette.pink, style = M.styles.strings or {} }, -- For escape characters within a string.
+    ["@string.special"] = { link = "Special" }, -- other special strings (e.g. dates)
+    ["@string.special.path"] = { link = "Special" }, -- filenames
+    ["@string.special.symbol"] = { fg = M.palette.flamingo }, -- symbols or atoms
+    ["@string.special.url"] = { fg = M.palette.blue, style = { "italic", "underline" } }, -- urls, links and emails
+    ["@punctuation.delimiter.regex"] = { link = "@string.regexp" },
+
+    ["@character"] = { link = "Character" }, -- character literals
+    ["@character.special"] = { link = "SpecialChar" }, -- special characters (e.g. wildcards)
+
+    ["@boolean"] = { link = "Boolean" }, -- For booleans.
+    ["@number"] = { link = "Number" }, -- For all numbers
+    ["@number.float"] = { link = "Float" }, -- For floats.
+
+    -- Types
+    ["@type"] = { link = "Type" }, -- For types.
+    ["@type.builtin"] = { fg = M.palette.mauve, style = M.styles.properties or { "italic" } }, -- For builtin types.
+    ["@type.definition"] = { link = "Type" }, -- type definitions (e.g. `typedef` in C)
+
+    ["@attribute"] = { link = "Constant" }, -- attribute annotations (e.g. Python decorators)
+    ["@property"] = { fg = M.palette.lavender, style = M.styles.properties or {} }, -- For fields, like accessing `bar` property on `foo.bar`. Overriden later for data languages and CSS.
+
+    -- Functions
+    ["@function"] = { link = "Function" }, -- For function (calls and definitions).
+    ["@function.builtin"] = { fg = M.palette.peach, style = M.styles.functions or {} }, -- For builtin functions: table.insert in Lua.
+    ["@function.call"] = { link = "Function" }, -- function calls
+    ["@function.macro"] = { fg = M.palette.pink, style = M.styles.functions or {} }, -- For macro defined functions (calls and definitions): each macro_rules in Rust.
+
+    ["@function.method"] = { link = "Function" }, -- For method definitions.
+    ["@function.method.call"] = { link = "Function" }, -- For method calls.
+
+    ["@constructor"] = { fg = M.palette.yellow }, -- For constructor calls and definitions: = { } in Lua, and Java constructors.
+    ["@operator"] = { link = "Operator" }, -- For any operator: +, but also -> and * in C.
+
+    -- Keywords
+    ["@keyword"] = { link = "Keyword" }, -- For keywords that don't fall in previous categories.
+    ["@keyword.modifier"] = { link = "Keyword" }, -- For keywords modifying other constructs (e.g. `const`, `static`, `public`)
+    ["@keyword.type"] = { link = "Keyword" }, -- For keywords describing composite types (e.g. `struct`, `enum`)
+    ["@keyword.coroutine"] = { link = "Keyword" }, -- For keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
+    ["@keyword.function"] = { fg = M.palette.mauve, style = M.styles.keywords or {} }, -- For keywords used to define a function.
+    ["@keyword.operator"] = { fg = M.palette.mauve, style = M.styles.keywords or {} }, -- For new keyword operator
+    ["@keyword.import"] = { link = "Include" }, -- For includes: #include in C, use or extern crate in Rust, or require in Lua.
+    ["@keyword.repeat"] = { link = "Repeat" }, -- For keywords related to loops.
+    ["@keyword.return"] = { fg = M.palette.mauve, style = M.styles.keywords or {} },
+    ["@keyword.debug"] = { link = "Exception" }, -- For keywords related to debugging
+    ["@keyword.exception"] = { link = "Exception" }, -- For exception related keywords.
+
+    ["@keyword.conditional"] = { link = "Conditional" }, -- For keywords related to conditionnals.
+    ["@keyword.conditional.ternary"] = { link = "Operator" }, -- For ternary operators (e.g. `?` / `:`)
+
+    ["@keyword.directive"] = { link = "PreProc" }, -- various preprocessor directives & shebangs
+    ["@keyword.directive.define"] = { link = "Define" }, -- preprocessor definition directives
+    -- JS & derivative
+    ["@keyword.export"] = { fg = M.palette.mauve, style = M.styles.keywords },
+
+    -- Punctuation
+    ["@punctuation.delimiter"] = { link = "Delimiter" }, -- For delimiters (e.g. `;` / `.` / `,`).
+    ["@punctuation.bracket"] = { fg = M.palette.red }, -- For brackets and parenthesis.
+    ["@punctuation.special"] = { link = "Special" }, -- For special punctuation that does not fall in the categories before (e.g. `{}` in string interpolation).
+
+    -- Comment
+    ["@comment"] = { link = "Comment" },
+    ["@comment.documentation"] = { link = "Comment" }, -- For comments documenting code
+
+    ["@comment.error"] = { fg = M.palette.base, bg = M.palette.red },
+    ["@comment.warning"] = { fg = M.palette.base, bg = M.palette.yellow },
+    ["@comment.hint"] = { fg = M.palette.base, bg = M.palette.blue },
+    ["@comment.todo"] = { fg = M.palette.base, bg = M.palette.flamingo },
+    ["@comment.note"] = { fg = M.palette.base, bg = M.palette.rosewater },
+
+    -- Markup
+    ["@markup"] = { fg = M.palette.text }, -- For strings considerated text in a markup language.
+    ["@markup.strong"] = { fg = M.palette.red, style = { "bold" } }, -- bold
+    ["@markup.italic"] = { fg = M.palette.red, style = { "italic" } }, -- italic
+    ["@markup.strikethrough"] = { fg = M.palette.text, style = { "strikethrough" } }, -- strikethrough text
+    ["@markup.underline"] = { link = "Underlined" }, -- underlined text
+
+    ["@markup.heading"] = { fg = M.palette.blue }, -- titles like: # Example
+    ["@markup.heading.markdown"] = { style = { "bold" } }, -- bold headings in markdown, but not in HTML or other markup
+
+    ["@markup.math"] = { fg = M.palette.blue }, -- math environments (e.g. `$ ... $` in LaTeX)
+    ["@markup.quote"] = { fg = M.palette.pink }, -- block quotes
+    ["@markup.environment"] = { fg = M.palette.pink }, -- text environments of markup languages
+    ["@markup.environment.name"] = { fg = M.palette.blue }, -- text indicating the type of an environment
+
+    ["@markup.link"] = { fg = M.palette.lavender }, -- text references, footnotes, citations, etc.
+    ["@markup.link.label"] = { fg = M.palette.lavender }, -- link, reference descriptions
+    ["@markup.link.url"] = { fg = M.palette.blue, style = { "italic", "underline" } }, -- urls, links and emails
+
+    ["@markup.raw"] = { fg = M.palette.green }, -- used for inline code in markdown and for doc in python (""")
+
+    ["@markup.list"] = { fg = M.palette.teal },
+    ["@markup.list.checked"] = { fg = M.palette.green }, -- todo notes
+    ["@markup.list.unchecked"] = { fg = M.palette.overlay1 }, -- todo notes
+
+    -- Diff
+    ["@diff.plus"] = { link = "diffAdded" }, -- added text (for diff files)
+    ["@diff.minus"] = { link = "diffRemoved" }, -- deleted text (for diff files)
+    ["@diff.delta"] = { link = "diffChanged" }, -- deleted text (for diff files)
+
+    -- Tags
+    ["@tag"] = { fg = M.palette.blue }, -- Tags like HTML tag names.
+    ["@tag.builtin"] = { fg = M.palette.blue }, -- JSX tag names.
+    ["@tag.attribute"] = { fg = M.palette.yellow, style = M.styles.miscs or { "italic" } }, -- XML/HTML attributes (foo in foo="bar").
+    ["@tag.delimiter"] = { fg = M.palette.teal }, -- Tag delimiter like < > /
+
+    -- Misc
+    ["@error"] = { link = "Error" },
+
+    -- Language specific:
+
+    -- Bash
+    ["@function.builtin.bash"] = { fg = M.palette.red, style = M.styles.miscs or { "italic" } },
+    ["@variable.parameter.bash"] = { fg = M.palette.green },
+
+    -- markdown
+    ["@markup.heading.1.markdown"] = { link = "Headline1" },
+    ["@markup.heading.2.markdown"] = { link = "Headline2" },
+    ["@markup.heading.3.markdown"] = { link = "Headline3" },
+    ["@markup.heading.4.markdown"] = { link = "Headline4" },
+    ["@markup.heading.5.markdown"] = { link = "Headline5" },
+    ["@markup.heading.6.markdown"] = { link = "Headline6" },
+
+    -- Java
+    ["@constant.java"] = { fg = M.palette.teal },
+
+    -- CSS
+    ["@property.css"] = { fg = M.palette.blue },
+    ["@property.scss"] = { fg = M.palette.blue },
+    ["@property.id.css"] = { fg = M.palette.yellow },
+    ["@property.class.css"] = { fg = M.palette.yellow },
+    ["@type.css"] = { fg = M.palette.lavender },
+    ["@type.tag.css"] = { fg = M.palette.blue },
+    ["@string.plain.css"] = { fg = M.palette.text },
+    ["@number.css"] = { fg = M.palette.peach },
+    ["@keyword.directive.css"] = { link = "Keyword" }, -- CSS at-rules: https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule.
+
+    -- HTML
+    ["@string.special.url.html"] = { fg = M.palette.green }, -- Links in href, src attributes.
+    ["@markup.link.label.html"] = { fg = M.palette.text }, -- Text between <a></a> tags.
+    ["@character.special.html"] = { fg = M.palette.red }, -- Symbols such as &nbsp;.
+
+    -- Lua
+    ["@constructor.lua"] = { link = "@punctuation.bracket" }, -- For constructor calls and definitions: = { } in Lua.
+
+    -- Python
+    ["@constructor.python"] = { fg = M.palette.sky }, -- __init__(), __new__().
+
+    -- YAML
+    ["@label.yaml"] = { fg = M.palette.yellow }, -- Anchor and alias names.
+
+    -- Ruby
+    ["@string.special.symbol.ruby"] = { fg = M.palette.flamingo },
+
+    -- PHP
+    ["@function.method.php"] = { link = "Function" },
+    ["@function.method.call.php"] = { link = "Function" },
+
+    -- C/CPP
+    ["@keyword.import.c"] = { fg = M.palette.yellow },
+    ["@keyword.import.cpp"] = { fg = M.palette.yellow },
+
+    -- C#
+    ["@attribute.c_sharp"] = { fg = M.palette.yellow },
+
+    -- gitcommit
+    ["@comment.warning.gitcommit"] = { fg = M.palette.yellow },
+
+    -- gitignore
+    ["@string.special.path.gitignore"] = { fg = M.palette.text },
+    ["FloatBorder"] = { fg = M.palette.base },
+    -- Misc
+    gitcommitSummary = { fg = M.palette.rosewater, style = M.styles.miscs or { "italic" } },
+    zshKSHFunction = { link = "Function" },
+  },
+}
+polish_hl["@parameter"] = polish_hl["@variable.parameter"]
+polish_hl["@field"] = polish_hl["@variable.member"]
+polish_hl["@namespace"] = polish_hl["@module"]
+polish_hl["@float"] = polish_hl["@number.float"]
+polish_hl["@symbol"] = polish_hl["@string.special.symbol"]
+polish_hl["@string.regex"] = polish_hl["@string.regexp"]
+
+polish_hl["@text"] = polish_hl["@markup"]
+polish_hl["@text.strong"] = polish_hl["@markup.strong"]
+polish_hl["@text.emphasis"] = polish_hl["@markup.italic"]
+polish_hl["@text.underline"] = polish_hl["@markup.underline"]
+polish_hl["@text.strike"] = polish_hl["@markup.strikethrough"]
+polish_hl["@text.uri"] = polish_hl["@markup.link.url"]
+polish_hl["@text.math"] = polish_hl["@markup.math"]
+polish_hl["@text.environment"] = polish_hl["@markup.environment"]
+polish_hl["@text.environment.name"] = polish_hl["@markup.environment.name"]
+
+polish_hl["@text.title"] = polish_hl["@markup.heading"]
+polish_hl["@text.literal"] = polish_hl["@markup.raw"]
+polish_hl["@text.reference"] = polish_hl["@markup.link"]
+
+polish_hl["@text.todo.checked"] = polish_hl["@markup.list.checked"]
+polish_hl["@text.todo.unchecked"] = polish_hl["@markup.list.unchecked"]
+
+polish_hl["@comment.note"] = polish_hl["@comment.hint"]
+
+-- @text.todo is now for todo comments, not todo notes like in markdown
+polish_hl["@text.todo"] = polish_hl["@comment.todo"]
+polish_hl["@text.warning"] = polish_hl["@comment.warning"]
+polish_hl["@text.note"] = polish_hl["@comment.note"]
+polish_hl["@text.danger"] = polish_hl["@comment.error"]
+
+-- @text.uri is now
+-- > @markup.link.url in markup links
+-- > @string.special.url outside of markup
+polish_hl["@text.uri"] = polish_hl["@markup.link.uri"]
+
+polish_hl["@method"] = polish_hl["@function.method"]
+polish_hl["@method.call"] = polish_hl["@function.method.call"]
+
+polish_hl["@text.diff.add"] = polish_hl["@diff.plus"]
+polish_hl["@text.diff.delete"] = polish_hl["@diff.minus"]
+
+polish_hl["@type.qualifier"] = polish_hl["@keyword.modifier"]
+polish_hl["@keyword.storage"] = polish_hl["@keyword.modifier"]
+polish_hl["@define"] = polish_hl["@keyword.directive.define"]
+polish_hl["@preproc"] = polish_hl["@keyword.directive"]
+polish_hl["@storageclass"] = polish_hl["@keyword.storage"]
+polish_hl["@conditional"] = polish_hl["@keyword.conditional"]
+polish_hl["@exception"] = polish_hl["@keyword.exception"]
+polish_hl["@include"] = polish_hl["@keyword.import"]
+polish_hl["@repeat"] = polish_hl["@keyword.repeat"]
+
+polish_hl["@symbol.ruby"] = polish_hl["@string.special.symbol.ruby"]
+
+polish_hl["@variable.member.yaml"] = polish_hl["@field.yaml"]
+
+polish_hl["@text.title.1.markdown"] = polish_hl["@markup.heading.1.markdown"]
+polish_hl["@text.title.2.markdown"] = polish_hl["@markup.heading.2.markdown"]
+polish_hl["@text.title.3.markdown"] = polish_hl["@markup.heading.3.markdown"]
+polish_hl["@text.title.4.markdown"] = polish_hl["@markup.heading.4.markdown"]
+polish_hl["@text.title.5.markdown"] = polish_hl["@markup.heading.5.markdown"]
+polish_hl["@text.title.6.markdown"] = polish_hl["@markup.heading.6.markdown"]
+
+polish_hl["@method.php"] = polish_hl["@function.method.php"]
+polish_hl["@method.call.php"] = polish_hl["@function.method.call.php"]
+
+M.polish_hl = convert_style(polish_hl)
+
+local hl_markdown = {
+  Headline1 = { fg = M.palette.blue },
+  Headline2 = { fg = M.palette.mauve },
+  Headline3 = { fg = M.palette.peach },
+  Headline4 = { fg = M.palette.green },
+  Headline5 = { fg = M.palette.yellow },
+  Headline6 = { fg = M.palette.teal },
+}
+
+-- function to apply highlight groups
+local function apply_markdown_highlights()
+  -- english comments
+  for group, opts in pairs(hl_markdown) do
+    vim.api.nvim_set_hl(0, group, {
+      fg = opts.fg,
+      bg = opts.bg,
+      bold = true,
+    })
+  end
+end
+apply_markdown_highlights()
+local function apply_dashboard_hl(tbl)
+  for group, opts in pairs(tbl) do
+    -- apply the highlight
+    vim.api.nvim_set_hl(0, group, opts)
+  end
+end
+
+apply_dashboard_hl(polish_hl.custom)
+M.type = "dark"
+
+M = require("base46").override_theme(M, "catppuccin-mocha")
+
+return M

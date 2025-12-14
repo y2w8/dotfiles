@@ -1,0 +1,191 @@
+local cat = require "custom.catppuccin"
+local C = cat.base_30
+
+return {
+		["@variable"] = { fg = C.lavender }, -- Any variable name that does not have another highlight.
+		["@variable.builtin"] = { fg = C.red }, -- Variable names that are defined by the languages, like this or self.
+		["@variable.parameter"] = { fg = C.maroon }, -- For parameters of a function.
+		["@variable.member"] = { fg = C.lavender }, -- For fields.
+
+		["@constant"] = { link = "Constant" }, -- For constants
+		["@constant.builtin"] = { fg = C.peach }, -- For constant that are built in the language: nil in Lua.
+		["@constant.macro"] = { link = "Macro" }, -- For constants that are defined by macros: NULL in C.
+
+		["@module"] = { fg = C.yellow, italic = true }, -- For identifiers referring to modules and namespaces.
+		["@label"] = { link = "Label" }, -- For labels: label: in C and :label: in Lua.
+
+		-- Literals
+		["@string"] = { link = "String" }, -- For strings.
+		["@string.documentation"] = { fg = C.teal }, -- For strings documenting code (e.g. Python docstrings).
+		["@string.regexp"] = { fg = C.pink }, -- For regexes.
+		["@string.escape"] = { fg = C.pink }, -- For escape characters within a string.
+		["@string.special"] = { link = "Special" }, -- other special strings (e.g. dates)
+		["@string.special.path"] = { link = "Special" }, -- filenames
+		["@string.special.symbol"] = { fg = C.flamingo }, -- symbols or atoms
+		["@string.special.url"] = { fg = C.blue, italic = true, underline = true }, -- urls, links and emails
+		["@punctuation.delimiter.regex"] = { link = "@string.regexp" },
+
+		["@character"] = { link = "Character" }, -- character literals
+		["@character.special"] = { link = "SpecialChar" }, -- special characters (e.g. wildcards)
+
+		["@boolean"] = { link = "Boolean" }, -- For booleans.
+		["@number"] = { link = "Number" }, -- For all numbers
+		["@number.float"] = { link = "Float" }, -- For floats.
+
+		-- Types
+		["@type"] = { link = "Type" }, -- For types.
+		["@type.builtin"] = { fg = C.mauve, italic = true }, -- For builtin types.
+		["@type.definition"] = { link = "Type" }, -- type definitions (e.g. `typedef` in C)
+
+		["@attribute"] = { link = "Constant" }, -- attribute annotations (e.g. Python decorators)
+		["@property"] = { fg = C.lavender }, -- For fields, like accessing `bar` property on `foo.bar`. Overriden later for data languages and CSS.
+
+		-- Functions
+		["@function"] = { link = "Function" }, -- For function (calls and definitions).
+		["@function.builtin"] = { fg = C.peach }, -- For builtin functions: table.insert in Lua.
+		["@function.call"] = { link = "Function" }, -- function calls
+		["@function.macro"] = { fg = C.pink }, -- For macro defined functions (calls and definitions): each macro_rules in Rust.
+
+		["@function.method"] = { link = "Function" }, -- For method definitions.
+		["@function.method.call"] = { link = "Function" }, -- For method calls.
+
+		["@constructor"] = { fg = C.yellow }, -- For constructor calls and definitions: = { } in Lua, and Java constructors.
+		["@operator"] = { link = "Operator" }, -- For any operator: +, but also -> and * in C.
+
+		-- Keywords
+		["@keyword"] = { link = "Keyword" }, -- For keywords that don't fall in previous categories.
+		["@keyword.modifier"] = { link = "Keyword" }, -- For keywords modifying other constructs (e.g. `const`, `static`, `public`)
+		["@keyword.type"] = { link = "Keyword" }, -- For keywords describing composite types (e.g. `struct`, `enum`)
+		["@keyword.coroutine"] = { link = "Keyword" }, -- For keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
+		["@keyword.function"] = { fg = C.mauve }, -- For keywords used to define a function.
+		["@keyword.operator"] = { fg = C.mauve }, -- For new keyword operator
+		["@keyword.import"] = { link = "Include" }, -- For includes: #include in C, use or extern crate in Rust, or require in Lua.
+		["@keyword.repeat"] = { link = "Repeat" }, -- For keywords related to loops.
+		["@keyword.return"] = { fg = C.mauve },
+		["@keyword.debug"] = { link = "Exception" }, -- For keywords related to debugging
+		["@keyword.exception"] = { link = "Exception" }, -- For exception related keywords.
+
+		["@keyword.conditional"] = { link = "Conditional" }, -- For keywords related to conditionnals.
+		["@keyword.conditional.ternary"] = { link = "Operator" }, -- For ternary operators (e.g. `?` / `:`)
+
+		["@keyword.directive"] = { link = "PreProc" }, -- various preprocessor directives & shebangs
+		["@keyword.directive.define"] = { link = "Define" }, -- preprocessor definition directives
+		-- JS & derivative
+		["@keyword.export"] = { fg = C.mauve },
+
+		-- Punctuation
+		["@punctuation.delimiter"] = { link = "Delimiter" }, -- For delimiters (e.g. `;` / `.` / `,`).
+		["@punctuation.bracket"] = { fg = C.overlay2 }, -- For brackets and parenthesis.
+		["@punctuation.special"] = { link = "Special" }, -- For special punctuation that does not fall in the categories before (e.g. `{}` in string interpolation).
+
+		-- Comment
+		["@comment"] = { link = "Comment" },
+		["@comment.documentation"] = { link = "Comment" }, -- For comments documenting code
+
+		["@comment.error"] = { fg = C.base, bg = C.red },
+		["@comment.warning"] = { fg = C.base, bg = C.yellow },
+		["@comment.hint"] = { fg = C.base, bg = C.blue },
+		["@comment.todo"] = { fg = C.base, bg = C.flamingo },
+		["@comment.note"] = { fg = C.base, bg = C.rosewater },
+
+		-- Markup
+		["@markup"] = { fg = C.text }, -- For strings considerated text in a markup language.
+		["@markup.strong"] = { fg = C.red, bold = true }, -- bold
+		["@markup.italic"] = { fg = C.red, italic = true }, -- italic
+		["@markup.strikethrough"] = { fg = C.text, strikethrough = true }, -- strikethrough text
+		["@markup.underline"] = { link = "Underlined" }, -- underlined text
+
+		["@markup.heading"] = { fg = C.blue }, -- titles like: # Example
+		["@markup.heading.markdown"] = { bold = true }, -- bold headings in markdown, but not in HTML or other markup
+
+		["@markup.math"] = { fg = C.blue }, -- math environments (e.g. `$ ... $` in LaTeX)
+		["@markup.quote"] = { fg = C.pink }, -- block quotes
+		["@markup.environment"] = { fg = C.pink }, -- text environments of markup languages
+		["@markup.environment.name"] = { fg = C.blue }, -- text indicating the type of an environment
+
+		["@markup.link"] = { fg = C.lavender }, -- text references, footnotes, citations, etc.
+		["@markup.link.label"] = { fg = C.lavender }, -- link, reference descriptions
+		["@markup.link.url"] = { fg = C.blue, italic = true, underline = true }, -- urls, links and emails
+
+		["@markup.raw"] = { fg = C.green }, -- used for inline code in markdown and for doc in python (""")
+
+		["@markup.list"] = { fg = C.teal },
+		["@markup.list.checked"] = { fg = C.green }, -- todo notes
+		["@markup.list.unchecked"] = { fg = C.overlay1 }, -- todo notes
+
+		-- Diff
+		["@diff.plus"] = { link = "diffAdded" }, -- added text (for diff files)
+		["@diff.minus"] = { link = "diffRemoved" }, -- deleted text (for diff files)
+		["@diff.delta"] = { link = "diffChanged" }, -- deleted text (for diff files)
+
+		-- Tags
+		["@tag"] = { fg = C.blue }, -- Tags like HTML tag names.
+		["@tag.builtin"] = { fg = C.blue }, -- JSX tag names.
+		["@tag.attribute"] = { fg = C.yellow, italic = true }, -- XML/HTML attributes (foo in foo="bar").
+		["@tag.delimiter"] = { fg = C.teal }, -- Tag delimiter like < > /
+
+		-- Misc
+		["@error"] = { link = "Error" },
+
+		-- Language specific:
+
+		-- Bash
+		["@function.builtin.bash"] = { fg = C.red, italic = true },
+		["@variable.parameter.bash"] = { fg = C.green },
+
+		-- markdown
+		["@markup.heading.1.markdown"] = { link = "rainbow1" },
+		["@markup.heading.2.markdown"] = { link = "rainbow2" },
+		["@markup.heading.3.markdown"] = { link = "rainbow3" },
+		["@markup.heading.4.markdown"] = { link = "rainbow4" },
+		["@markup.heading.5.markdown"] = { link = "rainbow5" },
+		["@markup.heading.6.markdown"] = { link = "rainbow6" },
+
+		-- Java
+		["@constant.java"] = { fg = C.teal },
+
+		-- CSS
+		["@property.css"] = { fg = C.blue },
+		["@property.scss"] = { fg = C.blue },
+		["@property.id.css"] = { fg = C.yellow },
+		["@property.class.css"] = { fg = C.yellow },
+		["@type.css"] = { fg = C.lavender },
+		["@type.tag.css"] = { fg = C.blue },
+		["@string.plain.css"] = { fg = C.text },
+		["@number.css"] = { fg = C.peach },
+		["@keyword.directive.css"] = { link = "Keyword" }, -- CSS at-rules: https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule.
+
+		-- HTML
+		["@string.special.url.html"] = { fg = C.green }, -- Links in href, src attributes.
+		["@markup.link.label.html"] = { fg = C.text }, -- Text between <a></a> tags.
+		["@character.special.html"] = { fg = C.red }, -- Symbols such as &nbsp;.
+
+		-- Lua
+		["@constructor.lua"] = { link = "@punctuation.bracket" }, -- For constructor calls and definitions: = { } in Lua.
+
+		-- Python
+		["@constructor.python"] = { fg = C.sky }, -- __init__(), __new__().
+
+		-- YAML
+		["@label.yaml"] = { fg = C.yellow }, -- Anchor and alias names.
+
+		-- Ruby
+		["@string.special.symbol.ruby"] = { fg = C.flamingo },
+
+		-- PHP
+		["@function.method.php"] = { link = "Function" },
+		["@function.method.call.php"] = { link = "Function" },
+
+		-- C/CPP
+		["@keyword.import.c"] = { fg = C.yellow },
+		["@keyword.import.cpp"] = { fg = C.yellow },
+
+		-- C#
+		["@attribute.c_sharp"] = { fg = C.yellow },
+
+		-- gitcommit
+		["@comment.warning.gitcommit"] = { fg = C.yellow },
+
+		-- gitignore
+		["@string.special.path.gitignore"] = { fg = C.text },
+	}
