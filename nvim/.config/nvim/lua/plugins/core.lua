@@ -4,13 +4,29 @@ return {
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
+  { "itchyny/calendar.vim" },
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      { "tpope/vim-dadbod", lazy = true },
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
+    },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
+  },
   {
     "pwntester/octo.nvim",
     cmd = "Octo",
     opts = {
-      -- or "fzf-lua" or "snacks" or "default"
       picker = "telescope",
-      -- bare Octo command opens picker of commands
       enable_builtin = true,
     },
     config = function()
@@ -18,27 +34,27 @@ return {
     end,
     keys = {
       {
-        "<leader>oi",
+        "<leader>gi",
         "<CMD>Octo issue list<CR>",
         desc = "List GitHub Issues",
       },
       {
-        "<leader>op",
+        "<leader>gp",
         "<CMD>Octo pr list<CR>",
         desc = "List GitHub PullRequests",
       },
       {
-        "<leader>od",
+        "<leader>gd",
         "<CMD>Octo discussion list<CR>",
         desc = "List GitHub Discussions",
       },
       {
-        "<leader>on",
+        "<leader>gn",
         "<CMD>Octo notification list<CR>",
         desc = "List GitHub Notifications",
       },
       {
-        "<leader>os",
+        "<leader>gf",
         function()
           require("octo.utils").create_base_search_command { include_current_repo = true }
         end,
@@ -48,9 +64,22 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
-      -- OR "ibhagwan/fzf-lua",
-      -- OR "folke/snacks.nvim",
       "nvim-tree/nvim-web-devicons",
+    },
+  },
+  {
+    "NeogitOrg/neogit",
+    lazy = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      -- "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed.
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    cmd = "Neogit",
+    keys = {
+      { "<leader>gG", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
     },
   },
   {
@@ -144,7 +173,7 @@ return {
     config = function()
       require "configs.oil"
     end,
-    dependencies = { "nvim-tree/nvim-web-devicons", "stevearc/oil.nvim" }, -- use if you prefer nvim-web-devicons
+    dependencies = { "nvim-tree/nvim-web-devicons", "JezerM/oil-lsp-diagnostics.nvim", "benomahony/oil-git.nvim" }, -- use if you prefer nvim-web-devicons
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   },
   {
@@ -253,6 +282,19 @@ return {
   {
     "Saghen/blink.cmp",
     opts = {
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+        per_filetype = {
+          sql = { "snippets", "dadbod", "buffer" },
+          mysql = { "snippets", "dadbod", "buffer" },
+          postgresql = { "snippets", "dadbod", "buffer" },
+        },
+        -- add vim-dadbod-completion to your completion providers
+        providers = {
+          dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+          path = { opts = { show_hidden_files_by_default = true } },
+        },
+      },
       completion = {
         list = { selection = { preselect = false, auto_insert = true } },
       },
@@ -325,7 +367,12 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "ghassan0/telescope-glyph.nvim" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "ghassan0/telescope-glyph.nvim",
+      "debugloop/telescope-undo.nvim",
+      "smartpde/telescope-recent-files",
+    },
     cmd = "Telescope",
     opts = function()
       return require "configs.telescope"

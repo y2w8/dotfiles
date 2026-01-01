@@ -1,4 +1,10 @@
 require "nvchad.autocmds"
+
+vim.api.nvim_create_autocmd({'BufEnter'}, {
+    pattern = "www.markdowntopdf.com_*.txt",
+    command = "set filetype=markdown"
+})
+
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = { "markdown", "md" },
 --   callback = function()

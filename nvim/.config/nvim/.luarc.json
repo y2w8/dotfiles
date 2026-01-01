@@ -1,5 +1,9 @@
 {
     "diagnostics.globals": [
-        "map"
+        "map",
+        "Snacks"
+    ],
+    "diagnostics.disable": [
+        "undefined-doc-name"
     ]
 }

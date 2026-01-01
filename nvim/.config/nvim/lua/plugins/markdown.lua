@@ -1,5 +1,12 @@
 return {
   {
+    "yousefhadder/markdown-plus.nvim",
+    ft = "markdown",
+    opts = {
+      -- Your custom configuration here
+    },
+  },
+  {
     "bullets-vim/bullets.vim",
     -- NOTE: enable the plugin only for specific filetypes, if you don't do this,
     -- and you use the new snacks picker by folke, you won't be able to select a
@@ -76,7 +83,7 @@ return {
           -- Highlight for the checked icon
           highlight = "RenderMarkdownChecked",
           -- Highlight for item associated with checked checkbox
-          scope_highlight = '@markup.strikethrough',
+          scope_highlight = "@markup.strikethrough",
         },
 
         custom = {
@@ -109,7 +116,7 @@ return {
         },
       },
       heading = {
-        sign = false,
+        sign = true,
         width = "block",
         position = "right",
         left_pad = 1,
@@ -144,7 +151,7 @@ return {
         enabled = true,
         -- converter = { "utftex", "latex2text" },
         -- highlight = "RenderMarkdownMath",
-        position = 'above',
+        position = "above",
         -- top_pad = 0,
         -- bottom_pad = 0,
       },
@@ -331,6 +338,7 @@ return {
   },
   {
     "gaoDean/autolist.nvim",
+    enabled = false,
     ft = {
       "markdown",
       "text",

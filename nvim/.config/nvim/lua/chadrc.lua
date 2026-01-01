@@ -1,12 +1,17 @@
--- This file needs to have same structure as nvconfig.lua 
+---@diagnostic disable: assign-type-mismatch
+-- This file needs to have same structure as nvconfig.lua
 -- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
--- Please read that file to know all available options :( 
+-- Please read that file to know all available options :(
 
+vim.g.ui_transparent = vim.g.ui_transparent or true
 ---@type ChadrcConfig
 local M = {}
 
+vim.g.is_firenvim = vim.fn.exists "g:started_by_firenvim" == 1
+
 M.base46 = {
-	theme = "catppuccin-mocha",
+  theme = "catppuccin-mocha",
+  transparency = true,
   -- hl_override = {
   --   Folded = { bg = nil, fg = nil }
   -- }
@@ -21,19 +26,23 @@ M.base46 = {
 --   }
 --   }
 -- end
-M.nvdash = { load_on_startup = false }
--- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
--- }
+M.nvdash = { enabled = false }
+M.ui = {
+  tabufline = {
+    enabled = not vim.g.is_firenvim,
+    order = { "treeOffset", "buffers", "tabs", "btns" },
+    lazyload = false,
+  },
+  statusline = {
+    enabled = not vim.g.is_firenvim,
+  },
+}
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "text" },
   callback = function()
-    require("nvim-autopairs").remove_rule(">")
-    require("nvim-autopairs").remove_rule("<")
-    -- أهم سطر: تعطيل auto CR
+    require("nvim-autopairs").remove_rule ">"
+    require("nvim-autopairs").remove_rule "<"
     vim.b.autopairs_cr = false
   end,
 })

@@ -7,18 +7,19 @@ map("i", "<C-l>", "<Right>", { desc = "move right" })
 map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 
-map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
-map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
-map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
+-- NOTE: replaced by zellij.nvim
+-- map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
+-- map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
+-- map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
+-- map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 
-map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
-map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
+-- map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
+-- map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
 
 map({ "n", "x" }, "<leader>fm", function()
@@ -53,29 +54,6 @@ map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
 map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
 
--- telescope
-map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
-map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
-map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
-map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
-map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
-map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
-map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
-
-map("n", "<leader>th", function()
-  require("nvchad.themes").open()
-end, { desc = "telescope nvchad themes" })
-
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
-map(
-  "n",
-  "<leader>fa",
-  "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-  { desc = "telescope find all files" }
-)
-
 -- terminal
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 
@@ -93,14 +71,28 @@ map({ "n", "t" }, "<A-v>", function()
   require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
 end, { desc = "terminal toggleable vertical term" })
 
-map({ "n", "t" }, "<A-h>", function()
+map({ "n", "t" }, "<A-t>", function()
   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
 end, { desc = "terminal toggleable horizontal term" })
 
 map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
+map("n", "<leader>gl", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle blame" })
+-- Shared toggle state
+ 
+local transparency_toggle = Snacks.toggle.new({
+  id = "transparency",
+  name = "Transparency",
+  get = function()
+    return vim.g.ui_transparent
+  end,
+  set = function(state)
+    vim.g.ui_transparent = state
 
+  end,
+})
+transparency_toggle:map("<leader>ut", { desc = "Toggle transparency" })
 -- whichkey
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
 
@@ -117,18 +109,18 @@ map("n", "-", "<cmd>Oil<CR>", { desc = "Oil" })
 -- map("v", "<", "<gv")
 -- map("v", ">", ">gv")
 
-map("n", "<leader>H", function ()
+map("n", "<leader>uH", function ()
   require("illuminate").toggle_visibility_buf()
   vim.notify(string.format( "references underline toggled %s", require("illuminate.engine").invisible_bufs), vim.log.levels.INFO)
 end, { desc = "Toggle references underline" })
 map("n", "[r", function()
   require("illuminate").goto_prev_reference(wrap)
-end)
+end, { desc = "Next Reference" })
 map("n", "]r", function()
   require("illuminate").goto_next_reference(wrap)
-end)
+end, { desc = "Prev Reference" })
 
-map({ "v", "n" }, "gh", require("actions-preview").code_actions)
+map({ "n", "x" }, "ga", require("tiny-code-action").code_action)
 
 map("n", "gs", function()
   vim.diagnostic.open_float(nil, {
@@ -153,11 +145,11 @@ end, {
   desc = "Copy diagnostic message",
 })
 
--- toggle inlayhints
-vim.keymap.set("n", "<leader>h", function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-  vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled", vim.log.levels.INFO)
-end, { desc = "Toggle Inlay Hints" })
+-- NOTE: replaced by snacks nvim
+-- vim.keymap.set("n", "<leader>h", function()
+--   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+--   vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled", vim.log.levels.INFO)
+-- end, { desc = "Toggle Inlay Hints" })
 
 vim.keymap.set("n", "<leader>tn", ":tabnew<CR>")
 vim.keymap.set("n", "<leader>tq", ":tabclose<CR>")

@@ -5,11 +5,9 @@ local g = vim.g
 -------------------------------------- globals ------------------------------------------
 -- Set leader key to space
 g.mapleader = " "
--- Set leader key to space
-g.maplocalleader = " "
 
 -------------------------------------- options ------------------------------------------
-o.laststatus = 3
+o.laststatus = vim.g.is_firenvim and 0 or 3
 o.showmode = false
 o.splitkeep = "screen"
 o.scrolloff = 5
@@ -25,7 +23,7 @@ o.smartindent = true
 o.tabstop = 2
 o.softtabstop = 2
 
-opt.fillchars = { eob = " " }
+opt.fillchars = { eob = "~" }
 o.ignorecase = true
 o.smartcase = true
 o.mouse = "a"

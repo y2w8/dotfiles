@@ -1,3 +1,5 @@
+local detail = false
+
 require("oil").setup({
   -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
   -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
@@ -19,6 +21,7 @@ require("oil").setup({
   win_options = {
     wrap = false,
     signcolumn = "yes:2",
+    winbar = "%!v:lua.get_oil_winbar()",
     cursorcolumn = false,
     foldcolumn = "0",
     spell = false,
@@ -58,6 +61,17 @@ require("oil").setup({
   -- Set to `false` to remove a keymap
   -- See :help oil-actions for a list of all available actions
   keymaps = {
+    ["gd"] = {
+      desc = "Toggle file detail view",
+      callback = function()
+        detail = not detail
+        if detail then
+          require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+        else
+          require("oil").set_columns({ "icon" })
+        end
+      end,
+    },
     ["g?"] = { "actions.show_help", mode = "n" },
     ["l"] = "actions.select",
     ["<C-s>"] = { "actions.select", opts = { vertical = true } },
@@ -79,7 +93,7 @@ require("oil").setup({
   use_default_keymaps = true,
   view_options = {
     -- Show files and directories that start with "."
-    show_hidden = false,
+    show_hidden = true,
     -- This function defines what is considered a "hidden" file
     is_hidden_file = function(name, bufnr)
       local m = name:match("^%.")
@@ -174,7 +188,7 @@ require("oil").setup({
     min_height = { 5, 0.1 },
     -- optionally define an integer/float for the exact height of the preview window
     height = nil,
-    border = nil,
+    border = "single",
     win_options = {
       winblend = 0,
     },
@@ -187,7 +201,7 @@ require("oil").setup({
     max_height = { 10, 0.9 },
     min_height = { 5, 0.1 },
     height = nil,
-    border = nil,
+    border = "solid",
     minimized_border = "none",
     win_options = {
       winblend = 0,
@@ -202,3 +216,14 @@ require("oil").setup({
     border = nil,
   },
 })
+
+function _G.get_oil_winbar()
+  local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
+  local dir = require("oil").get_current_dir(bufnr)
+  if dir then
+    return vim.fn.fnamemodify(dir, ":~")
+  else
+    -- If there is no current directory (e.g. over ssh), just show the buffer name
+    return vim.api.nvim_buf_get_name(0)
+  end
+end
