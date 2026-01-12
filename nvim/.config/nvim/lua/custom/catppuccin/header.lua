@@ -175,7 +175,7 @@ M.styles = {
   variables = {},
   numbers = {},
   booleans = {},
-  properties = {},
+  properties = { "italic" },
   types = {},
   operators = {},
 }

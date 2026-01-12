@@ -149,7 +149,7 @@ return {
       completions = { lsp = { enabled = true } },
       latex = {
         enabled = true,
-        -- converter = { "utftex", "latex2text" },
+        converter = { "utftex" },
         -- highlight = "RenderMarkdownMath",
         position = "above",
         -- top_pad = 0,

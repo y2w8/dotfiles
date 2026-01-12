@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Toggle hyprscrolling colresize based on window width
+# Uses layoutmsg colresize
+
+WIN=$(hyprctl activewindow -j)
+MON_ID=$(echo "$WIN" | jq -r '.monitor')
+WIN_W=$(echo "$WIN" | jq -r '.size[0]')
+
+MON=$(hyprctl monitors -j | jq ".[$MON_ID]")
+MON_W=$(echo "$MON" | jq -r '.width')
+
+# threshold = 95% of monitor width
+THRESHOLD=$(awk "BEGIN {print int($MON_W * 0.95)}")
+
+if [ "$WIN_W" -ge "$THRESHOLD" ]; then
+    # Window is full width → shrink
+    hyprctl dispatch layoutmsg colresize 0.7
+else
+    # Window not full → expand
+    hyprctl dispatch layoutmsg colresize 1
+fi

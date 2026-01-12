@@ -67,15 +67,15 @@ return {
         },
     },
     windows = {
-        height = 0.25,
+        size = 0.25,
         position = "below",
         terminal = {
-            width = 0.5,
+            size = 0.5,
             position = "left",
             -- List of debug adapters for which the terminal should be ALWAYS hidden
             hide = {},
             -- Hide the terminal when starting a new session
-            start_hidden = true,
+            -- start_hidden = true,
         },
     },
     icons = {

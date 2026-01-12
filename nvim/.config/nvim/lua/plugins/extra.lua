@@ -216,9 +216,9 @@ return {
     end,
   },
   {
-    dir = "/home/y2w8/Projects/Neovim/notes.nvim",
+    -- dir = "/home/y2w8/Projects/Neovim/notes.nvim",
     name = "notes.nvim",
-    -- "y2w8/zellij.nvim",
+    "y2w8/notes.nvim",
     event = "VeryLazy",
     keys = {
       {
@@ -250,9 +250,9 @@ return {
     }, -- Important even if empty
   },
   {
-    dir = "~/Projects/Neovim/zellij.nvim",
+    -- dir = "~/Projects/Neovim/zellij.nvim",
     name = "zellij.nvim",
-    -- "y2w8/zellij.nvim",
+    "y2w8/zellij.nvim",
     event = "VeryLazy",
     opts = {}, -- Important even if empty
     keys = {

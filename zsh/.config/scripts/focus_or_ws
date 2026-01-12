@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Requires jq
+
+DIRECTION=$1  # 'd' for down, 'u' for up
+
+# Active window info
+active=$(hyprctl activewindow -j)
+aw_address=$(echo "$active" | jq -r '.address')
+aw_y=$(echo "$active" | jq '.at[1]')
+aw_h=$(echo "$active" | jq '.size[1]')
+
+# Current workspace
+current_ws=$(echo "$active" | jq '.workspace.id')
+
+if [ "$DIRECTION" = "d" ]; then
+    boundary=$((aw_y + aw_h))
+    cmp='(.at[1] > $boundary)'
+    workspace_shift=1
+else
+    boundary=$aw_y
+    cmp='(.at[1] + .size[1] < $boundary)'
+    workspace_shift=-1
+fi
+
+# Get all windows on current workspace
+windows=$(hyprctl clients -j | jq --argjson ws "$current_ws" '.[] | select(.workspace.id == $ws)')
+
+# Find the first window in the given direction
+next_win=$(echo "$windows" | jq -r --argjson boundary "$boundary" '
+    select('"$cmp"') | .address
+' | head -n1)
+
+if [ -n "$next_win" ]; then
+    # Focus that window
+    hyprctl dispatch focuswindow address:$next_win
+else
+    # No window in that direction, switch workspace numerically
+    target_ws=$((current_ws + workspace_shift))
+    hyprctl dispatch workspace "$target_ws"
+fi
