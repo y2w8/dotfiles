@@ -1,0 +1,50 @@
+#!/bin/zsh
+
+alias \
+-g N='>/dev/null' \
+-g NN='2>/dev/null' \
+-g NA='&>/dev/null' \
+-g NI='</dev/null' \
+-g C='| wl-copy' \
+-g P='wl-paste |' \
+-g PR='| paste' \
+\
+c="clear" \
+v="nvim" \
+f="fff" \
+cat="bat" \
+..="cd .." \
+...="cd ../.." \
+....="cd ../../.." \
+.....="cd ../../../.." \
+grep="grep --color=auto" \
+shell="exec $SHELL -l" \
+fk="sudo !!" \
+ip='ip -c a' \
+mkdir='mkdir -pv' \
+cp='cp -iv' \
+mv="mv -i" \
+rm="rm -Iv" \
+df="df -h" \
+du="du -h -d 1" \
+ka="killall" \
+psa="ps aux | grep -i" \
+man="batman" \
+lsbc="lsblk | bat -l conf -p" \
+ls='eza --icons --group-directories-first' \
+la='eza -a --icons --group-directories-first' \
+ll='eza -lh --icons --group-directories-first' \
+lla='eza -lah --icons --group-directories-first' \
+lt='eza --tree --icons' \
+ltl='eza --tree --level=2 --icons' \
+lg='eza --git --icons' \
+lgl='eza -lah --git --icons' \
+freec="free -h | bat -l cpuinfo -p" \
+sensors="sensors | bat -l cpuinfo -p" \
+exiftool="/usr/bin/vendor_perl/exiftool" \
+bathelp='bat --plain --language=help'
+help() {
+    "$@" --help 2>&1 | bathelp
+}
+
+
