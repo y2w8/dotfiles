@@ -1,0 +1,93 @@
+layout {
+default_tab_template {
+        pane size=2 borderless=true {
+            plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
+                // Nord theme                          
+                color_rosewater "#f5e0dc"
+                color_flamingo  "#f2cdcd"
+                color_pink      "#f5c2e7"
+                color_mauve     "#cba6f7"
+                color_red       "#f38ba8"
+                color_maroon    "#eba0ac"
+                color_peach     "#fab387"
+                color_yellow    "#f9e2af"
+                color_green     "#a6e3a1"
+                color_teal      "#94e2d5"
+                color_sky       "#89dceb"
+                color_sapphire  "#74c7ec"
+                color_blue      "#89b4fa"
+                color_lavender  "#b4befe"
+                color_text      "#cdd6f4"
+                color_subtext1  "#bac2de"
+                color_subtext0  "#a6adc8"
+                color_overlay2  "#9399b2"
+                color_overlay1  "#7f849c"
+                color_overlay0  "#6c7086"
+                color_surface2  "#585b70"
+                color_surface1  "#45475a"
+                color_surface0  "#313244"
+                color_base      "#1e1e2e"
+                color_mantle    "#181825"
+                color_crust     "#11111b"
+                
+                
+                format_left   "{mode}#[bg=$surface1,fg=#2F2E3E]#[bg=#2F2E3E,fg=$text,bold]  {session} #[fg=#2F2E3E]"
+                format_center "{tabs}"
+                // format_right  "{datetime}"
+                format_space  "#[bg=$bg]"
+                format_hide_on_overlength "true"
+                format_precedence "crl"
+
+                border_enabled  "false"
+                border_char     "─"
+                border_format   "#[fg=#6C7086]{char}"
+                border_position "top"
+
+                hide_frame_for_single_pane "true"
+
+                mode_normal        "#[bg=$green,fg=$mantle,bold] NORMAL#[bg=$surface1,fg=$green]"
+                mode_locked        "#[bg=$red,fg=$mantle,bold] LOCKED #[bg=$surface1,fg=$red]"
+                mode_resize        "#[bg=$blue,fg=$mantle,bold] RESIZE#[bg=$surface1,fg=$blue]"
+                mode_pane          "#[bg=$blue,fg=$mantle,bold] PANE#[bg=$surface1,fg=$blue]"
+                mode_tab           "#[bg=$yellow,fg=$mantle,bold] TAB#[bg=$surface1,fg=$yellow]"
+                mode_scroll        "#[bg=$blue,fg=$mantle,bold] SCROLL#[bg=$surface1,fg=$blue]"
+                mode_enter_search  "#[bg=$orange,fg=$mantle,bold] ENT-SEARCH#[bg=$surface1,fg=$orange]"
+                mode_search        "#[bg=$orange,fg=$mantle,bold] SEARCHARCH#[bg=$surface1,fg=$orange]"
+                mode_rename_tab    "#[bg=$yellow,fg=$mantle,bold] RENAME-TAB#[bg=$surface1,fg=$yellow]"
+                mode_rename_pane   "#[bg=$blue,fg=$mantle,bold] RENAME-PANE#[bg=$surface1,fg=$blue]"
+                mode_session       "#[bg=$blue,fg=$mantle,bold] SESSION#[bg=$surface1,fg=$blue]"
+                mode_move          "#[bg=$blue,fg=$mantle,bold] MOVE#[bg=$surface1,fg=$blue]"
+                mode_prompt        "#[bg=$blue,fg=$mantle,bold] PROMPT#[bg=$surface1,fg=$blue]"
+                mode_tmux          "#[bg=$magenta,fg=$mantle,bold] TMUX#[bg=$surface1,fg=$magenta]"
+
+                // formatting for inactive tabs
+                tab_normal              "#[bg=$bg,fg=$cyan]#[bg=$bg,fg=$cyan,bold] {name}{floating_indicator} "
+                tab_normal_fullscreen   "#[bg=$bg,fg=$cyan]#[bg=$bg,fg=$cyan,bold] {name}{fullscreen_indicator} "
+                tab_normal_sync         "#[bg=$bg,fg=$cyan]#[bg=$bg,fg=$cyan,bold] {name}{sync_indicator} "
+
+                // formatting for the current active tab
+                tab_active              "#[bg=$bg,fg=$yellow]#[bg=$peach,fg=$mantle,bold] {name}{floating_indicator} "
+                tab_active_fullscreen   "#[bg=$bg,fg=$yellow]#[bg=$peach,fg=$mantle,bold] {name}{fullscreen_indicator} "
+                tab_active_sync         "#[bg=$bg,fg=$yellow]#[bg=$peach,fg=$mantle,bold] {name}{sync_indicator} "
+
+                // separator between the tabs
+                tab_separator           "#[fg=$surface2]|"
+
+                // indicators
+                tab_sync_indicator       " "
+                tab_fullscreen_indicator " 󰊓"
+                tab_floating_indicator   " 󰹙"
+
+                command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+                command_git_branch_format      "#[fg=$blue] {stdout} "
+                command_git_branch_interval    "10"
+                command_git_branch_rendermode  "static"
+
+                datetime        "#[fg=$fg] {format} "
+                datetime_format "%Y-%m-%d %H:%M"
+                datetime_timezone "Asia/Riyadh"
+            }
+        }
+        children
+    }
+  }
