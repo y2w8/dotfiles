@@ -2,6 +2,6 @@
 lazy-lock.json
 
 # DMS
-./dms/.config/DankMaterialShell/plugins/
+dms/.config/DankMaterialShell/plugins
 .firstlaunch
 zen.css
