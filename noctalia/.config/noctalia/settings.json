@@ -29,16 +29,16 @@
         "volumeStep": 5
     },
     "bar": {
-        "backgroundOpacity": 0.9,
-        "capsuleOpacity": 1,
-        "density": "default",
+        "backgroundOpacity": 0.75,
+        "capsuleOpacity": 0.4,
+        "density": "comfortable",
         "exclusive": true,
         "floating": true,
         "marginHorizontal": 5,
         "marginVertical": 5,
         "monitors": [
         ],
-        "outerCorners": true,
+        "outerCorners": false,
         "position": "top",
         "showCapsule": true,
         "showOutline": false,
@@ -162,7 +162,7 @@
                     "id": "Brightness"
                 },
                 {
-                    "customFont": "C059",
+                    "customFont": "Pacifico",
                     "formatHorizontal": "HH:mm ddd, MMM dd",
                     "formatVertical": "HH mm - dd MM",
                     "id": "Clock",
@@ -187,10 +187,6 @@
             {
                 "enabled": true,
                 "id": "calendar-month-card"
-            },
-            {
-                "enabled": true,
-                "id": "timer-card"
             },
             {
                 "enabled": true,
