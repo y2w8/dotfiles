@@ -1,0 +1,22 @@
+{
+  "dankKDEConnect": {
+    "enabled": true,
+    "selectedDeviceId": "f8dec5f8_096e_4858_b3b6_18c2f9a3c3d7"
+  },
+  "prayerTimes": {
+    "enabled": true
+  },
+  "dankActions": {
+    "enabled": true
+  },
+  "dankBatteryAlerts": {
+    "enabled": true
+  },
+  "dockerManager": {
+    "enabled": true
+  },
+  "prayerTimesPlugin": {
+    "lon": "43.9716670",
+    "lat": "26.3316670"
+  }
+}
