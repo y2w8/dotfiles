@@ -10,9 +10,7 @@ export MUSPLAYER="termusic"
 export BROWSER="zen-browser"
 
 # follow XDG base dir specification
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.cache"
+source "$HOME/.config/user-dirs.dirs"
 
 # history files
 export LESSHISTFILE="$XDG_CACHE_HOME/less_history"

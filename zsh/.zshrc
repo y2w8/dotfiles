@@ -89,21 +89,33 @@ setopt autocd
 # Keymap
 # --------------------
 # Change clear to ALT+L
-bindkey -r '^L'
+# bindkey -r '^L'
 bindkey '\el' clear-screen
 
 # --------------------
 # Yazi with cwd change
 # --------------------
 function yazi_cd() {
-  local tmp
-  tmp="$(mktemp)"
-  yazi --cwd-file="$tmp"
+  local cache_dir tmp
+
+  # Prefer XDG cache, fallback to /tmp
+  cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/yazi"
+  mkdir -p "$cache_dir"
+
+  tmp="$(mktemp "$cache_dir/cwd.XXXXXX")"
+
+  # Check if we have permission to access cwd
+  if [ -r "$PWD" ] && [ -x "$PWD" ]; then
+    yazi --cwd-file="$tmp"
+  else
+    sudo -E yazi --cwd-file="$tmp"
+  fi
+
   if [ -f "$tmp" ]; then
     local dir
     dir="$(cat "$tmp")"
     if [ -d "$dir" ]; then
-      builtin cd "$dir"
+      cd "$dir"
       zle reset-prompt
     fi
     rm -f "$tmp" &> /dev/null
