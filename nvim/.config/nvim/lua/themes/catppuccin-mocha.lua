@@ -238,7 +238,7 @@ local polish_hl = {
     -- Punctuation
     ["@punctuation.delimiter"] = { link = "Delimiter" }, -- For delimiters (e.g. `;` / `.` / `,`).
     ["@punctuation.bracket"] = { fg = M.palette.red }, -- For brackets and parenthesis.
-    ["@punctuation.special"] = { link = "Special" }, -- For special punctuation that does not fall in the categories before (e.g. `{}` in string interpolation).
+    ["@punctuation.special"] = { fg = M.palette.red }, -- For special punctuation that does not fall in the categories before (e.g. `{}` in string interpolation).
 
     -- Comment
     ["@comment"] = { link = "Comment" },

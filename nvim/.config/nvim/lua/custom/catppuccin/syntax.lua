@@ -106,23 +106,23 @@ return {
 		SpecialComment = { link = "Special" }, -- special things inside a comment
 		Constant = { fg = M.palette.peach }, -- (preferred) any constant
 		String = { fg = M.palette.green, style = M.styles.strings or {} }, -- a string constant: "this is a string"
-		Character = { fg = M.palette.teal }, --  a character constant: 'c', '\n'
+		Character = { fg = M.palette.red }, --  a character constant: 'c', '\n'
 		Number = { fg = M.palette.peach, style = M.styles.numbers or {} }, --   a number constant: 234, 0xff
 		Float = { link = "Number" }, --    a floating point constant: 2.3e10
 		Boolean = { fg = M.palette.peach, style = M.styles.booleans or {} }, --  a boolean constant: TRUE, false
-		Identifier = { fg = M.palette.flamingo, style = M.styles.variables or {} }, -- (preferred) any variable name
+		Identifier = { fg = M.palette.red, style = M.styles.variables or {} }, -- (preferred) any variable name
 		Function = { fg = M.palette.blue, style = M.styles.functions or {} }, -- function name (also: methods for classes)
-		Statement = { fg = M.palette.mauve }, -- (preferred) any statement
+		Statement = { fg = M.palette.red }, -- (preferred) any statement
 		Conditional = { fg = M.palette.mauve, style = M.styles.conditionals or {} }, --  if, then, else, endif, switch, etc.
 		Repeat = { fg = M.palette.mauve, style = M.styles.loops or {} }, --   for, do, while, etc.
-		Label = { fg = M.palette.sapphire }, --    case, default, etc.
+		Label = { fg = M.palette.yellow }, --    case, default, etc.
 		Operator = { fg = M.palette.sky, style = M.styles.operators or {} }, -- "sizeof", "+", "*", etc.
 		Keyword = { fg = M.palette.mauve, style = M.styles.keywords or {} }, --  any other keyword
 		Exception = { fg = M.palette.mauve, style = M.styles.keywords or {} }, --  try, catch, throw
 
 		PreProc = { fg = M.palette.pink }, -- (preferred) generic Preprocessor
-		Include = { fg = M.palette.mauve, style = M.styles.keywords or {} }, --  preprocessor #include
-		Define = { link = "PreProc" }, -- preprocessor #define
+		Include = { fg = M.palette.blue, style = M.styles.keywords or {} }, --  preprocessor #include
+		Define = { fg = M.palette.mauve }, -- preprocessor #define
 		Macro = { fg = M.palette.mauve }, -- same as Define
 		PreCondit = { link = "PreProc" }, -- preprocessor #if, #else, #endif, etc.
 
@@ -131,9 +131,9 @@ return {
 		Special = { fg = M.palette.pink }, -- (preferred) any special symbol
 		Type = { fg = M.palette.yellow, style = M.styles.types or {} }, -- (preferred) int, long, char, etc.
 		Typedef = { link = "Type" }, --  A typedef
-		SpecialChar = { link = "Special" }, -- special character in a constant
+		SpecialChar = { fg = M.palette.red }, -- special character in a constant
 		Tag = { fg = M.palette.lavender, style = { "bold" } }, -- you can use CTRL-] on this
-		Delimiter = { fg = M.palette.overlay2 }, -- character that needs attention
+		Delimiter = { fg = M.palette.red }, -- character that needs attention
 		Debug = { link = "Special" }, -- debugging statements
 
 		Underlined = { style = { "underline" } }, -- (preferred) text that stands out, HTML links
