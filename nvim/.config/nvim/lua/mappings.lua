@@ -13,6 +13,12 @@ map("i", "<C-k>", "<Up>", { desc = "move up" })
 -- map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 -- map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
+-- Resize window
+map("n", "<M-Left>", ":vertical resize -2<CR>", { silent = true })
+map("n", "<M-Right>", ":vertical resize +2<CR>", { silent = true })
+map("n", "<M-Up>", ":resize +2<CR>", { silent = true })
+map("n", "<M-Down>", ":resize -2<CR>", { silent = true })
+
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
@@ -80,8 +86,8 @@ map({ "n", "t" }, "<A-i>", function()
 end, { desc = "terminal toggle floating term" })
 map("n", "<leader>gl", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle blame" })
 -- Shared toggle state
- 
-local transparency_toggle = Snacks.toggle.new({
+
+local transparency_toggle = Snacks.toggle.new {
   id = "transparency",
   name = "Transparency",
   get = function()
@@ -89,9 +95,8 @@ local transparency_toggle = Snacks.toggle.new({
   end,
   set = function(state)
     vim.g.ui_transparent = state
-
   end,
-})
+}
 transparency_toggle:map("<leader>ut", { desc = "Toggle transparency" })
 -- whichkey
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
@@ -109,9 +114,12 @@ map("n", "-", "<cmd>Oil<CR>", { desc = "Oil" })
 -- map("v", "<", "<gv")
 -- map("v", ">", ">gv")
 
-map("n", "<leader>uH", function ()
+map("n", "<leader>uH", function()
   require("illuminate").toggle_visibility_buf()
-  vim.notify(string.format( "references underline toggled %s", require("illuminate.engine").invisible_bufs), vim.log.levels.INFO)
+  vim.notify(
+    string.format("references underline toggled %s", require("illuminate.engine").invisible_bufs),
+    vim.log.levels.INFO
+  )
 end, { desc = "Toggle references underline" })
 map("n", "[r", function()
   require("illuminate").goto_prev_reference(wrap)
