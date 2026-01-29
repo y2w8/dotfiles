@@ -11,6 +11,12 @@ alias \
 \
 c="clear" \
 v="nvim" \
+sv="sudo -E nvim" \
+sy="sudo -E yazi" \
+s="sudo pacman -Ss" \
+sa="paru -Ss" \
+i="sudo pacman -S" \
+ia="paru -S" \
 f="fff" \
 cat="bat" \
 ..="cd .." \
