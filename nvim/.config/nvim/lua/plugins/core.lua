@@ -257,9 +257,7 @@ return {
   {
     "saecki/crates.nvim",
     tag = "stable",
-    config = function()
-      require("crates").setup()
-    end,
+    event = { "BufRead Cargo.toml" },
   },
   -- These are some examples, uncomment them if you want to see them work!
   {
