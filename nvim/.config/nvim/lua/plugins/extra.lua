@@ -20,16 +20,6 @@ return {
       vim.opt.foldlevelstart = 99
     end,
   },
-  -- {
-  --   "mistricky/codesnap.nvim",
-  --   event = "VeryLazy",
-  --   build = "make",
-  --   config = function()
-  --     require("codesnap").setup({
-  --       watermark = "",
-  --     })
-  --   end,
-  -- },
   {
     "j-hui/fidget.nvim",
     lazy = false,
@@ -373,16 +363,6 @@ return {
       })
     end,
   },
-  -- {
-  --     "kylechui/nvim-surround",
-  --     version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
-  --     event = "VeryLazy",
-  --     config = function()
-  --         require("nvim-surround").setup({
-  --             -- Configuration here, or leave empty to use defaults
-  --         })
-  --     end
-  -- },
   {
     "aznhe21/actions-preview.nvim",
     config = require "configs.extra.actions-preview",

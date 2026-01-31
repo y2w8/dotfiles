@@ -9,43 +9,43 @@ return {
         base_sections = {
             breakpoints = {
                 keymap = "B",
-                label = "Breakpoints [B]",
-                short_label = " [B]",
+                label = " Breakpoints",
+                -- short_label = " [B]",
             },
             scopes = {
                 keymap = "S",
-                label = "Scopes [S]",
-                short_label = "󰂥 [S]",
+                label = "󰂥 Scopes",
+                -- short_label = "󰂥 [S]",
             },
             exceptions = {
                 keymap = "E",
-                label = "Exceptions [E]",
-                short_label = "󰢃 [E]",
+                label = "󰢃 Exceptions",
+                -- short_label = "󰢃 [E]",
             },
             watches = {
                 keymap = "W",
-                label = "Watches [W]",
-                short_label = "󰛐 [W]",
+                label = "󰛐 Watches",
+                -- short_label = "󰛐 [W]",
             },
             threads = {
                 keymap = "T",
-                label = "Threads [T]",
-                short_label = "󱉯 [T]",
+                label = "󱉯 Threads",
+                -- short_label = "󱉯 [T]",
             },
             repl = {
                 keymap = "R",
-                label = "REPL [R]",
-                short_label = "󰯃 [R]",
+                label = "󰯃 REPL",
+                -- short_label = "󰯃 [R]",
             },
             sessions = {
                 keymap = "K", -- I ran out of mnemonics
-                label = "Sessions [K]",
-                short_label = " [K]",
+                label = " Sessions",
+                -- short_label = " [K]",
             },
             console = {
                 keymap = "C",
-                label = "Console [C]",
-                short_label = "󰆍 [C]",
+                label = "󰆍 Console",
+                -- short_label = "󰆍 [C]",
             },
         },
         -- Add your own sections
