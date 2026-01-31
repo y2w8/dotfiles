@@ -1,6 +1,10 @@
-require("duckdb"):setup({})
+-- require("duckdb"):setup({})
 require("sshfs"):setup()
 require("recycle-bin"):setup()
+require("git"):setup {
+	-- Order of status signs showing in the linemode
+	order = 1500,
+}
 require("folder-rules"):setup()
 -- require("starship"):setup()
 -- require("omp"):setup({ config = "/home/y2w8/.config/ohmyposh/mocha.omp.json" })

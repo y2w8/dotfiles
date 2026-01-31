@@ -7,9 +7,9 @@
 keymap = [
   { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selection, or cancel search" },
   { on = "<C-[>", run = "escape", desc = "Exit visual mode, clear selection, or cancel search" },
-  { on = "q", run = "quit", desc = "Quit the process" },
+  # { on = "q", run = "quit", desc = "Quit the process" },
   { on = "Q", run = "quit --no-cwd-file", desc = "Quit without outputting cwd-file" },
-  { on = "<C-c>", run = "close", desc = "Close the current tab, or quit if it's last" },
+  { on = "q", run = "close", desc = "Close the current tab, or quit if it's last" },
   { on = "<C-z>", run = "suspend", desc = "Suspend the process" },
 
   # Hopping
@@ -66,7 +66,7 @@ keymap = [
 
   # Operation
   { on = "o", run = "open", desc = "Open selected files" },
-  { on = "O", run = "open --interactive", desc = "Open selected files interactively" },
+  { on = "O", run  = "plugin open-with-cmd", desc = "Open with command" },
   { on = "<Enter>", run = "open", desc = "Open selected files" },
   { on = "<S-Enter>", run = "open --interactive", desc = "Open selected files interactively" },
   { on = "y", run = "yank", desc = "Yank selected files (copy)" },
@@ -131,8 +131,8 @@ keymap = [
     "f",
   ], run = "copy filename", desc = "Copy the filename" },
   { on = [
+    "R",
     "c",
-    "m",
   ], run = "plugin chmod", desc = "Chmod on selected files" },
   { on = [
     "c",
@@ -538,16 +538,6 @@ keymap = [
 
 
 [[mgr.prepend_keymap]]
-on = "H"
-run = "plugin duckdb -1"
-desc = "Scroll one column to the left"
-
-[[mgr.prepend_keymap]]
-on = "L"
-run = "plugin duckdb +1"
-desc = "Scroll one column to the right"
-
-[[mgr.prepend_keymap]]
 on = ["g", "o"]
 run = "plugin duckdb -open"
 desc = "open with duckdb"
@@ -627,8 +617,17 @@ run = "plugin recycle-bin"
 desc = "Open Recycle Bin menu"
 
 [[mgr.prepend_keymap]]
+on = ["R", "s"]
+run = "plugin what-size"
+desc = "Calc size of selection or cwd"
+
+[[mgr.prepend_keymap]]
 on = "y"
 run = ["yank", 'plugin clipboard -- --action=copy']
+
+[[mgr.prepend_keymap]]
+on = "<C-y>"
+run = ["plugin wl-clipboard"]
 
 [[mgr.prepend_keymap]]
 on = ["M", "d"]

@@ -5,8 +5,8 @@ hash = "e02a788e5b8ae0fb47fd0193dda589cc"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "9a52857"
-hash = "8ad3e90b079190b4905f24a44f4ca06b"
+rev = "557684b"
+hash = "8da0b15a97b5dfd13941d1ecc617ac7c"
 
 [[plugin.deps]]
 use = "saumyajyoti/omp"
@@ -15,13 +15,13 @@ hash = "ca913db57342496f96c533725a64ccc4"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "9a52857"
+rev = "557684b"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "iynaix/time-travel"
-rev = "7e0179e"
-hash = "69967963fba96295a07b68354fc91ea9"
+rev = "aaec6e2"
+hash = "3d52b2b88c91a4ece2f7ed68ff39bb7b"
 
 [[plugin.deps]]
 use = "wylie102/duckdb"
@@ -31,32 +31,32 @@ hash = "87b9233a74325e95011670ed20bbd0d4"
 [[plugin.deps]]
 use = "kirasok/torrent-preview"
 rev = "f465282"
-hash = "b89b46a15035a51d010a254858ba9741"
+hash = "d849ad596b8a77902e62a42403aeba40"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
-rev = "8f37dc5"
-hash = "ee71543790f0ce3951161045a3787abd"
+rev = "0e56060"
+hash = "ab2e66065a94cca4886b303518e44bd8"
 
 [[plugin.deps]]
 use = "uhs-robert/sshfs"
-rev = "2728b14"
-hash = "8ee736ae855ed80ae341136bb8fb353c"
+rev = "5edff3b"
+hash = "e92138f6eb884bef96d92b2d114ac927"
 
 [[plugin.deps]]
 use = "TD-Sky/sudo"
-rev = "8148f91"
-hash = "5db5b16dc96e971f0560a31999271065"
+rev = "86205aa"
+hash = "9628b660afb192d32f2ea5f6634d3e72"
 
 [[plugin.deps]]
 use = "uhs-robert/recycle-bin"
-rev = "8bb6286"
-hash = "f8d05a771c1d18c87f5558cbd4ae27fa"
+rev = "fa68711"
+hash = "8714306b5cac6359edbacbf545fbd691"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:zoom"
-rev = "8f1d971"
-hash = "9dee2bf990ea941ccf67df74bca45468"
+rev = "557684b"
+hash = "6ce49cf5b4c7c0d9cce8a1062ed478d3"
 
 [[plugin.deps]]
 use = "XYenon/clipboard"
@@ -65,18 +65,38 @@ hash = "e6efc609de1b617c7e8e98efd5286221"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "8f1d971"
-hash = "4fccaaf10c36dc2466e2438a386ff017"
+rev = "557684b"
+hash = "bf75a487d1d3b0f9e93a118e30714e09"
 
 [[plugin.deps]]
 use = "AnirudhG07/rich-preview"
-rev = "831234e"
-hash = "ed3363e256e210593f0f8e4cec3e36a9"
+rev = "573b275"
+hash = "c3e2871c9ef244fd181f203791f9b0d2"
 
 [[plugin.deps]]
 use = "Rolv-Apneseth/starship"
-rev = "a63550b"
-hash = "c2021386289a0cbb3e152a052f67c177"
+rev = "eca1861"
+hash = "e519d894e94ded741e06aae4d4775981"
+
+[[plugin.deps]]
+use = "pirafrank/what-size"
+rev = "179ebf6"
+hash = "57056b9728006881d580ccabe8154a9c"
+
+[[plugin.deps]]
+use = "grappas/wl-clipboard"
+rev = "e9a38e4"
+hash = "6b8e5d6b09626facec713923d3ddb54b"
+
+[[plugin.deps]]
+use = "Ape/open-with-cmd"
+rev = "e3d430f"
+hash = "d29c1ffa99099181faf8c01d1f59aa4c"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "557684b"
+hash = "270915fa8282a19908449530ff66f7e2"
 
 [flavor]
 deps = []
