@@ -156,21 +156,20 @@ function paste() {
 }
 
 # delete paste.rs paste
-function paste-del() {
-  local id
-
-  id="$1"
-
-  if [[ -z "$id" ]]; then
-    echo "❌ usage: paste-del <id|url>"
-    return 1
+function paste_del() {
+  if [ -z "$input" ]; then
+      input=$(wl-paste 2>/dev/stdin)
+      
+      if [ -z "$input" ]; then
+        echo "Usage paste_del (URL/Code)"
+        return 1
+      fi
   fi
-
-  # extract id if full URL
-  id="${id##*/}"
-
-  curl -fsS -X DELETE "https://paste.rs/$id" \
-    && echo "🗑️ deleted: $id"
+  
+  local id=${input##*/}
+  
+  curl -X DELETE "https://paste.rs/${id}"
+  echo "Deleted: ${id} 🗑️"
 }
 
 # --------------------
