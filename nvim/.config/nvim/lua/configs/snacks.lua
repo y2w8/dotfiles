@@ -1,5 +1,18 @@
+vim.keymap.set("n", "<leader>Z", function() Snacks.zen.zoom() end, { desc = "Toggle Zoom" })
+vim.keymap.set({ "n", "t" }, "<C-/>", function() Snacks.terminal() end, { desc = "Toggle Terminal" })
+vim.keymap.set("n", "<leader>cR", function() Snacks.rename.rename_file() end, { desc = "Rename File" })
+vim.keymap.set({"n", "v"}, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse" })
+vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
+vim.keymap.set("n", "<leader>N", function()
+  Snacks.win {
+    file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
+    width = 0.6, height = 0.6,
+    wo = { spell = false, wrap = false, signcolumn = "yes", statuscolumn = " ", conceallevel = 3 },
+  }
+end, { desc = "Neovim News" })
+
 ---@type snacks.Config
-return {
+require("snacks").setup {
   -- your configuration comes here
   -- or leave it empty to use the default settings
   -- refer to the configuration section below
@@ -181,7 +194,7 @@ return {
     more_format = " ↓ %d lines ",
     refresh = 50, -- refresh at most every 50ms
   },
-  quickfile = { enabled = not vim.g.is_firenvim },
+  quickfile = { enabled = false },
   scope = { enabled = false },
   scroll = { enabled = true, animate = {} },
   statuscolumn = { enabled = false },

@@ -1,0 +1,17 @@
+vim.keymap.set({ "n", "x", "o" }, "zk", function()
+  require("flash").jump()
+end, { desc = "flash" })
+vim.keymap.set({ "n", "x", "o" }, "Zk", function()
+  require("flash").treesitter()
+end, { desc = "flash treesitter" })
+vim.keymap.set("o", "r", function()
+  require("flash").remote()
+end, { desc = "remote flash" })
+vim.keymap.set({ "o", "x" }, "R", function()
+  require("flash").treesitter_search()
+end, { desc = "treesitter search" })
+vim.keymap.set("c", "<c-s>", function()
+  require("flash").toggle()
+end, { desc = "toggle flash search" })
+
+return {}

@@ -7,7 +7,7 @@ local g = vim.g
 g.mapleader = " "
 
 -------------------------------------- options ------------------------------------------
-o.laststatus = vim.g.is_firenvim and 0 or 3
+o.laststatus = 3
 o.showmode = false
 o.splitkeep = "screen"
 o.scrolloff = 5

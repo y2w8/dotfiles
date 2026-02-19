@@ -1,13 +1,13 @@
 require("nvchad.configs.lspconfig").defaults()
-local mason_lsp = require "mason-lspconfig"
-
-mason_lsp.setup {
-  automatic_enable = {
-    exclude = {
-      "rust_analyzer",
-      "lua_ls",
-    },
-  },
+-- local mason_lsp = require "mason-lspconfig"
+--
+require("mason-lspconfig").setup {
+    automatic_enable = {
+        exclude = {
+            "rust_analyzer",
+            "ts_ls"
+        }
+    }
 }
 
 vim.lsp.config("*", {

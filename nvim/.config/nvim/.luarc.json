@@ -3,6 +3,10 @@
         "map",
         "Snacks"
     ],
+    "workspace.library": [
+      "/usr/share/nvim/runtime/lua",
+      "~/.local/share/nvim/lazy/lazy.nvim/lua"
+    ],
     "diagnostics.disable": [
         "undefined-doc-name"
     ]

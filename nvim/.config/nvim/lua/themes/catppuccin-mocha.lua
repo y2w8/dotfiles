@@ -148,6 +148,10 @@ local polish_hl = {
     RenderMarkdownBullet = { fg = M.palette.peach },
 
     EndOfBuffer = { link = "Comment" },
+
+    -- Toggle term
+    WinBarActive = { bg = M.palette.mantle },
+    WinBarInactive = { bg = M.palette.mantle }
   },
   semantic_tokens = {
     ["@lsp.type.enumMember"] = { fg = M.palette.teal },
@@ -164,7 +168,7 @@ local polish_hl = {
   },
   syntax = require "custom.catppuccin.syntax",
   treesitter = {
-    ["@variable"] = { fg = M.palette.lavender, style = M.styles.variables or {} }, -- Any variable name that does not have another highlight.
+    ["@variable"] = { fg = M.palette.red, style = M.styles.variables or {} }, -- Any variable name that does not have another highlight.
     ["@variable.builtin"] = { fg = M.palette.red, style = M.styles.properties or {} }, -- Variable names that are defined by the languages, like this or self.
     ["@variable.parameter"] = { fg = M.palette.maroon, style = M.styles.variables or {} }, -- For parameters of a function.
     ["@variable.member"] = { fg = M.palette.red }, -- For fields.

@@ -48,6 +48,7 @@ font-family-bold-italic = "JetBrainsMono Nerd Font Bold Italic"
 font-size=11
 theme = catppuccin-mocha.conf
 window-decoration = none
+custom-shader = cursor_warp.glsl
 # client
 background-opacity = 0.90
 background-blur = true

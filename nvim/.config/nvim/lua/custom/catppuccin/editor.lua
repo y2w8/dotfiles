@@ -71,7 +71,7 @@ return {
 		ComplHintMore = { link = "Question" }, -- The additional information of the virtual text.
 		Question = { fg = M.palette.blue }, -- |hit-enter| prompt and yes/no questions
 		QuickFixLine = { bg = M.darken(M.palette.surface1, 0.70, M.palette.base), style = { "bold" } }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-		Search = { bg = M.darken(M.palette.yellow, 0.30, M.palette.base), fg = M.palette.text }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+		Search = { bg = M.darken(M.palette.teal, 0.30, M.palette.base), fg = M.palette.text }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 		IncSearch = { bg = M.darken(M.palette.yellow, 0.90, M.palette.base), fg = M.palette.mantle }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		CurSearch = { bg = M.palette.peach, fg = M.palette.mantle }, -- 'cursearch' highlighting: highlights the current search you're on differently
 		SpecialKey = { link = "NonText" }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' textspace. |hl-Whitespace|

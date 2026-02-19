@@ -69,13 +69,6 @@ return {
     opts = require "configs.snacks",
     keys = {
       {
-        "<leader>z",
-        function()
-          Snacks.zen()
-        end,
-        desc = "Toggle Zen Mode",
-      },
-      {
         "<leader>Z",
         function()
           Snacks.zen.zoom()
@@ -103,20 +96,6 @@ return {
           Snacks.lazygit()
         end,
         desc = "Lazygit",
-      },
-      {
-        "<c-/>",
-        function()
-          Snacks.terminal()
-        end,
-        desc = "Toggle Terminal",
-      },
-      {
-        "<c-_>",
-        function()
-          Snacks.terminal()
-        end,
-        desc = "which_key_ignore",
       },
       {
         "<leader>N",
@@ -240,17 +219,17 @@ return {
     }, -- Important even if empty
   },
   {
-    -- dir = "~/Projects/Neovim/zellij.nvim",
+    -- dir = "~/Projects/Nvim_Plugins/zellij.nvim",
     name = "zellij.nvim",
     "y2w8/zellij.nvim",
     event = "VeryLazy",
     opts = {}, -- Important even if empty
     keys = {
       -- Window navigation
-      { "<C-k>", ":ZellijUp<CR>", desc = "Move up", silent = true },
-      { "<C-j>", ":ZellijDown<CR>", desc = "Move down", silent = true },
-      { "<C-h>", ":ZellijLeftTab<CR>", desc = "Move left", silent = true },
-      { "<C-l>", ":ZellijRightTab<CR>", desc = "Move right", silent = true },
+      { "<C-k>", "<cmd>ZellijUp<CR>", mode = { "n", "t" }, desc = "Move up", silent = true },
+      { "<C-j>", "<cmd>ZellijDown<CR>", mode = { "n", "t" }, desc = "Move down", silent = true },
+      { "<C-h>", "<cmd>ZellijLeftTab<CR>]]", mode = { "n", "t" }, desc = "Move left", silent = true },
+      { "<C-l>", "<cmd>ZellijRightTab<CR>", mode = { "n", "t" }, desc = "Move right", silent = true },
       -- Tab actions
       { "<leader>zt", ":ZellijNewTab<CR>", desc = "New Zellij Tab", silent = true },
       { "<leader>zr", ":ZellijRenameTab<CR>", desc = "Rename Zellij Tab", silent = true },
@@ -268,23 +247,6 @@ return {
   },
   { "mrjones2014/smart-splits.nvim" },
   {
-    "smoka7/multicursors.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "nvimtools/hydra.nvim",
-    },
-    opts = {},
-    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
-    keys = {
-      {
-        mode = { "v", "n" },
-        "<Leader>M",
-        "<cmd>MCstart<cr>",
-        desc = "Create a selection for selected text or word under the cursor",
-      },
-    },
-  },
-  {
     "gisketch/triforce.nvim",
     dependencies = { "nvzone/volt" },
     event = "VeryLazy",
@@ -297,38 +259,6 @@ return {
       }
     end,
   },
-  {
-    "nomad/nomad",
-    version = "*",
-    event = "VeryLazy",
-    build = function()
-      ---@type nomad.neovim.build
-      local build = require "nomad.neovim.build"
-
-      build.builders.download_prebuilt():build(build.contexts.lazy())
-    end,
-    opts = {},
-  },
-  -- {
-  --   "kdheepak/lazygit.nvim",
-  --   lazy = true,
-  --   cmd = {
-  --     "LazyGit",
-  --     "LazyGitConfig",
-  --     "LazyGitCurrentFile",
-  --     "LazyGitFilter",
-  --     "LazyGitFilterCurrentFile",
-  --   },
-  --   -- optional for floating window border decoration
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   -- setting the keybinding for LazyGit with 'keys' is recommended in
-  --   -- order to load the plugin when the command is run for the first time
-  --   keys = {
-  --     { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-  --   },
-  -- },
   {
     "RRethy/vim-illuminate",
   },

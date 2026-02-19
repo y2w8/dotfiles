@@ -1,9 +1,9 @@
 return {
   --- The backend to use, currently only "vim", "delta", "difftastic", "diffsofancy" are supported
-  backend = "vim",
+  backend = "difftastic",
   hotkeys = true, -- Enable hotkeys for quick selection of actions
   hotkeys_mode = "text_diff_based", -- Modes for generating hotkeys
-  auto_preview = false, -- Enable or disable automatic preview
+  auto_preview = true, -- Enable or disable automatic preview
   auto_accept = false, -- Automatically accept the selected action (with hotkeys)
   position = "cursor", -- Position of the picker window
   winborder = "single", -- Border style for picker and preview windows
@@ -21,11 +21,9 @@ return {
       -- The arguments to pass to delta
       -- If you have a custom configuration file, you can set the path to it like so:
       -- args = {
-      --     "--config" .. os.getenv("HOME") .. "/.config/delta/config.yml",
-      -- }
-      args = {
-        "--line-numbers",
-      },
+      --   "--line-numbers",
+      --   "--config" .. os.getenv("HOME") .. ".gitconfig",
+      -- },
     },
     difftastic = {
       header_lines_to_remove = 1,

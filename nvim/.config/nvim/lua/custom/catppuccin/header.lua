@@ -78,6 +78,7 @@ M.dim_inactive = {
 -- no_italic = false,
 -- no_bold = false,
 -- no_underline = false,
+--
 M.palette = {
   rosewater = "#F5E0DC",
   flamingo = "#F2CDCD",
