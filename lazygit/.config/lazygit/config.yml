@@ -1,3 +1,9 @@
+git:
+  pagers:
+    # - pager: delta --dark --paging=never
+    # - pager: diff-so-fancy
+    - externalDiffCommand: difft --color=always --display=inline --syntax-highlight=on
+
 gui:
   theme:
     activeBorderColor:
