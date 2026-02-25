@@ -39,6 +39,7 @@ unset_alt   = { fg = "#f2cdcd", bg = "#313244"}
 parent = { fg = "#1e1e2e", bg = "#cdd6f4" }
 current = { fg = "#1e1e2e", bg = "#f5e0dc" }
 preview = { fg = "#1e1e2e", bg = "#cdd6f4" }
+padding = { open = "█", close = "█" }
 
 [status]
 sep_left  = { open = "", close = "" }
@@ -86,7 +87,7 @@ mask            = { bg = "#313244" }
 cand            = { fg = "#94e2d5" }
 rest            = { fg = "#9399b2" }
 desc            = { fg = "#f5c2e7" }
-separator       = "  "
+separator       = "  "
 separator_style = { fg = "#585b70" }
 
 [help]
@@ -118,7 +119,8 @@ rules = [
 	{ mime = "vfs/{absent,stale}", fg = "#45475a" },
 
 	# Special file
-	{ url = "*", is = "orphan", bg = "#f38ba8" },
+	{ url = "*", is = "orphan", bg = "#f38ba8", fg = "#1e1e2e" },
+	{ url = "*", is = "link",  fg = "#89dceb" },
 	{ url = "*", is = "exec"  , fg = "#a6e3a1" },
 
 	# Dummy file
@@ -151,6 +153,21 @@ dirs = [
 	{ name = "Pictures", text = "", fg = "#f5e0dc" },
 	{ name = "Public", text = "", fg = "#f5e0dc" },
 	{ name = "Videos", text = "", fg = "#f5e0dc" },
+]
+
+conds = [
+	{ if = "orphan", text = "", fg = "#1e1e2e" },
+	{ if = "link", text = "", fg = "#f5e0dc" },
+	{ if = "block", text = "", fg = "#cddc39" },
+	{ if = "char", text = "", fg = "#cddc39" },
+	{ if = "fifo", text = "", fg = "#cddc39" },
+	{ if = "sock", text = "", fg = "#cddc39" },
+	{ if = "sticky", text = "", fg = "#cddc39" },
+	{ if = "dummy", text = "", fg = "#f44336" },
+
+	{ if = "dir", text = "", fg = "#f5e0dc" },
+	{ if = "exec", text = "", fg = "#a6e3a1" },
+	{ if = "!dir", text = "", fg = "#cdd6f4" },
 ]
 files = [
   { name = "kritadisplayrc", text = "", fg = "#cba6f7" },
@@ -202,6 +219,7 @@ files = [
   { name = "config", text = "", fg = "#7f849c" },
   { name = ".gitlab-ci.yml", text = "", fg = "#fab387" },
   { name = ".gitconfig", text = "", fg = "#fab387" },
+  { name = ".git-credentials", text = "", fg = "#fab387" },
   { name = "_gvimrc", text = "", fg = "#a6e3a1" },
   { name = ".xinitrc", text = "", fg = "#fab387" },
   { name = "checkhealth", text = "󰓙", fg = "#89b4fa" },
