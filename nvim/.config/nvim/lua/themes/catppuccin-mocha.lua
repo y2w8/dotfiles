@@ -8,6 +8,7 @@ local polish_hl = {
   --   DapLogPoint = { fg = M.base_30.cyan },
   --   DapStopped = { fg = M.base_30.baby_pink },
   -- },
+  neogit = require "custom.catppuccin.neogit",
   blink = {
     BlinkCmpMenu = { bg = M.base_30.black },
     BlinkCmpMenuBorder = { fg = M.palette.rosewater },
@@ -88,6 +89,7 @@ local polish_hl = {
   },
   defaults = require "custom.catppuccin.editor",
   custom = {
+
     SnacksDashboardHeader = { fg = M.base_30.blue, bold = true },
     SnacksDashboardIcon = { fg = M.base_30.light_grey },
     SnacksDashboardDesc = { fg = M.base_30.light_grey },
@@ -437,7 +439,9 @@ local function apply_dashboard_hl(tbl)
   end
 end
 
-apply_dashboard_hl(polish_hl.custom)
+apply_dashboard_hl(M.convert_style(polish_hl.custom))
+
+apply_dashboard_hl(M.convert_style(polish_hl.neogit))
 M.type = "dark"
 
 M = require("base46").override_theme(M, "catppuccin-mochaa")

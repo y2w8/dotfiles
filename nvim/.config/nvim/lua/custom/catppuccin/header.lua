@@ -169,15 +169,15 @@ M.base_16 = {
 M.styles = {
   comments = { "italic" },
   conditionals = { "italic" },
-  loops = {},
-  functions = {},
-  keywords = {},
+  keywords = { "italic" },
+  functions = { "bold" },
+  types = { "bold" },
+  loops = { "italic" },
   strings = {},
   variables = {},
   numbers = {},
   booleans = {},
-  properties = { "italic" },
-  types = {},
+  properties = {},
   operators = {},
 }
 return M
