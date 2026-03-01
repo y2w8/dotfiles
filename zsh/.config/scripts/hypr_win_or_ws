@@ -1,25 +1,28 @@
 #!/usr/bin/env bash
 # Requires jq
 
-DIRECTION=$1  # 'd' for down, 'u' for up
+ACTION=$1 # focus or move
+DIRECTION=$2 # up or down
 
 # Active window info
+active_monitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true)')
+current_ws=$(echo "$active_monitor" | jq -r '.activeWorkspace.id')
 active=$(hyprctl activewindow -j)
 aw_address=$(echo "$active" | jq -r '.address')
-aw_y=$(echo "$active" | jq '.at[1]')
-aw_h=$(echo "$active" | jq '.size[1]')
+if [ -n "$aw_address" ]; then
+  aw_y=$(echo "$active" | jq '.at[1]')
+  aw_h=$(echo "$active" | jq '.size[1]')
+else
+  aw_y=0
+  aw_h=0
+fi
 
-# Current workspace
-current_ws=$(echo "$active" | jq '.workspace.id')
-
-if [ "$DIRECTION" = "d" ]; then
+if [ "$DIRECTION" = "down" ]; then
     boundary=$((aw_y + aw_h))
     cmp='(.at[1] > $boundary)'
-    workspace_shift=1
 else
     boundary=$aw_y
     cmp='(.at[1] + .size[1] < $boundary)'
-    workspace_shift=-1
 fi
 
 # Get all windows on current workspace
@@ -32,9 +35,27 @@ next_win=$(echo "$windows" | jq -r --argjson boundary "$boundary" '
 
 if [ -n "$next_win" ]; then
     # Focus that window
-    hyprctl dispatch focuswindow address:$next_win
+    
+    if [ "$ACTION" = "focus"]; then
+      hyprctl dispatch focuswindow address:$next_win
+    elif [ "$ACTION" = "move" ]; then
+      direction_key=$([ "$DIRECTION" = "down" ] && echo "d" || echo "u")
+        hyprctl dispatch layoutmsg movewindowto "$direction_key"
+    fi
 else
-    # No window in that direction, switch workspace numerically
-    target_ws=$((current_ws + workspace_shift))
-    hyprctl dispatch workspace "$target_ws"
+    if [ "$current_ws" -eq 9 ] && [ "$DIRECTION" = "down" ]; then
+      target_ws=1
+    elif [ "$current_ws" -eq 1 ] && [ "$DIRECTION" = "up" ]; then
+      target_ws=9
+    elif [ "$DIRECTION" = "down" ]; then
+      target_ws=$((current_ws + 1))
+    elif [ "$DIRECTION" = "up" ]; then
+      target_ws=$((current_ws - 1))
+    fi
+
+    if [ "$ACTION" = "focus" ]; then
+      hyprctl dispatch workspace "$target_ws"
+    elif [ "$ACTION" = "move" ]; then
+      hyprctl dispatch movetoworkspace "$target_ws"
+    fi
 fi

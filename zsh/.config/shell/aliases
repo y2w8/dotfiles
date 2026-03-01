@@ -10,7 +10,7 @@ alias \
 -g PR='| paste' \
 \
 c="clear" \
-v="nvim" \
+v="_v" \
 sv="sudo -E nvim" \
 sy="sudo -E yazi" \
 s="sudo pacman -Ss" \

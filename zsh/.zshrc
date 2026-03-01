@@ -25,25 +25,6 @@ eval "$(zoxide init zsh)"
 alias cd=z
 
 # --------------------
-# Vim mode
-# --------------------
-bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
-
-# Cursor shape for vi mode
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]]; then
-    echo -ne '\e[1 q'   # block cursor
-  else
-    echo -ne '\e[5 q'   # beam cursor
-  fi
-}
-zle -N zle-keymap-select
-
-# Set cursor on startup
-echo -ne '\e[5 q'
-
-# --------------------
 # History
 # --------------------
 HISTFILE=~/.zsh_history
@@ -69,6 +50,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # fzf
 # --------------------
 source ~/.config/shell/plugins/fzf-tab/fzf-tab.plugin.zsh
+setopt GLOB_DOTS
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
@@ -93,6 +75,53 @@ setopt autocd
 bindkey '\el' clear-screen
 
 # --------------------
+# Vim mode
+# --------------------
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+function _v() {
+  local use_sudo=0
+
+  if [ ! -w "$PWD" ] || [ ! -r "$PWD" ] || [ ! -x "$PWD" ]; then
+    use_sudo=1
+  fi
+
+  for arg in "$@"; do
+    if [ -e "$arg" ] && [ ! -w "$arg" ]; then
+      use_sudo=1
+      break
+    elif [ ! -e "$arg" ]; then
+      local parent_dir=$(dirname "$arg")
+      if [ ! -w "$parent_dir" ]; then
+        use_sudo=1
+        break
+      fi
+    fi
+  done
+
+  if [ "$use_sudo" -eq 1 ]; then
+    sv "$@"
+  else
+    nvim "$@"
+  fi
+}
+compdef _v=nvim
+# bindkey -v
+# bindkey -M viins 'jj' vi-cmd-mode
+#
+# # Cursor shape for vi mode
+# function zle-keymap-select {
+#   if [[ ${KEYMAP} == vicmd ]]; then
+#     echo -ne '\e[1 q'   # block cursor
+#   else
+#     echo -ne '\e[5 q'   # beam cursor
+#   fi
+# }
+# zle -N zle-keymap-select
+#
+# # Set cursor on startup
+# echo -ne '\e[5 q'
+
+# --------------------
 # Yazi with cwd change
 # --------------------
 function yazi_cd() {
@@ -105,10 +134,10 @@ function yazi_cd() {
   tmp="$(mktemp "$cache_dir/cwd.XXXXXX")"
 
   # Check if we have permission to access cwd
-  if [ -r "$PWD" ] && [ -x "$PWD" ]; then
-    yazi --cwd-file="$tmp"
-  else
+if [ ! -w "$PWD" ] || [ ! -r "$PWD" ] || [ ! -x "$PWD" ]; then
     sudo -E yazi --cwd-file="$tmp"
+  else
+    yazi --cwd-file="$tmp"
   fi
 
   if [ -f "$tmp" ]; then
