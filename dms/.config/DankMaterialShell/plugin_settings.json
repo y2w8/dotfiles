@@ -18,5 +18,93 @@
   "prayerTimesPlugin": {
     "lon": "43.9716670",
     "lat": "26.3316670"
+  },
+  "aiAssistant": {
+    "enabled": true,
+    "providers": {
+      "openai": {
+        "baseUrl": "https://api.openai.com",
+        "model": "gpt-5.2",
+        "apiKey": "",
+        "saveApiKey": false,
+        "apiKeyEnvVar": "",
+        "temperature": 0.7,
+        "maxTokens": 4096,
+        "timeout": 30
+      },
+      "anthropic": {
+        "baseUrl": "https://api.anthropic.com",
+        "model": "claude-sonnet-4-5",
+        "apiKey": "",
+        "saveApiKey": false,
+        "apiKeyEnvVar": "",
+        "temperature": 0.7,
+        "maxTokens": 4096,
+        "timeout": 30
+      },
+      "gemini": {
+        "baseUrl": "https://generativelanguage.googleapis.com",
+        "model": "gemini-3-flash-preview",
+        "apiKey": "",
+        "saveApiKey": false,
+        "apiKeyEnvVar": "",
+        "temperature": 0.7,
+        "maxTokens": 4096,
+        "timeout": 30
+      },
+      "custom": {
+        "baseUrl": "https://api.openai.com",
+        "model": "gpt-5.2",
+        "apiKey": "",
+        "saveApiKey": false,
+        "apiKeyEnvVar": "",
+        "temperature": 0.7,
+        "maxTokens": 4096,
+        "timeout": 30
+      }
+    },
+    "provider": "openai",
+    "baseUrl": "https://api.openai.com",
+    "model": "gpt-5.2",
+    "apiKey": "",
+    "saveApiKey": false,
+    "apiKeyEnvVar": "",
+    "temperature": 0.7,
+    "maxTokens": 4096,
+    "timeout": 30
+  },
+  "calculator": {
+    "enabled": true,
+    "trigger": "="
+  },
+  "dankHyprlandWindows": {
+    "enabled": true
+  },
+  "gitmojiLauncher": {
+    "enabled": true
+  },
+  "sathiAi": {
+    "enabled": true,
+    "windowWidth": 560.86328125,
+    "windowHeight": 566.0625
+  },
+  "sshConnections": {
+    "enabled": true,
+    "terminal": "ghostty"
+  },
+  "githubHeatmap": {
+    "enabled": true,
+    "username": "y2w8",
+    "refreshInterval": 300
+  },
+  "commandRunner": {
+    "enabled": true,
+    "terminal": "ghostty",
+    "history": [
+      "Satty"
+    ]
+  },
+  "powerUsagePlugin": {
+    "enabled": true
   }
 }
