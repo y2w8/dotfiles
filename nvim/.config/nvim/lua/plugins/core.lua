@@ -44,6 +44,12 @@ return {
       },
     },
     opts = {
+      completion = {
+        keyword = { range = "full" },
+        accept = { auto_brackets = { enabled = false } },
+        list = { selection = { preselect = false, auto_insert = true } },
+      },
+
       sources = {
         default = { "lsp", "dbee", "path", "snippets", "buffer" },
         per_filetype = {

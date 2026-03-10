@@ -51,6 +51,7 @@ return {
   -- Discord RPC
   {
     "vyfor/cord.nvim",
+    enabled = not vim.g.is_firenvim,
     event = "VeryLazy",
     build = ":Cord update",
   },
