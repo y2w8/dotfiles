@@ -36,11 +36,11 @@ next_win=$(echo "$windows" | jq -r --argjson boundary "$boundary" '
 if [ -n "$next_win" ]; then
     # Focus that window
     
-    if [ "$ACTION" = "focus"]; then
+    if [ "$ACTION" = "focus" ]; then
       hyprctl dispatch focuswindow address:$next_win
     elif [ "$ACTION" = "move" ]; then
       direction_key=$([ "$DIRECTION" = "down" ] && echo "d" || echo "u")
-        hyprctl dispatch layoutmsg movewindowto "$direction_key"
+      hyprctl dispatch layoutmsg movewindowto "$direction_key"
     fi
 else
     if [ "$current_ws" -eq 9 ] && [ "$DIRECTION" = "down" ]; then
