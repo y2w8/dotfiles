@@ -6,6 +6,13 @@ return {
       "ghassan0/telescope-glyph.nvim",
       "debugloop/telescope-undo.nvim",
       "smartpde/telescope-recent-files",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        config = function()
+          require("telescope").load_extension "fzf"
+        end,
+      },
     },
     cmd = "Telescope",
     opts = function()

@@ -10,6 +10,9 @@ return {
     keys = {
       { "<leader>gG", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
     },
+    config = function()
+      require "configs.git.neogit"
+    end
   },
 
   {
@@ -17,7 +20,7 @@ return {
     cmd = "Octo",
     opts = { picker = "telescope", enable_builtin = true },
     config = function()
-      require "configs.octo"
+      require "configs.git.octo"
     end,
   },
 }

@@ -207,3 +207,5 @@ function paste_del() {
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.config/shell/catppuccin_mocha-zsh-syntax-highlighting.zsh
 eval "$(zellij setup --generate-auto-start zsh)"
+
+export PATH=$PATH:/home/y2w8/.spicetify

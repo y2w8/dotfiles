@@ -1,8 +1,43 @@
-font-family = "JetBrainsMono Nerd Font"
-font-style-bold = "Bold"
-font-family-italic = "Operator Mono"
-font-style-italic = "Bold Italic"
-font-size=11
+
+# pixel font
+# font-family = "GreyBeard 11px"
+# font-size=22
+
+font-family = "BigBlueTerm437 Nerd Font"
+font-size=14
+adjust-cell-height=20%
+
+# font-family = "GohuFont 11 Nerd Font"
+# font-size=11
+
+# font-family = "RDTPixelscriptPlusPona Nerd Font"
+# font-size=16
+
+# font-family = "PxPlusIBMVGA8x16 Nerd Font"
+# font-size=13
+
+# jetbrains
+# font-family = "jetbrainsmono nerd font"
+# font-style-bold = "Bold"
+# font-family-italic = "Operator Mono"
+# font-style-italic = "Bold Italic"
+# font-size=11
+
+# Iosevka
+# font-family = "Iosevka Nerd Font"
+
+# Iosvmata
+# font-family = "Iosvmata"
+
+# Zed
+# font-family = "ZedMono Nerd Font"
+
+# Firacode
+# font-family = "FiraCode Nerd Font"
+# font-family-italic = "Fira Code iScript"
+# font-style-italic = "Bold Italic"
+
+
 theme = catppuccin-mocha.conf
 window-decoration = none
 custom-shader = cursor_warp.glsl

@@ -72,4 +72,10 @@ return {
     event = "LspAttach",
     opts = require "configs.tiny-code-actions",
   },
+
+  {
+    ft = "log",
+    "fei6409/log-highlight.nvim",
+    opts = {},
+  },
 }

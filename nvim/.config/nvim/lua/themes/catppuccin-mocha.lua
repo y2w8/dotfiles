@@ -14,6 +14,8 @@ local polish_hl = {
     BlinkCmpMenuBorder = { fg = M.palette.rosewater },
     BlinkCmpDoc = { link = "BlinkCmpMenu" },
     BlinkCmpDocBorder = { link = "BlinkCmpMenuBorder" },
+    BlinkCmpSignatureHelpBorder = { fg = M.palette.rosewater },
+    BlinkCmpSignatureHelp= { bg = M.palette.base },
   },
   tbline = {
     TbFill = {
@@ -153,7 +155,15 @@ local polish_hl = {
 
     -- Toggle term
     WinBarActive = { bg = M.palette.mantle },
-    WinBarInactive = { bg = M.palette.mantle }
+    WinBarInactive = { bg = M.palette.mantle },
+
+    LogLvDebug = {
+      fg = M.palette.teal
+    },
+
+    LogTime = {
+      fg = M.palette.lavender
+    }
   },
   semantic_tokens = {
     ["@lsp.type.enumMember"] = { fg = M.palette.teal },

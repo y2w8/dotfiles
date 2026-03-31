@@ -7,6 +7,8 @@ return {
   --   opts = require "configs.cursor",
   -- },
 
+  { "typicode/bg.nvim", lazy = false },
+
   {
     "j-hui/fidget.nvim",
     lazy = false,

@@ -57,7 +57,7 @@ return {
 			fg = M.lighten(M.palette.blue, 0.800, M.palette.text),
 		},
 		NeogitChangeModified = {
-			fg = M.palette.blue,
+			fg = M.palette.yellow,
 			style = { "bold" },
 		},
 		NeogitChangeDeleted = {

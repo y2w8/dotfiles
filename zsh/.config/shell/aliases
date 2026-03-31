@@ -10,6 +10,7 @@ alias \
 -g PR='| paste' \
 \
 c="clear" \
+watch="viddy" \
 v="_v" \
 sv="sudo -E nvim" \
 sy="sudo -E yazi" \
