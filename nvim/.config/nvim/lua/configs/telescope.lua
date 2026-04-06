@@ -1,8 +1,9 @@
 dofile(vim.g.base46_cache .. "telescope")
-require('telescope').load_extension('glyph')
-require("telescope").load_extension("fidget")
-require("telescope").load_extension("undo")
-require("telescope").load_extension("recent_files")
+local telescope = require("telescope");
+telescope.load_extension('glyph')
+telescope.load_extension("fidget")
+telescope.load_extension("undo")
+telescope.load_extension("recent_files")
 
 local fidget = require("fidget")
 
@@ -119,11 +120,12 @@ vim.keymap.set(
   { desc = "telescope find all files" }
 )
 vim.keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
+vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "telescope todo comments" })
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
 vim.keymap.set("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
 vim.keymap.set("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
 vim.keymap.set("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
-vim.keymap.set("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
+-- vim.keymap.set("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 vim.keymap.set("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "LSP Symbols" })
 vim.keymap.set("n", "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "LSP Workspace Symbols" })
 vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP References" })

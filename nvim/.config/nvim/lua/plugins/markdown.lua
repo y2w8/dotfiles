@@ -1,5 +1,19 @@
 return {
   {
+    -- "breiting/zettel.nvim",
+    dir = "~/Projects/Nvim_Plugins/zettel.nvim",
+    lazy = false,
+    config = function()
+      require("zettel").setup {
+        vault_dir = "~/Documents/zettel",
+        note_types = { "note", "journal", "meeting", "meta", "project" },
+        assets_dir = "_assets",
+        templates_dir = "_templates",
+      }
+    end,
+  },
+
+  {
     "yousefhadder/markdown-plus.nvim",
     ft = "markdown",
     opts = {
@@ -116,17 +130,21 @@ return {
         },
       },
       heading = {
-        sign = true,
+        sign = false,
+        border = true,
         width = "block",
-        position = "right",
-        left_pad = 1,
+        position = "left",
+        left_pad = 0,
+        right_pad = 4,
+        below = "",
+        above = "",
         icons = {
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
+        "█ ",
+        "██ ",
+        "███ ",
+        "████ ",
+        "█████ ",
+        "██████ ",
         },
         -- icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
         backgrounds = {
@@ -157,14 +175,14 @@ return {
       },
       pipe_table = { preset = "heavy" },
       code = {
-        position = "right",
+        position = "left",
         width = "block",
         border = "thin",
         language_left = "█",
         language_right = "█",
-        language_border = "▁",
-        above = "▁",
-        below = "▔",
+        language_border = "█",
+        above = "",
+        below = "",
         left_pad = 2,
         right_pad = 14,
         inline_left = "█",

@@ -30,6 +30,8 @@ end, { desc = "general format file" })
 -- global lsp mappings
 map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic loclist" })
 
+map("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+
 -- tabufline
 if require("nvconfig").ui.tabufline.enabled then
   map("n", "<leader>b", "<cmd>enew<CR>", { desc = "buffer new" })
@@ -131,6 +133,10 @@ map("n", "gs", function()
     style = "minimal",
   })
 end, { desc = "LSP diagnostic" })
+
+map('n', 'K', function()
+  vim.lsp.buf.hover({ border = "single" })
+end, { desc = "LSP hover" })
 
 map("n", "gy", function()
   local diag = vim.diagnostic.get(0, { lnum = vim.fn.line "." - 1 }) -- english comment: get diagnostics on this line

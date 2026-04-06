@@ -7,7 +7,47 @@ return {
   --   opts = require "configs.cursor",
   -- },
 
+  {
+    dir = "~/Projects/Nvim_Plugins/ui",
+    lazy = false
+  },
+
   { "typicode/bg.nvim", lazy = false },
+
+  {
+    "SmiteshP/nvim-navic",
+    lazy = false,
+    config = function()
+      local navic = require("nvim-navic")
+      navic.setup {
+        highlight = true, -- تفعيل الألوان
+        separator = " > ",
+        depth_limit = 0,
+        depth_limit_message = "..",
+        lsp = {
+          auto_attach = true,
+        }
+      }
+    end,
+  },
+
+  {
+    "wr9dg17/essential-term.nvim",
+    lazy = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    config = function()
+      require("essential-term").setup {
+        display_mode = "horizontal", -- or "vertical" or "float"
+        size = 70, -- percentage of editor height/width
+      }
+    end,
+    keys = {
+      { "<C-`>", "<cmd>EssentialTermToggle<cr>", mode = { "n", "t" } },
+      { "<C-\\>", "<cmd>EssentialTermToggle<cr>", mode = { "n", "t" } },
+      { "<C-t>", "<cmd>EssentialTermNew<cr>", mode = { "n", "t" } },
+      { "<C-z>", "<cmd>EssentialTermClose<cr>", mode = { "n", "t" } },
+    },
+  },
 
   {
     "j-hui/fidget.nvim",
@@ -22,7 +62,6 @@ return {
     "hedyhli/outline.nvim",
     cmd = "Outline",
     config = function()
-      vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
       require("outline").setup {}
     end,
   },

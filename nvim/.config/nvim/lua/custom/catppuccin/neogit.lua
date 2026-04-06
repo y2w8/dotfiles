@@ -1,12 +1,28 @@
 local M = require "custom.catppuccin.header"
 
 return {
+    NeogitCommitViewDescription = {
+      fg = M.palette.text
+    },
+    NeogitBranchHead = {
+      fg = M.palette.rosewater,
+      underline = true
+    },
+    NeogitSignatureNone = {
+      fg = M.palette.peach
+    },
+    NeogitDiffContextCursor = {
+      link = "NeogitHunkHeaderHighlight"
+    },
+    NeogitActiveItem = {
+      link = "NeogitHunkHeaderHighlight"
+    },
 		NeogitBranch = {
-			fg = M.palette.peach,
+			fg = M.palette.yellow,
 			style = { "bold" },
 		},
 		NeogitRemote = {
-			fg = M.palette.peach,
+			fg = M.palette.yellow,
 			style = { "bold" },
 		},
 		NeogitUnmergedInto = {
@@ -16,8 +32,7 @@ return {
 			link = "Function",
 		},
 		NeogitObjectId = {
-			-- link = "Comment",
-			fg = M.palette.green,
+			fg = M.palette.red
 		},
 		NeogitStash = {
 			link = "Comment",
@@ -37,27 +52,34 @@ return {
 			bg = M.palette.surface0,
 		},
 		NeogitDiffDeleteHighlight = {
-			bg = M.darken(M.palette.red, 0.345, M.palette.base),
-			fg = M.lighten(M.palette.red, 0.850, M.palette.text),
+      link = "NeogitDiffDelete"
 		},
+    NeogitDiffDeleteInline = {
+      bg = M.palette.red,
+      fg = M.palette.base
+    },
+    DiffDelete = { link = "NeogitDiffDelete" },
 		NeogitDiffAddHighlight = {
-			bg = M.darken(M.palette.green, 0.345, M.palette.base),
-			fg = M.lighten(M.palette.green, 0.850, M.palette.text),
+      link = "NeogitDiffAdd"
 		},
+    NeogitDiffAddInline = {
+      bg = M.palette.green,
+      fg = M.palette.base
+    },
+    DiffAdd = { link = "NeogitDiffAdd" },
 		NeogitDiffDelete = {
-			bg = M.darken(M.palette.red, 0.095, M.palette.base),
+			bg = M.darken(M.palette.red, 0.300, M.palette.base),
 			fg = M.darken(M.palette.red, 0.800, M.palette.base),
 		},
 		NeogitDiffAdd = {
-			bg = M.darken(M.palette.green, 0.095, M.palette.base),
+			bg = M.darken(M.palette.green, 0.300, M.palette.base),
 			fg = M.darken(M.palette.green, 0.800, M.palette.base),
 		},
 		NeogitCommitViewHeader = {
-			bg = M.darken(M.palette.blue, 0.300, M.palette.base),
-			fg = M.lighten(M.palette.blue, 0.800, M.palette.text),
+      link = "DiffModified"
 		},
 		NeogitChangeModified = {
-			fg = M.palette.yellow,
+			fg = M.palette.peach,
 			style = { "bold" },
 		},
 		NeogitChangeDeleted = {
@@ -89,35 +111,35 @@ return {
 			style = { "bold" },
 		},
 		NeogitUntrackedfiles = {
-			fg = M.palette.rosewater,
+			fg = M.palette.blue,
 			style = { "bold" },
 		},
 		NeogitUnstagedchanges = {
-			fg = M.palette.rosewater,
+			fg = M.palette.blue,
 			style = { "bold" },
 		},
 		NeogitUnmergedchanges = {
-			fg = M.palette.rosewater,
+			fg = M.palette.blue,
 			style = { "bold" },
 		},
 		NeogitUnpulledchanges = {
-			fg = M.palette.rosewater,
+			fg = M.palette.blue,
 			style = { "bold" },
 		},
 		NeogitRecentcommits = {
-			fg = M.palette.rosewater,
+			fg = M.palette.blue,
 			style = { "bold" },
 		},
 		NeogitStagedchanges = {
-			fg = M.palette.rosewater,
+			fg = M.palette.blue,
 			style = { "bold" },
 		},
 		NeogitStashes = {
-			fg = M.palette.rosewater,
+			fg = M.palette.blue,
 			style = { "bold" },
 		},
 		NeogitRebasing = {
-			fg = M.palette.rosewater,
+			fg = M.palette.blue,
 			style = { "bold" },
 		},
 		NeogitNotificationInfo = {

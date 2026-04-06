@@ -1,12 +1,23 @@
-vim.keymap.set("n", "<leader>Z", function() Snacks.zen.zoom() end, { desc = "Toggle Zoom" })
-vim.keymap.set({ "n", "t" }, "<C-/>", function() Snacks.terminal() end, { desc = "Toggle Terminal" })
-vim.keymap.set("n", "<leader>cR", function() Snacks.rename.rename_file() end, { desc = "Rename File" })
-vim.keymap.set({"n", "v"}, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse" })
-vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
+vim.keymap.set("n", "<leader>Z", function()
+  Snacks.zen.zoom()
+end, { desc = "Toggle Zoom" })
+vim.keymap.set({ "n", "t" }, "<C-/>", function()
+  Snacks.terminal()
+end, { desc = "Toggle Terminal" })
+vim.keymap.set("n", "<leader>cR", function()
+  Snacks.rename.rename_file()
+end, { desc = "Rename File" })
+vim.keymap.set({ "n", "v" }, "<leader>gB", function()
+  Snacks.gitbrowse()
+end, { desc = "Git Browse" })
+vim.keymap.set("n", "<leader>gG", function()
+  Snacks.lazygit()
+end, { desc = "Lazygit" })
 vim.keymap.set("n", "<leader>N", function()
   Snacks.win {
     file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-    width = 0.6, height = 0.6,
+    width = 0.6,
+    height = 0.6,
     wo = { spell = false, wrap = false, signcolumn = "yes", statuscolumn = " ", conceallevel = 3 },
   }
 end, { desc = "Neovim News" })
@@ -37,10 +48,27 @@ require("snacks").setup {
   ▀ ▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀
                                 
   Powered By  eovim ]],
+      keys = {
+        -- { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+        -- { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+        { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+        -- { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+        { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+        { icon = " ", key = "L", desc = "Plugins", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+      },
     },
     sections = {
-      { section = "header" },
-      { section = "keys", gap = 1, padding = 1 },
+      -- { section = "header" },
+      function()
+        return {
+          header = require("custom.sysinfo").header,
+          padding = 1,
+          pane = 1,
+        }
+      end,
+      { section = "keys", gap = 0, padding = 1 },
       { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
       { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
       {
@@ -49,16 +77,6 @@ require("snacks").setup {
         cmd = "colorscript -e square",
         height = 5,
         padding = 1,
-      },
-      {
-        pane = 2,
-        icon = " ",
-        desc = "Browse Repo",
-        padding = 1,
-        key = "b",
-        action = function()
-          Snacks.gitbrowse()
-        end,
       },
       function()
         local in_git = Snacks.git.get_root() ~= nil
@@ -74,6 +92,29 @@ require("snacks").setup {
             height = 5,
             enabled = true,
           },
+          {
+            title = "",
+            cmd = "cowsay 'Not a git repo'",
+            icon = "",
+            height = 10,
+            cache = false,
+            ttl = 0,
+            enabled = not in_git,
+          },
+          {
+            icon = " ",
+            title = "Git Status",
+            -- cmd = "git --no-pager diff --stat -B -M -C",
+            cmd = "git status --short --branch --renames",
+            height = 10,
+          },
+          -- {
+          --   title = "Commits History",
+          --   cmd = [[git log --graph --all --color=always -n 10 --format='@%at@%s' | jq -R -r 'if contains("@") then split("@") as $parts | $parts[0] as $graph | ($parts[1]|tonumber) as $t | $parts[2] as $s | (now - $t) as $diff | (if $diff < 3600 then "\(($diff/60|floor))m" elif $diff < 86400 then "\(($diff/3600|floor))h" elif $diff < 604800 then "\(($diff/86400|floor))d" elif $diff < 2592000 then "\(($diff/604800|floor))w" else "\(($diff/2592000|floor))mo" end) as $time | $graph + "\u001b[35m" + ($time + (" " * (5 - ($time|length)))) + "\u001b[0m " + $s else . end' | cut -c 1-78]],
+          --   -- cmd = "git --no-pager log --graph -n 9 --format='%C(auto)%h %C(green)%ar %C(white)%s' --oneline",
+          --   icon = "s ",
+          --   height = 10,
+          -- },
           {
             title = "Open Issues",
             cmd = "gh issue list -L 3",
@@ -93,12 +134,6 @@ require("snacks").setup {
               vim.fn.jobstart("gh pr list --web", { detach = true })
             end,
             height = 3,
-          },
-          {
-            icon = " ",
-            title = "Git Status",
-            cmd = "git --no-pager diff --stat -B -M -C",
-            height = 10,
           },
         }
         return vim.tbl_map(function(cmd)
@@ -196,11 +231,18 @@ require("snacks").setup {
   },
   quickfile = { enabled = false },
   scope = { enabled = false },
-  scroll = { enabled = true, animate = {} },
+  scroll = {
+    enabled = true,
+    animate = {
+      delay = 1000, -- delay in ms before using the repeat animation
+      duration = { step = 30, total = 300 },
+      easing = "linear",
+    },
+  },
   statuscolumn = { enabled = false },
   words = { enabled = false },
   image = {
-    enabled = not vim.g.is_firenvim,
+    enabled = true,
     doc = {
       inline = false,
       float = true,

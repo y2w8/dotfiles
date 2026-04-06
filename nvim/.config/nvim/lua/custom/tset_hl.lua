@@ -1,5 +1,5 @@
 -- Toggle Treesitter highlighting test file
--- English comments so it's clean for you
+-- English comments so it's clean for you null
 
 -- VARIABLES ------------------------------------------------------
 local c
@@ -18,7 +18,7 @@ local NULL = nil            -- @constant.builtin
 require("math")             -- @module
 
 ::label_here::              -- @label
-
+-- Maple
 -- STRINGS --------------------------------------------------------
 local msg = "hello world"           -- @string
 local doc = [[ This is a doc ]]     -- @string.documentation

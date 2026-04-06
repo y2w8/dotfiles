@@ -6,6 +6,7 @@ DIRECTION=$2 # up or down
 
 # Active window info
 active_monitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true)')
+monitor_name=$(echo "$active_monitor" | jq -r '.name')
 current_ws=$(echo "$active_monitor" | jq -r '.activeWorkspace.id')
 active=$(hyprctl activewindow -j)
 aw_address=$(echo "$active" | jq -r '.address')
@@ -43,14 +44,25 @@ if [ -n "$next_win" ]; then
       hyprctl dispatch layoutmsg movewindowto "$direction_key"
     fi
 else
-    if [ "$current_ws" -eq 9 ] && [ "$DIRECTION" = "down" ]; then
-      target_ws=1
-    elif [ "$current_ws" -eq 1 ] && [ "$DIRECTION" = "up" ]; then
-      target_ws=9
-    elif [ "$DIRECTION" = "down" ]; then
-      target_ws=$((current_ws + 1))
-    elif [ "$DIRECTION" = "up" ]; then
-      target_ws=$((current_ws - 1))
+    if [ "$monitor_name" = "HDMI-A-1" ]; then
+      min_ws=11
+      max_ws=15
+    else
+      min_ws=1
+      max_ws=5
+    fi
+    if [ "$DIRECTION" = "down" ]; then
+      if [ "$current_ws" -eq "$max_ws" ]; then
+        target_ws=$min_ws
+      else
+        target_ws=$((current_ws + 1))
+      fi
+    else
+      if [ "$current_ws" -eq "$min_ws" ]; then
+        target_ws=$max_ws
+      else
+        target_ws=$((current_ws - 1))
+      fi
     fi
 
     if [ "$ACTION" = "focus" ]; then

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+target_ws=$1
+
+if [ "$target_ws" -le 5 ]; then
+  target_monitor="HDMI-A-1"
+else
+  target_monitor="eDP-1"
+fi
+
+# Switch workspace
+hyprctl dispatch workspace "$target_ws"
+
+# Move mouse to that monitor
+hyprctl dispatch movecursortomonitor "$target_monitor"

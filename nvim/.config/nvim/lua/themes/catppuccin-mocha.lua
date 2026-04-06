@@ -10,12 +10,12 @@ local polish_hl = {
   -- },
   neogit = require "custom.catppuccin.neogit",
   blink = {
-    BlinkCmpMenu = { bg = M.base_30.black },
+    BlinkCmpMenu = { bg = M.transparent_background and M.base_30.black or M.palette.none },
     BlinkCmpMenuBorder = { fg = M.palette.rosewater },
     BlinkCmpDoc = { link = "BlinkCmpMenu" },
     BlinkCmpDocBorder = { link = "BlinkCmpMenuBorder" },
     BlinkCmpSignatureHelpBorder = { fg = M.palette.rosewater },
-    BlinkCmpSignatureHelp= { bg = M.palette.base },
+    -- BlinkCmpSignatureHelp = { bg = M.palette.base },
   },
   tbline = {
     TbFill = {
@@ -24,7 +24,7 @@ local polish_hl = {
 
     TbBufOn = {
       fg = M.base_30.white,
-      bg = M.transparent_background and M.palette.surface1 or M.base_30.black2,
+      bg = M.transparent_background and M.base_30.line or M.base_30.black2,
     },
 
     TbBufOff = {
@@ -34,7 +34,7 @@ local polish_hl = {
 
     TbBufOnModified = {
       fg = M.base_30.green,
-      bg = M.transparent_background and M.palette.surface1 or M.base_30.black2,
+      bg = M.transparent_background and M.base_30.line or M.base_30.black2,
     },
 
     TbBufOffModified = {
@@ -54,12 +54,12 @@ local polish_hl = {
 
     TbTabNewBtn = {
       fg = M.base_30.white,
-      bg = M.base_30.one_bg2,
+      bg = M.base_30.none,
     },
 
     TbTabOn = {
       fg = M.base_30.red,
-      bg = M.transparent_background and M.base_30.none or M.base_30.black,
+      bg = M.transparent_background and M.base_30.line or M.base_30.black,
     },
 
     TbTabOff = {
@@ -93,14 +93,14 @@ local polish_hl = {
   custom = {
 
     SnacksDashboardHeader = { fg = M.base_30.blue, bold = true },
-    SnacksDashboardIcon = { fg = M.base_30.light_grey },
-    SnacksDashboardDesc = { fg = M.base_30.light_grey },
+    SnacksDashboardIcon = { fg = M.base_30.blue, bold = true },
+    SnacksDashboardTitle = { fg = M.base_30.blue, bold = true },
+    SnacksDashboardKey = { fg = M.palette.peach, bold = true },
+    SnacksDashboardDesc = { fg = M.palette.lavender, bold = true },
     SnacksDashboardSpecial = { fg = M.base_30.red },
     SnacksDashboardFile = { fg = M.base_30.yellow },
-    SnacksDashboardTitle = { fg = M.base_30.light_grey },
     SnacksDashboardTerminal = { fg = M.base_30.light_grey },
     SnacksDashboardFooter = { fg = M.base_30.red },
-    SnacksDashboardKey = { fg = M.base_30.light_grey },
 
     SnacksNotifierHistory = { bg = M.palette.mantle },
     SnacksNotifierHistoryTitle = { fg = M.base_30.black, bg = M.base_30.green },
@@ -146,7 +146,7 @@ local polish_hl = {
     SnacksPickerFile = { link = "TelescopeResultsFile" },
 
     RenderMarkdownCode = { bg = M.base_30.line },
-    RenderMarkdownCodeBorder = { bg = M.palette.surface1 },
+    RenderMarkdownCodeBorder = { bg = M.palette.line },
     RenderMarkdownCodeInline = { bg = M.base_30.line },
     RenderMarkdownTableRow = { fg = M.palette.surface1 },
     RenderMarkdownBullet = { fg = M.palette.peach },
@@ -157,13 +157,53 @@ local polish_hl = {
     WinBarActive = { bg = M.palette.mantle },
     WinBarInactive = { bg = M.palette.mantle },
 
+    NavicIconsFile = { fg = M.palette.blue },
+    NavicIconsModule = { fg = M.palette.blue },
+    NavicIconsNamespace = { fg = M.palette.blue },
+    NavicIconsPackage = { fg = M.palette.blue },
+    NavicIconsClass = { fg = M.palette.yellow },
+    NavicIconsMethod = { fg = M.palette.blue },
+    NavicIconsProperty = { fg = M.palette.green },
+    NavicIconsField = { fg = M.palette.green },
+    NavicIconsConstructor = { fg = M.palette.blue },
+    NavicIconsEnum = { fg = M.palette.green },
+    NavicIconsInterface = { fg = M.palette.yellow },
+    NavicIconsFunction = { fg = M.palette.blue },
+    NavicIconsVariable = { fg = M.palette.flamingo },
+    NavicIconsConstant = { fg = M.palette.peach },
+    NavicIconsString = { fg = M.palette.green, style = M.styles.strings },
+    NavicIconsNumber = { fg = M.palette.peach },
+    NavicIconsBoolean = { fg = M.palette.peach },
+    NavicIconsArray = { fg = M.palette.peach },
+    NavicIconsObject = { fg = M.palette.peach },
+    NavicIconsKey = { fg = M.palette.pink },
+    NavicIconsNull = { fg = M.palette.peach },
+    NavicIconsEnumMember = { fg = M.palette.red },
+    NavicIconsStruct = { fg = M.palette.blue },
+    NavicIconsEvent = { fg = M.palette.blue },
+    NavicIconsOperator = { fg = M.palette.sky },
+    NavicIconsTypeParameter = { fg = M.palette.blue },
+    NavicText = { fg = M.palette.text },
+    NavicSeparator = { link = "Comment" },
+
+    Stl_cwd = { fg = M.palette.red, bg = M.base_30.line },
+    Stl_NormalMode = { fg = M.palette.blue, bg = M.base_30.line },
+    Stl_InsertMode = { fg = M.palette.green, bg = M.base_30.line },
+    Stl_TerminalMode = { fg = M.palette.green, bg = M.base_30.line },
+    Stl_CommandMode = { fg = M.palette.green, bg = M.base_30.line },
+    Stl_SelectMode = { fg = M.palette.rosewater, bg = M.base_30.line },
+    Stl_NTerminalMode = { fg = M.palette.yellow, bg = M.base_30.line },
+    Stl_ReplaceMode = { fg = M.palette.peach, bg = M.base_30.line },
+    Stl_ConfirmMode = { fg = M.palette.teal, bg = M.base_30.line },
+    Stl_VisualMode = { fg = M.palette.mauve, bg = M.base_30.line },
+
     LogLvDebug = {
-      fg = M.palette.teal
+      fg = M.palette.teal,
     },
 
     LogTime = {
-      fg = M.palette.lavender
-    }
+      fg = M.palette.lavender,
+    },
   },
   semantic_tokens = {
     ["@lsp.type.enumMember"] = { fg = M.palette.teal },
@@ -313,12 +353,31 @@ local polish_hl = {
     ["@variable.parameter.bash"] = { fg = M.palette.green },
 
     -- markdown
-    ["@markup.heading.1.markdown"] = { fg = M.palette.base, bg = M.palette.blue, bold = true },
-    ["@markup.heading.2.markdown"] = { fg = M.palette.base, bg = M.palette.mauve, bold = true },
-    ["@markup.heading.3.markdown"] = { fg = M.palette.base, bg = M.palette.peach, bold = true },
-    ["@markup.heading.4.markdown"] = { fg = M.palette.base, bg = M.palette.green, bold = true },
-    ["@markup.heading.5.markdown"] = { fg = M.palette.base, bg = M.palette.yellow, bold = true },
-    ["@markup.heading.6.markdown"] = { fg = M.palette.base, bg = M.palette.teal, bold = true },
+    ["@markup.heading.1.markdown"] = {
+      bg = M.base_30.none,
+      fg = M.palette.blue,
+      bold = true,
+    },
+    ["@markup.heading.2.markdown"] = {
+      fg = M.palette.mauve,
+      bold = true,
+    },
+    ["@markup.heading.3.markdown"] = {
+      fg = M.palette.peach,
+      bold = true,
+    },
+    ["@markup.heading.4.markdown"] = {
+      fg = M.palette.green,
+      bold = true,
+    },
+    ["@markup.heading.5.markdown"] = {
+      fg = M.palette.yellow,
+      bold = true,
+    },
+    ["@markup.heading.6.markdown"] = {
+      fg = M.palette.teal,
+      bold = true,
+    },
 
     -- Java
     ["@constant.java"] = { fg = M.palette.teal },
@@ -367,7 +426,6 @@ local polish_hl = {
 
     -- gitignore
     ["@string.special.path.gitignore"] = { fg = M.palette.text },
-    ["FloatBorder"] = { fg = M.palette.base },
     -- Misc
     gitcommitSummary = { fg = M.palette.rosewater, style = M.styles.miscs or { "italic" } },
     zshKSHFunction = { link = "Function" },

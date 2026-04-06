@@ -1,5 +1,16 @@
 local cat = require "themes.catppuccin-mocha"
 local mocha = cat.palette
+-- FIXME: dwadwa
+-- FIXME: dwadwa
+
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
 return {
     signs = true, -- Show icons in the sign column
     keywords = {

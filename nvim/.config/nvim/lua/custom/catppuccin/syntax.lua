@@ -1,7 +1,8 @@
 local M = require "custom.catppuccin.header"
 
 return {
-		Comment = { fg = '#605f6f', italic = true, style = M.styles.comments }, -- just comments
+    -- '#605f6f'
+		Comment = { fg = M.palette.surface2, italic = true, style = M.styles.comments }, -- just comments
 		SpecialComment = { link = "Special" }, -- special things inside a comment
 		Constant = { fg = M.palette.peach }, -- (preferred) any constant
 		String = { fg = M.palette.green, style = M.styles.strings or {} }, -- a string constant: "this is a string"
