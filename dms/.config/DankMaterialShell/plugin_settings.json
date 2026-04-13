@@ -4,7 +4,11 @@
     "selectedDeviceId": "f8dec5f8_096e_4858_b3b6_18c2f9a3c3d7"
   },
   "prayerTimes": {
-    "enabled": true
+    "enabled": true,
+    "method": "1",
+    "school": "0",
+    "lon": "43.9716670",
+    "lat": "26.3316670"
   },
   "dankActions": {
     "enabled": true
@@ -106,5 +110,41 @@
   },
   "powerUsagePlugin": {
     "enabled": true
+  },
+  "dmsScreenshot": {
+    "enabled": true,
+    "quality": 90,
+    "mode": "interactive",
+    "stdout": true
+  },
+  "screenRecorder": {
+    "enabled": true,
+    "recordAudio": false,
+    "outputDir": "/home/y2w8/Videos/Recordings"
+  },
+  "emojiLauncher": {
+    "enabled": true
+  },
+  "displayOutput": {
+    "enabled": false
+  },
+  "discordVoice": {
+    "enabled": true,
+    "accessToken": "MjA3NjQ2NjczOTAyNTAxODg4.mjIbLEwyWEnFv2A9TqtPYIsoG6MBeb"
+  },
+  "githubNotifier": {
+    "enabled": true
+  },
+  "displayMirror": {
+    "enabled": true
+  },
+  "linuxWallpaperEngine": {
+    "enabled": true
+  },
+  "dankPomodoroTimer": {
+    "enabled": true,
+    "autoSetDND": true,
+    "autoStartPomodoros": true,
+    "autoStartBreaks": true
   }
 }

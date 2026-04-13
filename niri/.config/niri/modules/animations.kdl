@@ -1,0 +1,33 @@
+animations {
+    // off
+    slowdown 1.5
+
+    window-open {
+        duration-ms 200
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+}
+
+  overview {
+      backdrop-color "#1e1e2e"
+
+      workspace-shadow {
+          softness 40
+          spread 10
+          offset x=0 y=10
+          color "#00000050"
+      }
+
+      zoom 0.6
+  }
+
+gestures {
+    hot-corners {
+        off
+    }
+}

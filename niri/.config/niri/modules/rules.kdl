@@ -1,0 +1,70 @@
+
+// Terminal stuff
+window-rule {
+  match app-id="^ghostty$"
+  background-effect {
+    blur true
+  }
+}
+window-rule {
+  match title="^tclock$"
+  open-floating true
+  // max-width 451
+  //  max-height 173
+}
+window-rule {
+  match app-id="ghostty" title="mixer"
+  open-floating true
+  default-column-width { proportion 0.75; }
+  default-window-height { proportion 0.75; }
+}
+window-rule {
+  match app-id="ghostty" title="filechooser"
+  open-floating true
+  default-column-width { proportion 0.75; }
+  default-window-height { proportion 0.75; }
+}
+
+// Floating stuff
+
+// Floating title
+window-rule {
+  match title="BakkesModInjectorCpp"
+  open-floating true
+}
+
+// Floating stay focused
+window-rule {
+  match title="Authorize"
+}
+
+// Floating class
+window-rule {
+  match app-id="^(org.gnome.Calculator|blueman-manager|com.github.tenderowl.frog|org.kde.kdeconnect.daemon)$"
+  open-floating true
+}
+
+
+// Example: enable rounded corners for all windows.
+// (This example rule is commented out with a "/-" in front.)
+window-rule {
+    geometry-corner-radius 9
+    clip-to-geometry true
+    draw-border-with-background false
+}
+
+
+// Noctalia
+  // workspace overview
+  layer-rule {
+    match namespace="^noctalia-overview*"
+    place-within-backdrop true
+  }
+
+  // blur
+  layer-rule {
+    match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+    background-effect {
+      xray false
+    }
+  }

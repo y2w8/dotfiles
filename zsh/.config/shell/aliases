@@ -9,6 +9,7 @@ alias \
 -g P='wl-paste |' \
 -g PR='| paste' \
 \
+yay="paru" \
 c="clear" \
 watch="viddy" \
 v="_v" \

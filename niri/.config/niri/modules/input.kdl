@@ -1,0 +1,51 @@
+cursor {
+  // xcursor-theme "catppuccin-mocha-rosewater-cursors" // use the Name= value, not folder name
+  xcursor-theme "MacOSX"
+  xcursor-size 24
+}
+input {
+focus-follows-mouse
+warp-mouse-to-focus
+    keyboard {
+        xkb {
+          layout "us,ara(digits)"
+          options "grp:alt_shift_toggle"
+        }
+
+        // Enable numlock on startup, omitting this setting disables it.
+        numlock
+    }
+
+    touchpad {
+        // off
+        tap
+        dwt
+        dwtp
+        drag false
+        drag-lock
+        natural-scroll
+        accel-speed 0.2
+        accel-profile "flat"
+        scroll-method "two-finger"
+        disabled-on-external-mouse
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+
+    trackpoint {
+        off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "on-button-down"
+        // scroll-button 273
+        // scroll-button-lock
+        // middle-emulation
+    }
+}

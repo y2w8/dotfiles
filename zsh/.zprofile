@@ -1,10 +1,16 @@
 #!/bin/sh
 # env vars to set on login, zsh settings in ~/config/zsh/.zshrc
 # add `export ZDOTDIR="$HOME/.config/zsh"` to /etc/zsh/zshenv in order to place this file at .config/zsh/.zprofile
-#
+
+# xdg stuff
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # default programs
 export EDITOR="nvim"
-export TERM="ghostty"
+export TERM="xterm-256color"
 export TERMINAL="ghostty"
 export MUSPLAYER="termusic"
 export BROWSER="zen-browser"

@@ -12,10 +12,11 @@
     "gruvboxMaterial": "hard"
   },
   "matugenScheme": "scheme-tonal-spot",
+  "matugenContrast": 0,
   "runUserMatugenTemplates": false,
   "matugenTargetMonitor": "",
   "popupTransparency": 0.9,
-  "dockTransparency": 0.8,
+  "dockTransparency": 1,
   "widgetBackgroundColor": "sth",
   "widgetColorMode": "default",
   "controlCenterTileColorMode": "primary",
@@ -30,13 +31,15 @@
   "mangoLayoutGapsOverride": -1,
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
+  "firstDayOfWeek": -1,
+  "showWeekNumber": false,
   "use24HourClock": false,
   "showSeconds": false,
   "padHours12Hour": false,
   "useFahrenheit": false,
   "windSpeedUnit": "kmh",
   "nightModeEnabled": false,
-  "animationSpeed": 1,
+  "animationSpeed": 3,
   "customAnimationDuration": 500,
   "syncComponentAnimationSpeeds": true,
   "popoutAnimationSpeed": 1,
@@ -44,7 +47,20 @@
   "modalAnimationSpeed": 1,
   "modalCustomAnimationDuration": 150,
   "enableRippleEffects": true,
-  "wallpaperFillMode": "Fit",
+  "m3ElevationEnabled": true,
+  "m3ElevationIntensity": 12,
+  "m3ElevationOpacity": 30,
+  "m3ElevationColorMode": "default",
+  "m3ElevationLightDirection": "top",
+  "m3ElevationCustomColor": "#000000",
+  "modalElevationEnabled": true,
+  "popoutElevationEnabled": true,
+  "barElevationEnabled": true,
+  "blurEnabled": true,
+  "blurBorderColor": "outline",
+  "blurBorderCustomColor": "#ffffff",
+  "blurBorderOpacity": 0.9,
+  "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
   "blurWallpaperOnOverview": false,
   "showLauncherButton": true,
@@ -119,11 +135,6 @@
       "width": 50
     },
     {
-      "id": "darkMode",
-      "enabled": true,
-      "width": 50
-    },
-    {
       "id": "diskUsage",
       "enabled": true,
       "width": 50,
@@ -131,7 +142,12 @@
       "mountPath": "/home"
     },
     {
-      "id": "builtin_cups",
+      "id": "plugin_dankKDEConnect",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "plugin_displayMirror",
       "enabled": true,
       "width": 50
     },
@@ -141,7 +157,7 @@
       "width": 50
     },
     {
-      "id": "plugin_dankKDEConnect",
+      "id": "idleInhibitor",
       "enabled": true,
       "width": 50
     }
@@ -159,6 +175,7 @@
   "showOccupiedWorkspacesOnly": false,
   "reverseScrolling": false,
   "dwlShowAllTags": false,
+  "workspaceActiveAppHighlightEnabled": false,
   "workspaceColorMode": "default",
   "workspaceOccupiedColorMode": "none",
   "workspaceUnfocusedColorMode": "default",
@@ -169,6 +186,7 @@
   "workspaceNameIcons": {},
   "waveProgressEnabled": true,
   "scrollTitleEnabled": true,
+  "mediaAdaptiveWidthEnabled": true,
   "audioVisualizerEnabled": true,
   "audioScrollMode": "volume",
   "audioWheelScrollAmount": 5,
@@ -192,6 +210,17 @@
   "centeringMode": "index",
   "clockDateFormat": "",
   "lockDateFormat": "",
+  "greeterRememberLastSession": true,
+  "greeterRememberLastUser": true,
+  "greeterEnableFprint": false,
+  "greeterEnableU2f": false,
+  "greeterWallpaperPath": "",
+  "greeterUse24HourClock": true,
+  "greeterShowSeconds": false,
+  "greeterPadHours12Hour": false,
+  "greeterLockDateFormat": "",
+  "greeterFontFamily": "",
+  "greeterWallpaperFillMode": "",
   "mediaSize": 1,
   "appLauncherViewMode": "list",
   "spotlightModalViewMode": "list",
@@ -202,6 +231,7 @@
   "sortAppsAlphabetically": false,
   "appLauncherGridColumns": 4,
   "spotlightCloseNiriOverview": true,
+  "rememberLastQuery": false,
   "spotlightSectionViewModes": {
     "plugin_dankHyprlandWindows": "tile"
   },
@@ -240,8 +270,8 @@
   "launcherLogoBrightness": 0.5,
   "launcherLogoContrast": 1,
   "launcherLogoSizeOffset": -7,
-  "fontFamily": "JetBrainsMono Nerd Font",
-  "monoFontFamily": "JetBrainsMono Nerd Font",
+  "fontFamily": "Maple Mono NF",
+  "monoFontFamily": "Maple Mono NF",
   "fontWeight": 400,
   "fontScale": 1,
   "notepadUseMonospace": true,
@@ -252,6 +282,7 @@
   "notepadLastCustomTransparency": 0.7,
   "soundsEnabled": true,
   "useSystemSoundTheme": false,
+  "soundLogin": false,
   "soundNewNotification": true,
   "soundVolumeChanged": true,
   "soundPluggedIn": true,
@@ -282,6 +313,10 @@
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
   "terminalsAlwaysDark": false,
+  "muxType": "tmux",
+  "muxUseCustomCommand": false,
+  "muxCustomCommand": "",
+  "muxSessionFilter": "",
   "runDmsMatugenTemplates": false,
   "matugenTemplateGtk": true,
   "matugenTemplateNiri": false,
@@ -304,10 +339,23 @@
   "matugenTemplateKcolorscheme": true,
   "matugenTemplateVscode": false,
   "matugenTemplateEmacs": true,
+  "matugenTemplateZed": true,
+  "matugenTemplateNeovimSettings": {
+    "dark": {
+      "baseTheme": "github_dark",
+      "harmony": 0.5
+    },
+    "light": {
+      "baseTheme": "github_light",
+      "harmony": 0.5
+    }
+  },
+  "matugenTemplateNeovimSetBackground": true,
   "showDock": true,
   "dockAutoHide": true,
   "dockSmartAutoHide": false,
   "dockGroupByApp": true,
+  "dockRestoreSpecialWorkspaceOnClick": false,
   "dockOpenOnOverview": false,
   "dockPosition": 1,
   "dockSpacing": 4,
@@ -345,9 +393,14 @@
   "lockAtStartup": false,
   "enableFprint": false,
   "maxFprintTries": 15,
+  "enableU2f": false,
+  "u2fMode": "or",
   "lockScreenActiveMonitor": "all",
   "lockScreenInactiveColor": "#000000",
   "lockScreenNotificationMode": 3,
+  "lockScreenVideoEnabled": false,
+  "lockScreenVideoPath": "",
+  "lockScreenVideoCycling": false,
   "hideBrightnessSlider": false,
   "notificationTimeoutLow": 5000,
   "notificationTimeoutNormal": 5000,
@@ -363,6 +416,7 @@
   "notificationHistorySaveNormal": true,
   "notificationHistorySaveCritical": true,
   "notificationRules": [],
+  "notificationFocusedMonitor": true,
   "osdAlwaysShowValue": false,
   "osdPosition": 5,
   "osdVolumeEnabled": true,
@@ -401,10 +455,17 @@
   "screenPreferences": {
     "wallpaper": [
       "all"
-    ]
+    ],
+    "notifications": []
   },
-  "showOnLastDisplay": {},
-  "niriOutputSettings": {},
+  "showOnLastDisplay": {
+    "notifications": true
+  },
+  "niriOutputSettings": {
+    "HDMI-A-1": {
+      "focusAtStartup": true
+    }
+  },
   "hyprlandOutputSettings": {},
   "displayProfiles": {},
   "activeDisplayProfile": {},
@@ -416,9 +477,12 @@
       "id": "default",
       "name": "Main Bar",
       "enabled": true,
-      "position": 0,
+      "position": 2,
       "screenPreferences": [
-        "all"
+        {
+          "name": "HDMI-A-1",
+          "model": "24FHD165IPS"
+        }
       ],
       "showOnLastDisplay": true,
       "leftWidgets": [
@@ -429,11 +493,14 @@
         {
           "id": "workspaceSwitcher",
           "enabled": true
+        },
+        {
+          "id": "dankPomodoroTimer",
+          "enabled": true
         }
       ],
       "centerWidgets": [
         "clock",
-        "weather",
         {
           "id": "privacyIndicator",
           "enabled": true
@@ -442,17 +509,21 @@
       "rightWidgets": [
         {
           "id": "systemTray",
+          "enabled": true,
+          "trayUseInlineExpansion": false
+        },
+        {
+          "id": "screenRecorder",
+          "enabled": true
+        },
+        {
+          "id": "keyboard_layout_name",
           "enabled": true
         },
         {
           "id": "cpuUsage",
           "enabled": true,
           "minimumWidth": true
-        },
-        {
-          "id": "memUsage",
-          "enabled": true,
-          "showSwap": true
         },
         {
           "id": "battery",
@@ -464,15 +535,15 @@
           "showScreenSharingIcon": true
         },
         {
-          "id": "prayerTimes",
+          "id": "discordVoice",
           "enabled": true
         }
       ],
       "spacing": 4,
       "innerPadding": 4,
       "bottomGap": 0,
-      "transparency": 0.85,
-      "widgetTransparency": 0,
+      "transparency": 0.9,
+      "widgetTransparency": 0.6,
       "squareCorners": false,
       "noBackground": false,
       "gothCornersEnabled": false,
@@ -486,10 +557,10 @@
       "widgetOutlineColor": "primary",
       "widgetOutlineOpacity": 1,
       "widgetOutlineThickness": 1,
-      "fontScale": 1,
+      "fontScale": 1.1,
       "autoHide": false,
       "autoHideDelay": 250,
-      "showOnWindowsOpen": false,
+      "showOnWindowsOpen": true,
       "openOnOverview": false,
       "visible": true,
       "popupGapsAuto": true,
@@ -502,7 +573,11 @@
       "shadowOpacity": 50,
       "shadowColorMode": "custom",
       "shadowCustomColor": "#000000",
-      "clickThrough": true
+      "clickThrough": false,
+      "iconScale": 1.1,
+      "maximizeWidgetIcons": false,
+      "maximizeWidgetText": false,
+      "removeWidgetPadding": false
     }
   ],
   "desktopClockEnabled": false,
