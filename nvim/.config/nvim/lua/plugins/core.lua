@@ -1,20 +1,4 @@
 return {
-  -- .env LSP
-  {
-    "ph1losof/ecolog2.nvim",
-    enabled = false,
-    lazy = false,
-    build = "cargo install ecolog-lsp",
-    keys = {
-      { "<leader>el", "<cmd>Ecolog list<cr>", desc = "List env variables" },
-      { "<leader>ef", "<cmd>Ecolog files select<cr>", desc = "Select env file" },
-      { "<leader>eo", "<cmd>Ecolog files open_active<cr>", desc = "Open active env file" },
-      { "<leader>er", "<cmd>Ecolog refresh<cr>", desc = "Refresh env variables" },
-    },
-    config = function()
-      require("ecolog").setup()
-    end,
-  },
   -- LSP
   {
     "neovim/nvim-lspconfig",
@@ -51,7 +35,7 @@ return {
       },
 
       sources = {
-        default = { "lsp", "dbee", "path", "snippets", "buffer" },
+        default = { "lsp", "dbee", "path", "snippets", "buffer", "crates" },
         per_filetype = {
           sql = { "dbee", "buffer" }, -- dadbod
           mysql = { "dbee", "buffer" }, --dadbod
@@ -61,6 +45,11 @@ return {
           -- dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
           dbee = { name = "cmp-dbee", module = "blink.compat.source" },
           path = { opts = { show_hidden_files_by_default = true } },
+          crates = {
+            name = "crates",
+            module = "blink.compat.source",
+            opts = { name = "crates" },
+          },
         },
       },
     },

@@ -26,8 +26,8 @@ local inlay_hints = lsp_styles.inlay_hints
 
 local error = M.palette.red
 local warning = M.palette.yellow
-local info = M.palette.teal
-local hint = M.palette.sapphire
+local info = M.palette.blue
+local hint = M.palette.mauve
 local ok = M.palette.green
 local darkening_percentage = 0.095
 
@@ -91,7 +91,7 @@ return {
 		LspDiagnosticsDefaultWarning = { fg = warning }, -- Used as the mantle highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		LspDiagnosticsDefaultInformation = { fg = info }, -- Used as the mantle highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		LspDiagnosticsDefaultHint = { fg = hint }, -- Used as the mantle highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-		LspSignatureActiveParameter = { bg = M.palette.surface0, style = { "bold" } },
+		LspSignatureActiveParameter = { bg = M.palette.green, style = { "bold" } },
 		-- LspDiagnosticsFloatingError         = { }, -- Used to color "Error" diagnostic messages in diagnostics float
 		-- LspDiagnosticsFloatingWarning       = { }, -- Used to color "Warning" diagnostic messages in diagnostics float
 		-- LspDiagnosticsFloatingInformation   = { }, -- Used to color "Information" diagnostic messages in diagnostics float

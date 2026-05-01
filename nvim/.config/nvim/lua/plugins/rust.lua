@@ -13,8 +13,18 @@ return {
   {
     "saecki/crates.nvim",
     tag = "stable",
-    event = { "BufRead Cargo.toml" },
-    opts = {}, -- Add options if needed
+    -- event = { "BufRead Cargo.toml" },
+    lazy = false,
+    opts = {
+      lsp = {
+        enabled = true,
+        name = "crates.nvim",
+        on_attach = function(client, bufnr) end,
+        actions = true,
+        completion = true,
+        hover = true,
+      },
+    }, -- Add options if needed
   },
 
   -- Visualizing Rust Ownership/Borrow checker

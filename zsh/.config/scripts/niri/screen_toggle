@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# FIX: does not work in jq.
+output=${1}
+
+outputs=$(niri msg -j outputs)
+disabled=$(echo $outputs | jq '."eDP-1" | .current_mode')
+echo $disabled
+
+if [[ $disabled == "null" ]]; then
+  echo "disabled"
+  niri msg output $output on
+else
+  echo "enabled"
+  niri msg -j output $output off
+fi

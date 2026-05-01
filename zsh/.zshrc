@@ -77,7 +77,7 @@ bindkey '\el' clear-screen
 # --------------------
 # Vim mode
 # --------------------
-source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 function _v() {
   local use_sudo=0
 
@@ -209,3 +209,5 @@ source $HOME/.config/shell/catppuccin_mocha-zsh-syntax-highlighting.zsh
 eval "$(zellij setup --generate-auto-start zsh)"
 
 export PATH=$PATH:/home/y2w8/.spicetify
+
+fastfetch

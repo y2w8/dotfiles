@@ -4,6 +4,7 @@ telescope.load_extension('glyph')
 telescope.load_extension("fidget")
 telescope.load_extension("undo")
 telescope.load_extension("recent_files")
+telescope.load_extension("ui-select")
 
 local fidget = require("fidget")
 
@@ -155,7 +156,7 @@ vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>", { desc = "Sta
 vim.keymap.set("n", "<leader>gS", "<cmd>Telescope git_stash<CR>", { desc = "Stash" })
 vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "Commits" })
 
-vim.keymap.set("n", "<leader>ft", "<cmd>Telescope<CR>", { desc = "Builtin" })
+vim.keymap.set("n", "<leader>fB", "<cmd>Telescope<CR>", { desc = "Builtin" })
 
 return {
   defaults = {

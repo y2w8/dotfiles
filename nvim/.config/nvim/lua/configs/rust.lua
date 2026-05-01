@@ -8,6 +8,7 @@ local cfg = require "rustaceanvim.config"
 vim.g.rustaceanvim = {
   server = {
     on_attach = function(client, bufnr)
+      -- require("nvchad.lsp.signature").setup(client, bufnr)
       vim.keymap.set("n", "gT", "<cmd>RustLsp relatedDiagnostics<CR>", { desc = "LSP Related Diagnostics" })
       vim.keymap.set("n", "gt", "<cmd>RustLsp renderDiagnostic<CR>", { desc = "LSP Render Diagnostics" })
       vim.keymap.set("n", "gR", "<cmd>RustLsp run<CR>", { desc = "LSP Run" })
@@ -18,18 +19,5 @@ vim.g.rustaceanvim = {
   },
   dap = {
     adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
-  },
-}
-
-require("crates").setup {
-  lsp = {
-    enabled = true,
-    on_attach = function(client, bufnr)
-      -- the same on_attach function as for your other language servers
-      -- can be ommited if you're using the `LspAttach` autocmd
-    end,
-    actions = true,
-    completion = true,
-    hover = true,
   },
 }

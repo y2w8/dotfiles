@@ -1,7 +1,5 @@
-local cat = require "themes.catppuccin-mocha"
+local cat = require "custom.catppuccin.header"
 local mocha = cat.palette
--- FIXME: dwadwa
--- FIXME: dwadwa
 
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next()
@@ -20,11 +18,11 @@ return {
         alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
         -- signs = false, -- configure signs for some keywords individually
       },
-      TODO = { icon = " ", color = "info" },
-      HACK = { icon = " ", color = "warning" },
+      TODO = { icon = " ", color = "ok" },
+      HACK = { icon = " ", color = "hint" },
       WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
       PERF = { icon = " ", color = "performance", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } }, -- icons     
-      NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+      NOTE = { icon = "󰋼 ", color = "info", alt = { "INFO" } },
       TEST = { icon = "󱕍 ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } }, -- icons     󱕍
     },
     gui_style = {
@@ -54,7 +52,8 @@ return {
       error = { "DiagnosticError", "ErrorMsg", mocha.red },
       warning = { "DiagnosticWarn", "WarningMsg", mocha.yellow },
       info = { "DiagnosticInfo", mocha.blue },
-      hint = { "DiagnosticHint", mocha.sapphire },
+      ok = { "DiagnosticOk", mocha.green },
+      hint = { "DiagnosticHint", mocha.mauve },
       performance = { "Performance", mocha.lavender },
       default = { "Identifier", mocha.rosewater },
       test = { "Identifier", mocha.sky },

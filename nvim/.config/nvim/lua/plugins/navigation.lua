@@ -6,6 +6,7 @@ return {
       "ghassan0/telescope-glyph.nvim",
       "debugloop/telescope-undo.nvim",
       "smartpde/telescope-recent-files",
+      "nvim-telescope/telescope-ui-select.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
@@ -20,44 +21,30 @@ return {
     end,
   },
 
+  -- TODO: winbar path better
   {
-    "stevearc/oil.nvim",
+    "barrettruth/canola.nvim",
     lazy = false,
     opts = {},
     config = function()
       require "configs.oil"
     end,
-    dependencies = { "nvim-tree/nvim-web-devicons", "JezerM/oil-lsp-diagnostics.nvim", "benomahony/oil-git.nvim" }, -- use if you prefer nvim-web-devicons
+    dependencies = { "nvim-tree/nvim-web-devicons", "JezerM/oil-lsp-diagnostics.nvim", "malewicz1337/oil-git.nvim" }, -- use if you prefer nvim-web-devicons
+  },
+
+  -- TODO: keymaping
+  {
+    "ankushbhagats/match.nvim",
+    config = true,
+    cmd = {"Match", "MatchWord", "MatchLine"};
   },
 
   {
-    "mikavilpas/yazi.nvim",
+    dir = "~/Projects/Nvim_Plugins/neolij.nvim",
+    -- "y2w8/neolij.nvim",
     event = "VeryLazy",
     opts = function()
-      require "configs.navigation.yazi"
-    end,
-    init = function()
-      vim.g.loaded_netrwPlugin = 1
-    end,
-  },
-
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = function()
-      require "configs.navigation.flash"
-    end,
-  },
-
-  { "folke/edgy.nvim", event = "VeryLazy", opts = {} },
-  { "mrjones2014/smart-splits.nvim" },
-  {
-    -- dir = "~/Projects/Nvim_Plugins/zellij.nvim",
-    -- name = "zellij.nvim",
-    "y2w8/zellij.nvim",
-    event = "VeryLazy",
-    opts = function()
-      require "configs.navigation.zellij"
+      require "configs.navigation.neolij"
     end,
   },
 

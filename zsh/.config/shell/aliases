@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/fish
 
 alias \
 -g N='>/dev/null' \
@@ -51,8 +51,8 @@ freec="free -h | bat -l cpuinfo -p" \
 sensors="sensors | bat -l cpuinfo -p" \
 exiftool="/usr/bin/vendor_perl/exiftool" \
 bathelp='bat --plain --language=help'
-help() {
+function help
     "$@" --help 2>&1 | bathelp
-}
+end
 
 

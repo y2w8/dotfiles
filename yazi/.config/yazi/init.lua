@@ -8,15 +8,15 @@ require("git"):setup {
 require("folder-rules"):setup()
 -- require("starship"):setup()
 -- require("omp"):setup({ config = "/home/y2w8/.config/ohmyposh/mocha.omp.json" })
-require("full-border"):setup({
-	-- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
-	type = ui.Border.ROUNDED,
-})
+-- require("full-border"):setup({
+-- 	-- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
+-- 	type = ui.Border.ROUNDED,
+-- })
 local catppuccin_theme = require("yatline-catppuccin"):setup("mocha")
 require("yatline"):setup({
-	section_separator = { open = "", close = "" },
+	section_separator = { open = "", close = "" },
 	part_separator = { open = "|", close = "|" },
-	inverse_separator = { open = "", close = "" },
+	inverse_separator = { open = "", close = "" },
 	show_background = false,
   theme = catppuccin_theme,
 	header_line = {
@@ -59,7 +59,7 @@ require("yatline"):setup({
         			{type = "string", custom = false, name = "cursor_position"},
 			},
 			section_b = {
-        			{type = "string", custom = false, name = "cursor_percentage"},
+        			-- {type = "string", custom = false, name = "cursor_percentage"},
 			},
 			section_c = {
         			{type = "string", custom = false, name = "hovered_file_extension", params = {true}},

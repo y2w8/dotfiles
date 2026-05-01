@@ -105,6 +105,7 @@
     "enabled": true,
     "terminal": "ghostty",
     "history": [
+      "nbfc-gtk",
       "Satty"
     ]
   },
@@ -123,7 +124,8 @@
     "outputDir": "/home/y2w8/Videos/Recordings"
   },
   "emojiLauncher": {
-    "enabled": true
+    "enabled": true,
+    "recentEmojis": "🙃,😂,🇸🇦"
   },
   "displayOutput": {
     "enabled": false
@@ -139,7 +141,25 @@
     "enabled": true
   },
   "linuxWallpaperEngine": {
-    "enabled": true
+    "enabled": false,
+    "monitorPlaylists": {},
+    "monitorScenes": {
+      "eDP-1": "1214148605"
+    },
+    "sceneSettings": {
+      "1219542433": {
+        "scaling": "default",
+        "fps": 62
+      },
+      "2583499659": {
+        "scaling": "fill",
+        "fps": 30
+      }
+    },
+    "generateStaticWallpaper": false,
+    "pauseOnPowerSaver": true,
+    "pauseOnBattery": true,
+    "playlistShuffle": true
   },
   "dankPomodoroTimer": {
     "enabled": true,

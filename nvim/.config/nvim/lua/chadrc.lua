@@ -12,25 +12,16 @@ vim.g.ui_transparent = not vim.g.is_firenvim
 
 M.base46 = {
   theme = "catppuccin-mocha",
-  transparency = not vim.g.is_firenvim,
-  -- hl_override = {
-  --   Folded = { bg = nil, fg = nil }
-  -- }
+  transparency = false,
 }
 
--- local my_hl = false
--- if not my_hl then
---   M.base46.hl_override = {
---   blink = {
---     BlinkCmpMenuBorder = { fg = "#252434", bg = "#252434"},
---     BlinkCmpMenu = { bg = "#252434" }
---   }
---   }
--- end
 M.nvdash = { enabled = false }
 M.ui = {
+  cmp = {
+    style = "flat_light"
+  },
   tabufline = {
-    enabled = not vim.g.is_firenvim,
+    enabled = false, -- not vim.g.is_firenvim,
     order = { "treeOffset", "buffers", "tabs" },
     bufwidth = 21,
     lazyload = false,
@@ -39,12 +30,10 @@ M.ui = {
   statusline = {
     enabled = true,
     theme = "vscode_colored",
-    order = vim.g.is_firenvim
-        and { "mode", "firefile", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd", "cursor" }
-      or { "mode", "file", "git_branch", "diagnostics", "context", "%=", "lsp_msg", "%=", "git_status", "cursor", "lsp", "cwd" },
+    order = { "mode", "git_branch", "git_status", "sep", "context", "%=", "lsp_msg", "%=", "cursor", "diagnostics", "lsp", "cwd" },
     modules = {
-      closer = "%#St_file#%#St_file_sep#" .. "",
-      context = " %{%v:lua.require'nvim-navic'.get_location()%}",
+      sep = "%#St_sep#" .. "| ",
+      context = "%{%v:lua.require'nvim-navic'.get_location()%}",
       firefile = function()
         local buf_name = vim.api.nvim_buf_get_name(0)
         local filename = vim.fn.fnamemodify(buf_name, ":t")

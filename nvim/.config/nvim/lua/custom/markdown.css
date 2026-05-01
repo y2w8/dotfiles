@@ -26,6 +26,25 @@
   --catppuccin-base: #1e1e2e;
   --catppuccin-mantle: #181825;
   --catppuccin-crust: #11111b;
+
+  --color-text-primary: var(--catppuccin-text);
+  --foreground-color: var(--catppuccin-text);
+  --background-color: #fff;
+  --border-color: var(--catppuccin-surface1);
+}
+
+#page-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  color: var(--catppuccin-text);
+  background-color: var(--catppuccin-base);
+  border-color: var(--catppuccin-surface1);
+  border-style: solid;
+  border-width: 1px 1px 0px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  line-height: 24px;
 }
 
 #page-ctn {
@@ -33,10 +52,18 @@
   max-width: fit-content;
   color: var(--catppuccin-base);
 }
+
+.status-dot.connected {
+  background: #fff;
+}
 /* Base font */
 .markdown-body {
   font-family: sans-serif;
-  direction: rtl;
+  direction: auto;
+  border-color: var(--catppuccin-surface1);
+  border-top-color: var(--catppuccin-surface0);
+  border-style: solid;
+  border-width: 1px 1px 1px;
   color: var(--catppuccin-text);
   background-color: var(--catppuccin-base);
   line-height: 1.6;
@@ -74,13 +101,16 @@
 }
 
 .markdown-body hr {
-  border: 0.5px solid var(--catppuccin-subtext1);
+  border: 0.25em solid var(--catppuccin-surface1);
 }
 
 /* Links */
+.markdown-body .anchor {
+  color: var(--catppuccin-text);
+}
+
 .markdown-body a {
-  color: var(--catppuccin-blue);
-  /* catppuccin blue */
+  color: var(--catppuccin-rosewater);
   text-decoration: none;
 }
 
@@ -90,7 +120,7 @@
 
 /* Code blocks */
 .markdown-body pre {
-  background-color: var(--catppuccin-surface0);
+  background-color: #181825;
   /* dark code bg */
   padding: 0.75rem;
   border-radius: 6px;
@@ -98,11 +128,11 @@
 }
 
 .markdown-body code {
-  font-family: "JetBrainsMono Nerd Font";
-  background-color: var(--catppuccin-surface0);
-  color: var(--catppuccin-subtext0);
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
+  background-color: #262637;
+  border-radius: 6px;
+  margin: 0px;
+  padding: 0.2em 0.4em;
+  font-size: 85%;
 }
 
 /* Lists */
@@ -144,3 +174,5 @@
 .markdown-body tr:nth-child(even) {
   background-color: #1e1e2e;
 }
+
+

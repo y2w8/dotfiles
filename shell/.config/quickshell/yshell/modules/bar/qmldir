@@ -1,0 +1,16 @@
+module modules.bar
+Bar 1.0 Bar.qml
+Cpu 1.0 Cpu.qml
+Disk 1.0 Disk.qml
+Memory 1.0 Memory.qml
+Music 1.0 Music.qml
+Network 1.0 Network.qml
+Power 1.0 Power.qml
+Sep 1.0 Sep.qml
+Temperature 1.0 Temperature.qml
+Time 1.0 Time.qml
+Volume 1.0 Volume.qml
+Workspaces 1.0 Workspaces.qml
+PrivacyIndicator 1.0 PrivacyIndicator.qml
+TrayMenu 1.0 TrayMenu.qml
+TrayPopup 1.0 TrayPopup.qml

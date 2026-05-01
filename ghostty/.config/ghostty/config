@@ -56,27 +56,28 @@ window-padding-balance = true
 window-save-state = always
 mouse-hide-while-typing
 
-keybind = ctrl+s>alt+q=quit
+
+# keybind = ctrl+s>alt+q=quit
 # keybind = ctrl+r=reload_config
-keybind = ctrl+shift+j=jump_to_prompt:1
-keybind = ctrl+shift+k=jump_to_prompt:-1
+# keybind = ctrl+shift+j=jump_to_prompt:1
+# keybind = ctrl+shift+k=jump_to_prompt:-1
 
 # Splits
 # keybind = ctrl+q=close_surface
-keybind = ctrl+s>alt+z=toggle_split_zoom
-keybind = ctrl+s>|=new_split:right
-keybind = ctrl+s>_=new_split:down
-keybind = ctrl+s>h=goto_split:left
-keybind = ctrl+s>j=goto_split:down
-keybind = ctrl+s>k=goto_split:up
-keybind = ctrl+s>l=goto_split:right
-keybind = ctrl+s>alt+h=resize_split:left,10
-keybind = ctrl+s>alt+j=resize_split:down,10
-keybind = ctrl+s>alt+k=resize_split:up,10
-keybind = ctrl+s>alt+l=resize_split:right,10
+# keybind = ctrl+s>alt+z=toggle_split_zoom
+# keybind = ctrl+s>|=new_split:right
+# keybind = ctrl+s>_=new_split:down
+# keybind = ctrl+s>h=goto_split:left
+# keybind = ctrl+s>j=goto_split:down
+# keybind = ctrl+s>k=goto_split:up
+# keybind = ctrl+s>l=goto_split:right
+# keybind = ctrl+s>alt+h=resize_split:left,10
+# keybind = ctrl+s>alt+j=resize_split:down,10
+# keybind = ctrl+s>alt+k=resize_split:up,10
+# keybind = ctrl+s>alt+l=resize_split:right,10
 
 # Tabs
-keybind = ctrl+s>shift+q=close_tab:this
-keybind = ctrl+s>z=new_tab
-keybind = ctrl+s>shift+l=next_tab
-keybind = ctrl+s>shift+h=previous_tab
+# keybind = ctrl+s>shift+q=close_tab:this
+# keybind = ctrl+s>z=new_tab
+# keybind = ctrl+s>shift+l=next_tab
+# keybind = ctrl+s>shift+h=previous_tab

@@ -7,6 +7,18 @@ return {
       require "configs.mini.move"
     end,
   },
+
+  {
+    "nvim-mini/mini.files",
+    version = "*",
+    opts = {
+      windows = {
+        preview = true,
+        width_preview = 50,
+      },
+    },
+  },
+
   {
     "nvim-mini/mini.splitjoin",
     version = false,
@@ -25,8 +37,15 @@ return {
     opts = {
       -- Add custom surroundings to be used on top of builtin ones. For more
       -- information with examples, see `:h MiniSurround.config`.
-      custom_surroundings = nil,
-
+      custom_surroundings = {
+        -- Make `)` insert parts with spaces. `input` pattern stays the same.
+        [")"] = { output = { left = "(", right = ")" } },
+        ["("] = { output = { left = "(", right = ")" } },
+        ["}"] = { output = { left = "{", right = "}" } },
+        ["{"] = { output = { left = "{", right = "}" } },
+        ["]"] = { output = { left = "[", right = "]" } },
+        ["["] = { output = { left = "[", right = "]" } },
+      },
       -- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
       highlight_duration = 500,
 

@@ -1,0 +1,13 @@
+module modules
+Osd 1.0 Osd.qml
+Wallpaper 1.0 Wallpaper.qml
+WallpaperSwitcher 1.0 WallpaperSwitcher.qml
+AppLauncher 1.0 AppLauncher.qml
+Clipboard 1.0 Clipboard.qml
+FloatingPanel 1.0 FloatingPanel.qml
+LockScreen 1.0 LockScreen.qml
+Notification 1.0 Notification.qml
+ControlCenter 1.0 ControlCenter.qml
+ToggleButton 1.0 ToggleButton.qml
+RecordOption 1.0 RecordOption.qml
+
