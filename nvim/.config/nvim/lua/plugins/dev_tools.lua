@@ -15,67 +15,28 @@ return {
   },
 
   {
-    "nvim-neotest/neotest",
-    keys = {
-      { "<leader>mr", "<cmd>Neotest run<cr>" },
-      { "<leader>ms", "<cmd>Neotest summary<cr>" },
-      { "<leader>mo", "<cmd>Neotest output<cr>" },
-      { "<leader>mp", "<cmd>Neotest output-panel<cr>" },
-      {
-        "<leader>md",
-        function()
-          require("neotest").run.run { suite = false, strategy = "dap" }
-        end,
-      },
-    },
-    dependencies = {
-      "nvim-neotest/nvim-nio",
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("neotest").setup {
-        adapters = {
-          require "rustaceanvim.neotest",
-        },
-      }
-    end,
-  },
-
-  {
-    "Zeioth/compiler.nvim",
-    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-    dependencies = { "stevearc/overseer.nvim", "nvim-telescope/telescope.nvim" },
-    opts = {},
-  },
-
-  {
-    "stevearc/overseer.nvim",
-    commit = "6271cab7ccc4ca840faa93f54440ffae3a3918bd",
-    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-    opts = {
-      task_list = {
-        direction = "bottom",
-        min_height = 25,
-        max_height = 25,
-        default_detail = 1,
-      },
-    },
-  },
-
-  {
-    "aznhe21/actions-preview.nvim",
-    config = require "configs.extra.actions-preview",
-  },
-  {
     "rachartier/tiny-code-action.nvim",
     event = "LspAttach",
     opts = require "configs.tiny-code-actions",
   },
 
   {
-    ft = "log",
-    "fei6409/log-highlight.nvim",
-    opts = {},
+    "emmanueltouzery/apidocs.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- or, 'folke/snacks.nvim'
+    },
+    cmd = { "ApidocsSearch", "ApidocsInstall", "ApidocsOpen", "ApidocsSelect", "ApidocsUninstall" },
+    config = function()
+      require("apidocs").setup()
+      -- Picker will be auto-detected. To select a picker of your choice explicitly you can set picker by the configuration option 'picker':
+      -- require('apidocs').setup({picker = "snacks"})
+      -- Possible options are 'ui_select', 'telescope', and 'snacks'
+      -- You can change the keymap for following "local://" links by setting the configuration option 'follow_link_keymap' (default is "<C-]>"):
+      -- require('apidocs').setup({follow_link_keymap = "<C-]>"})
+    end,
+    keys = {
+      { "<leader>sd", "<cmd>ApidocsOpen<cr>", desc = "Search Api Doc" },
+    },
   },
 }

@@ -13,6 +13,7 @@ return {
     end,
   },
 
+  -- TODO: remove
   {
     "yousefhadder/markdown-plus.nvim",
     ft = "markdown",
@@ -20,45 +21,63 @@ return {
       -- Your custom configuration here
     },
   },
-  {
-    "bullets-vim/bullets.vim",
-    -- NOTE: enable the plugin only for specific filetypes, if you don't do this,
-    -- and you use the new snacks picker by folke, you won't be able to select a
-    -- file with <CR> when in insert mode, only in normal mode
-    -- https://github.com/folke/snacks.nvim/issues/812
-    --
-    -- This didn't work, added vim.g.bullets_enable_in_empty_buffers = 0 to
-    -- ~/github/dotfiles-latest/neovim/neobean/init.lua
-    -- ft = { "markdown", "text", "gitcommit", "scratch" },
-    config = function()
-      -- Disable deleting the last empty bullet when pressing <cr> or 'o'
-      -- default = 1
-      -- 2 works similar ot Obsidian https://github.com/bullets-vim/bullets.vim/pull/163
-      vim.g.bullets_delete_last_bullet_if_empty = 2
 
-      -- (Optional) Add other configurations here
-      -- For example, enabling/disabling mappings
-      -- vim.g.bullets_set_mappings = 1
-    end,
-  },
+  -- TODO: remove
+  -- {
+  --   enabled = true,
+  --   "iamcco/markdown-preview.nvim",
+  --   ft = { "markdown" },
+  --   keys = {
+  --     {
+  --       "<leader>mp",
+  --       ft = "markdown",
+  --       "<cmd>MarkdownPreviewToggle<cr>",
+  --       desc = "Markdown Preview",
+  --     },
+  --   },
+  --   build = "cd app && npm install",
+  --   init = function()
+  --     -- The default filename is 「${name}」and I just hate those symbols
+  --     vim.g.mkdp_page_title = "${name}"
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --     vim.g.mkdp_markdown_css = "/home/y2w8/.config/nvim/lua/custom/markdown.css"
+  --   end,
+  -- },
   {
-    "iamcco/markdown-preview.nvim",
-    ft = { "markdown", "octo" },
+    dir = "/home/y2w8/Projects/Contribute/markdown-preview.nvim",
+    -- "selimacerbas/markdown-preview.nvim",
+    ft = { "markdown" },
+    dependencies = { "selimacerbas/live-server.nvim" },
+    config = function()
+      require("markdown_preview").setup {
+        -- all optional; sane defaults shown
+        instance_mode = "takeover", -- "takeover" (one tab) or "multi" (tab per instance)
+        port = 0, -- 0 = auto (8421 for takeover, OS-assigned for multi)
+        open_browser = true,
+        debounce_ms = 300,
+        custom_css = "/home/y2w8/.config/nvim/lua/custom/markdown.css"
+      }
+    end,
     keys = {
       {
         "<leader>mp",
         ft = "markdown",
-        "<cmd>MarkdownPreviewToggle<cr>",
+        "<cmd>MarkdownPreview<cr>",
         desc = "Markdown Preview",
       },
+      {
+        "<leader>ms",
+        ft = "markdown",
+        "<cmd>MarkdownPreviewStop<cr>",
+        desc = "Markdown Preview Stop",
+      },
+      {
+        "<leader>mr",
+        ft = "markdown",
+        "<cmd>MarkdownPreviewRefresh<cr>",
+        desc = "Markdown Preview Refresh",
+      },
     },
-    build = "cd app && npm install",
-    init = function()
-      -- The default filename is 「${name}」and I just hate those symbols
-      vim.g.mkdp_page_title = "${name}"
-      vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_markdown_css = "/home/y2w8/.config/nvim/lua/custom/markdown.css"
-    end,
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
@@ -139,12 +158,12 @@ return {
         below = "",
         above = "",
         icons = {
-        "█ ",
-        "██ ",
-        "███ ",
-        "████ ",
-        "█████ ",
-        "██████ ",
+          "█ ",
+          "██ ",
+          "███ ",
+          "████ ",
+          "█████ ",
+          "██████ ",
         },
         -- icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
         backgrounds = {
@@ -353,49 +372,5 @@ return {
         },
       },
     },
-  },
-  {
-    "gaoDean/autolist.nvim",
-    enabled = false,
-    ft = {
-      "markdown",
-      "text",
-      "tex",
-      "plaintex",
-      "norg",
-    },
-    config = function()
-      require("autolist").setup {
-        lists = {
-          markdown = {
-            ">%s*",
-            "%-%s*%[[ xX%!%-%~]?%]%s*",
-          },
-        },
-      }
-
-      vim.keymap.set("i", "<tab>", "<cmd>AutolistTab<cr>")
-      vim.keymap.set("i", "<s-tab>", "<cmd>AutolistShiftTab<cr>")
-      -- vim.keymap.set("i", "<c-t>", "<c-t><cmd>AutolistRecalculate<cr>") -- an example of using <c-t> to indent
-      vim.keymap.set("i", "<CR>", "<CR><cmd>AutolistNewBullet<cr>")
-      vim.keymap.set("n", "o", "o<cmd>AutolistNewBullet<cr>")
-      vim.keymap.set("n", "O", "O<cmd>AutolistNewBulletBefore<cr>")
-      vim.keymap.set("n", "<CR>", "<cmd>AutolistToggleCheckbox<cr><CR>")
-      -- vim.keymap.set("n", "<C-r>", "<cmd>AutolistRecalculate<cr>")
-
-      -- cycle list types with dot-repeat
-      vim.keymap.set("n", "<leader>cn", require("autolist").cycle_next_dr, { expr = true })
-      vim.keymap.set("n", "<leader>cp", require("autolist").cycle_prev_dr, { expr = true })
-
-      -- if you don't want dot-repeat
-      -- vim.keymap.set("n", "<leader>cn", "<cmd>AutolistCycleNext<cr>")
-      -- vim.keymap.set("n", "<leader>cp", "<cmd>AutolistCycleNext<cr>")
-
-      -- functions to recalculate list on edit
-      vim.keymap.set("n", ">>", ">><cmd>AutolistRecalculate<cr>")
-      vim.keymap.set("n", "<<", "<<<cmd>AutolistRecalculate<cr>")
-      vim.keymap.set("n", "dd", "dd<cmd>AutolistRecalculate<cr>")
-      vim.keymap.set("v", "d", "d<cmd>AutolistRecalculate<cr>")
-    end,
   },
 }

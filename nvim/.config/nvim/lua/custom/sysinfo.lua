@@ -254,9 +254,9 @@ local function battery_capacity()
 end
 
 local function battery_status()
-	if ff_stats and ff_stats.battery_status then
-		return ff_stats.battery_status:match("Charging") or ff_stats.battery_status:match("AC Power") or false
-	end
+	-- if ff_stats and ff_stats.battery_status then
+	-- 	return ff_stats.battery_status:match("Charging") or ff_stats.battery_status:match("AC Power") or false
+	-- end
 	if system_type ~= "darwin" then
 		local status = utils.term_cmd([[
       (for d in /sys/class/power_supply/*; do

@@ -7,6 +7,18 @@ return {
       require "configs.mini.move"
     end,
   },
+
+  {
+    'nvim-mini/mini.files',
+    version = '*',
+    opts = {
+      windows = {
+        preview = true,
+        width_preview = 50
+      }
+    }
+  },
+
   {
     "nvim-mini/mini.splitjoin",
     version = false,

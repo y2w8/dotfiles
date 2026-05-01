@@ -1,24 +1,27 @@
-[general]
-# لو عندك import، خليه فوق
-import = ["~/.config/alacritty/catppuccin-mocha.toml"]
-
-[window.padding]
-x = 2
-y = 2
-
 [font]
-normal.family = "JetBrainsMono Nerd Font"
-normal.style  = "Regular"
-bold.family   = "JetBrainsMono Nerd Font"
-bold.style    = "Bold"
-italic.family = "JetBrainsMono Nerd Font"
-italic.style  = "Italic"
-bold_italic.family = "JetBrainsMono Nerd Font"
-bold_italic.style  = "Bold Italic"
-size = 14.0
+size = 13.0
 
+[font.normal]
+family = "Maple Mono NF"
+style = "Medium"
 
-[terminal.shell]
-program = "/usr/bin/zsh"
-args = ["-i", "--login"]
+[font.bold]
+family = "Maple Mono NF"
+style = "Bold"
 
+[font.italic]
+family = "Maple Mono NF"
+style = "Italic"
+
+[window]
+decorations = "None"
+opacity = 1
+# ملاحظة: Alacritty لا يدعم Blur داخلي، استخدم Niri للـ Blur
+padding = { x = 2, y = 2 } # بديل window-padding-balance
+
+[mouse]
+hide_when_typing = true
+
+# استيراد الثيم (تأكد أنك حملت catppuccin-mocha.toml في نفس المجلد)
+[general]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]

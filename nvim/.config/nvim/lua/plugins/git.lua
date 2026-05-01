@@ -4,7 +4,6 @@ return {
     lazy = true,
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
-      -- "sindrets/diffview.nvim", -- optional - Diff integration
     },
     cmd = "Neogit",
     keys = {
@@ -15,19 +14,14 @@ return {
     end,
   },
 
-  {
-    "pwntester/octo.nvim",
-    cmd = "Octo",
-    opts = { picker = "telescope", enable_builtin = true },
-    config = function()
-      require "configs.git.octo"
-    end,
-  },
-
-  {
-    "esmuellert/codediff.nvim",
-    cmd = "CodeDiff",
-  },
+  -- {
+  --   "pwntester/octo.nvim",
+  --   cmd = "Octo",
+  --   opts = { picker = "telescope", enable_builtin = true },
+  --   config = function()
+  --     require "configs.git.octo"
+  --   end,
+  -- },
 
   {
     "akinsho/git-conflict.nvim",

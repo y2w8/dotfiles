@@ -1,7 +1,5 @@
 local cat = require "themes.catppuccin-mocha"
 local mocha = cat.palette
--- FIXME: dwadwa
--- FIXME: dwadwa
 
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next()

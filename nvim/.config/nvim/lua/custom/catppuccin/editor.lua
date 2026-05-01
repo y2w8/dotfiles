@@ -19,15 +19,15 @@ return {
 		SignColumn = { fg = M.palette.surface1 }, -- column where |signs| are displayed
 		SignColumnSB = { bg = M.palette.crust, fg = M.palette.surface1 }, -- column where |signs| are displayed
 		Substitute = { bg = M.palette.surface1, fg = M.palette.pink }, -- |:substitute| replacement text highlighting
-		LineNr = { fg = M.palette.surface1 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-		CursorLineNr = { fg = M.palette.lavender }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line. highlights the number in numberline.
+		LineNr = { fg = M.palette.surface2 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+		CursorLineNr = { fg = M.palette.rosewater, style = { "bold" } }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line. highlights the number in numberline.
 		MatchParen = { fg = M.palette.peach, bg = M.darken(M.palette.surface1, 0.70, M.palette.base), style = { "bold" } }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 		ModeMsg = { fg = M.palette.text, style = { "bold" } }, -- 'showmode' message (e.g., "-- INSERT -- ")
 		-- MsgArea = { fg = C.text }, -- Area for messages and cmdline, don't set this highlight because of https://github.com/neovim/neovim/issues/17832
 		MsgSeparator = { link = "WinSeparator" }, -- Separator for scrolled messages, `msgsep` flag of 'display'
 		MoreMsg = { fg = M.palette.blue }, -- |more-prompt|
 		NonText = { fg = M.palette.overlay0 }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		Normal = { fg = M.palette.text, bg = M.transparent_background and M.palette.none or M.palette.base }, -- normal text
+		Normal = { fg = M.palette.text, bg = M.transparent_background and M.palette.none or M.base_30.black }, -- normal text
 		NormalNC = {
 			fg = M.palette.text,
 			bg = (M.transparent_background and M.dim_inactive.enabled and M.palette.dim)
@@ -37,7 +37,7 @@ return {
 		}, -- normal text in non-current windows
 		NormalSB = { fg = M.palette.text, bg = M.palette.crust }, -- normal text in non-current windows
 		NormalFloat = { fg = M.palette.text, bg = (M.float.transparent and vim.o.winblend == 0) and M.palette.none or M.palette.mantle }, -- Normal text in floating windows.
-		FloatBorder = { fg = M.palette.rosewater }
+		FloatBorder = { fg = M.palette.overlay1 }
     -- M.float.solid
 			-- 	and ((M.float.transparent and vim.o.winblend == 0) and { fg = M.palette.surface2, bg = M.palette.none } or {
 			-- 		fg = M.palette.mantle,
@@ -94,5 +94,5 @@ return {
 		WildMenu = { bg = M.palette.overlay0 }, -- current match in 'wildmenu' completion
 		WinBar = { fg = M.palette.rosewater },
 		WinBarNC = { link = "WinBar" },
-		WinSeparator = { fg = M.transparent_background and M.palette.surface1 or M.palette.crust },
+		WinSeparator = { fg = M.transparent_background and M.palette.surface1 or M.palette.surface1 },
   }

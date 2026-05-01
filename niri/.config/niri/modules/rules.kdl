@@ -6,6 +6,7 @@ window-rule {
     blur true
   }
 }
+// Floating title
 window-rule {
   match title="^tclock$"
   open-floating true
@@ -13,24 +14,16 @@ window-rule {
   //  max-height 173
 }
 window-rule {
-  match app-id="ghostty" title="mixer"
+  match app-id="Alacritty" title="^(filechooser|mixer|nmrs)$"
   open-floating true
   default-column-width { proportion 0.75; }
   default-window-height { proportion 0.75; }
 }
 window-rule {
-  match app-id="ghostty" title="filechooser"
+  match app-id="Alacritty" title="^(launcher|clipboard)$"
   open-floating true
-  default-column-width { proportion 0.75; }
+  default-column-width { proportion 0.50; }
   default-window-height { proportion 0.75; }
-}
-
-// Floating stuff
-
-// Floating title
-window-rule {
-  match title="BakkesModInjectorCpp"
-  open-floating true
 }
 
 // Floating stay focused
@@ -48,23 +41,33 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 9
+    geometry-corner-radius 0 // 9
     clip-to-geometry true
     draw-border-with-background false
 }
 
-
-// Noctalia
-  // workspace overview
-  layer-rule {
-    match namespace="^noctalia-overview*"
+layer-rule {
+    match namespace="^quickshell$"
     place-within-backdrop true
-  }
+}
 
-  // blur
-  layer-rule {
-    match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+window-rule {
+    match app-id="^Alacritty$"
+
     background-effect {
-      xray false
+        blur true
+        xray false
     }
+}
+
+layer-rule {
+    match namespace="dms:blurwallpaper"
+    place-within-backdrop true
+}
+
+layer-rule {
+  match namespace="^*$"
+  background-effect {
+    xray false
   }
+}

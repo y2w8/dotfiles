@@ -19,14 +19,11 @@ SDL_VIDEODRIVER "wayland,x11"
 }
 screenshot-path "~/Pictures/Screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png"
 
-
+// spawn-sh-at-startup "dms run --session" // to run using intel graphics card "VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.json QSG_RHI_BACKEND=vulkan"
+spawn-sh-at-startup "~/.config/fish/scripts/restore_theme.fish"
 spawn-at-startup "/usr/lib/soteria-polkit/soteria"
-spawn-sh-at-startup "dms run --session" // to run using intel graphics card "VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.json QSG_RHI_BACKEND=vulkan"
-spawn-sh-at-startup "nirinit"
-spawn-at-startup "bash -c wl-paste --watch cliphist store"
 spawn-at-startup "/usr/bin/kdeconnectd &"
 spawn-at-startup "trash-empty 30"
-// spawn-at-startup "systemctl --user start plasma-polkit-agent.service"
 
 
 xwayland-satellite {

@@ -10,11 +10,11 @@ local polish_hl = {
   -- },
   neogit = require "custom.catppuccin.neogit",
   blink = {
-    BlinkCmpMenu = { bg = M.transparent_background and M.base_30.black or M.palette.none },
-    BlinkCmpMenuBorder = { fg = M.palette.rosewater },
-    BlinkCmpDoc = { link = "BlinkCmpMenu" },
-    BlinkCmpDocBorder = { link = "BlinkCmpMenuBorder" },
-    BlinkCmpSignatureHelpBorder = { fg = M.palette.rosewater },
+    -- BlinkCmpMenu = { bg = M.transparent_background and M.base_30.black or M.palette.none },
+    -- BlinkCmpMenuBorder = { fg = M.palette.red },
+    -- BlinkCmpDoc = { link = "BlinkCmpMenu" },
+    -- BlinkCmpDocBorder = { link = "BlinkCmpMenuBorder" },
+    -- BlinkCmpSignatureHelpBorder = { fg = M.palette.rosewater },
     -- BlinkCmpSignatureHelp = { bg = M.palette.base },
   },
   tbline = {
@@ -145,9 +145,9 @@ local polish_hl = {
     SnacksPickerIcon = { link = "TelescopeResultsIdentifier" },
     SnacksPickerFile = { link = "TelescopeResultsFile" },
 
-    RenderMarkdownCode = { bg = M.base_30.line },
-    RenderMarkdownCodeBorder = { bg = M.palette.line },
-    RenderMarkdownCodeInline = { bg = M.base_30.line },
+    RenderMarkdownCode = { bg = M.base_30.black2 },
+    RenderMarkdownCodeBorder = { bg = M.base_30.black2 },
+    RenderMarkdownCodeInline = { bg = M.base_30.black2 },
     RenderMarkdownTableRow = { fg = M.palette.surface1 },
     RenderMarkdownBullet = { fg = M.palette.peach },
 
@@ -186,16 +186,21 @@ local polish_hl = {
     NavicText = { fg = M.palette.text },
     NavicSeparator = { link = "Comment" },
 
-    Stl_cwd = { fg = M.palette.red, bg = M.base_30.line },
-    Stl_NormalMode = { fg = M.palette.blue, bg = M.base_30.line },
-    Stl_InsertMode = { fg = M.palette.green, bg = M.base_30.line },
-    Stl_TerminalMode = { fg = M.palette.green, bg = M.base_30.line },
-    Stl_CommandMode = { fg = M.palette.green, bg = M.base_30.line },
-    Stl_SelectMode = { fg = M.palette.rosewater, bg = M.base_30.line },
-    Stl_NTerminalMode = { fg = M.palette.yellow, bg = M.base_30.line },
-    Stl_ReplaceMode = { fg = M.palette.peach, bg = M.base_30.line },
-    Stl_ConfirmMode = { fg = M.palette.teal, bg = M.base_30.line },
-    Stl_VisualMode = { fg = M.palette.mauve, bg = M.base_30.line },
+    Stl_cwd = { fg = M.palette.red },
+    Stl_NormalMode = { bg = M.palette.blue, fg = M.base_30.darker_black },
+    Stl_InsertMode = { bg = M.palette.green, fg = M.base_30.darker_black },
+    Stl_TerminalMode = { bg = M.palette.peach, fg = M.base_30.darker_black },
+    Stl_CommandMode = { bg = M.palette.peach, fg = M.base_30.darker_black },
+    Stl_SelectMode = { bg = M.palette.rosewater, fg = M.base_30.darker_black },
+    Stl_NTerminalMode = { bg = M.palette.peach, fg = M.base_30.darker_black },
+    Stl_ReplaceMode = { bg = M.palette.yellow, fg = M.base_30.darker_black },
+    Stl_ConfirmMode = { bg = M.palette.teal, fg = M.base_30.darker_black },
+    Stl_VisualMode = { bg = M.palette.mauve, fg = M.base_30.darker_black },
+
+    Stl_gitBranch = { fg = M.palette.yellow },
+
+    MiniFilesTitleFocused = { fg = M.palette.crust, bg = M.palette.green },
+    MiniFilesTitle = { fg = M.palette.crust, bg = M.palette.red },
 
     LogLvDebug = {
       fg = M.palette.teal,
