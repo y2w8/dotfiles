@@ -1,7 +1,4 @@
 # NVIM
 lazy-lock.json
 
-# DMS
-dms/.config/DankMaterialShell/plugins
-.firstlaunch
-zen.css
+yazi/.config/yazi/plugins
