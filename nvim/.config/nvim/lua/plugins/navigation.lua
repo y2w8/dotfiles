@@ -21,7 +21,6 @@ return {
     end,
   },
 
-  -- TODO: winbar path better
   {
     "barrettruth/canola.nvim",
     lazy = false,
@@ -30,13 +29,6 @@ return {
       require "configs.oil"
     end,
     dependencies = { "nvim-tree/nvim-web-devicons", "JezerM/oil-lsp-diagnostics.nvim", "malewicz1337/oil-git.nvim" }, -- use if you prefer nvim-web-devicons
-  },
-
-  -- TODO: keymaping
-  {
-    "ankushbhagats/match.nvim",
-    config = true,
-    cmd = {"Match", "MatchWord", "MatchLine"};
   },
 
   {

@@ -1,17 +1,23 @@
 [font]
-size = 13.0
+size = 14.0
+
+# [font.normal]
+# family = "Terminess Nerd Font"
+
+# [font.normal]
+# family = "DepartureMono Nerd Font"
 
 [font.normal]
 family = "Maple Mono NF"
 style = "Medium"
-
-[font.bold]
-family = "Maple Mono NF"
-style = "Bold"
-
-[font.italic]
-family = "Maple Mono NF"
-style = "Italic"
+#
+# [font.bold]
+# family = "Maple Mono NF"
+# style = "Bold"
+#
+# [font.italic]
+# family = "Maple Mono NF"
+# style = "Italic"
 
 [window]
 decorations = "None"

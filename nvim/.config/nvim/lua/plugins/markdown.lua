@@ -14,41 +14,52 @@ return {
   },
 
   {
-    dir = "/home/y2w8/Projects/Contribute/markdown-preview.nvim",
-    -- "selimacerbas/markdown-preview.nvim",
-    ft = { "markdown" },
-    dependencies = { "selimacerbas/live-server.nvim" },
-    config = function()
-      require("markdown_preview").setup {
-        -- all optional; sane defaults shown
-        instance_mode = "takeover", -- "takeover" (one tab) or "multi" (tab per instance)
-        port = 0, -- 0 = auto (8421 for takeover, OS-assigned for multi)
-        open_browser = true,
-        debounce_ms = 300,
-        custom_css = "/home/y2w8/.config/nvim/lua/custom/markdown.css"
-      }
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_markdown_css = "/home/y2w8/.config/nvim/lua/custom/markdown.css"
     end,
-    keys = {
-      {
-        "<leader>mp",
-        ft = "markdown",
-        "<cmd>MarkdownPreview<cr>",
-        desc = "Markdown Preview",
-      },
-      {
-        "<leader>ms",
-        ft = "markdown",
-        "<cmd>MarkdownPreviewStop<cr>",
-        desc = "Markdown Preview Stop",
-      },
-      {
-        "<leader>mr",
-        ft = "markdown",
-        "<cmd>MarkdownPreviewRefresh<cr>",
-        desc = "Markdown Preview Refresh",
-      },
-    },
+    ft = { "markdown" },
   },
+
+  -- {
+  --   dir = "/home/y2w8/Projects/Contribute/markdown-preview.nvim",
+  --   -- "selimacerbas/markdown-preview.nvim",
+  --   ft = { "markdown" },
+  --   dependencies = { "selimacerbas/live-server.nvim" },
+  --   config = function()
+  --     require("markdown_preview").setup {
+  --       -- all optional; sane defaults shown
+  --       instance_mode = "takeover", -- "takeover" (one tab) or "multi" (tab per instance)
+  --       port = 0, -- 0 = auto (8421 for takeover, OS-assigned for multi)
+  --       open_browser = true,
+  --       debounce_ms = 300,
+  --       custom_css = "/home/y2w8/.config/nvim/lua/custom/markdown.css"
+  --     }
+  --   end,
+  --   keys = {
+  --     {
+  --       "<leader>mp",
+  --       ft = "markdown",
+  --       "<cmd>MarkdownPreview<cr>",
+  --       desc = "Markdown Preview",
+  --     },
+  --     {
+  --       "<leader>ms",
+  --       ft = "markdown",
+  --       "<cmd>MarkdownPreviewStop<cr>",
+  --       desc = "Markdown Preview Stop",
+  --     },
+  --     {
+  --       "<leader>mr",
+  --       ft = "markdown",
+  --       "<cmd>MarkdownPreviewRefresh<cr>",
+  --       desc = "Markdown Preview Refresh",
+  --     },
+  --   },
+  -- },
   {
     "MeanderingProgrammer/render-markdown.nvim",
     -- event = "VeryLazy",

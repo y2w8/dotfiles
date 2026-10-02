@@ -41,6 +41,7 @@ o.splitbelow = true
 o.splitright = true
 o.timeoutlen = 400
 o.undofile = true
+o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize"
 
 -- interval for writing swap file to disk, also used by gitsigns
 o.updatetime = 250

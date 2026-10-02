@@ -8,14 +8,15 @@ WLR_NO_HARDWARE_CURSORS "1"
 __VK_LAYER_NV_optimus "NVIDIA_only"
 XDG_CURRENT_DESKTOP "niri"
 MOZ_ENABLE_WAYLAND "1"
-// QT_QPA_PLATFORM "wayland"
 QT_QPA_PLATFORMTHEME "kde"
 QT_QPA_PLATFORMTHEME_QT6 "kde"
 QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 ELECTRON_OZONE_PLATFORM_HINT "auto"
-// GDK_BACKEND "wayland,x11,*"
 GBM_BACKEND "nvidia-drm"
 SDL_VIDEODRIVER "wayland,x11"
+
+// QT_QPA_PLATFORM "wayland"
+// GDK_BACKEND "wayland,x11,*"
 }
 screenshot-path "~/Pictures/Screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png"
 

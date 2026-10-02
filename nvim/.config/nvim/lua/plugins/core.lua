@@ -12,11 +12,9 @@ return {
   },
 
   -- Completion
-  { import = "nvchad.blink.lazyspec" },
   {
     "Saghen/blink.cmp",
     dependencies = {
-      { "MattiasMTS/cmp-dbee", ft = "sql", opts = {} },
       {
         "saghen/blink.compat",
         -- use v2.* for blink.cmp v1.*
@@ -35,21 +33,10 @@ return {
       },
 
       sources = {
-        default = { "lsp", "dbee", "path", "snippets", "buffer", "crates" },
-        per_filetype = {
-          sql = { "dbee", "buffer" }, -- dadbod
-          mysql = { "dbee", "buffer" }, --dadbod
-          postgresql = { "dbee", "buffer" }, --dadbod
-        },
+        default = { "lsp", "path", "snippets", "buffer" },
         providers = {
           -- dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-          dbee = { name = "cmp-dbee", module = "blink.compat.source" },
           path = { opts = { show_hidden_files_by_default = true } },
-          crates = {
-            name = "crates",
-            module = "blink.compat.source",
-            opts = { name = "crates" },
-          },
         },
       },
     },
@@ -72,5 +59,4 @@ return {
     "windwp/nvim-autopairs",
     opts = { fast_wrap = {}, map_cr = true, disable_filetype = { "TelescopePrompt", "vim" } },
   },
-  { "RRethy/vim-illuminate" },
 }

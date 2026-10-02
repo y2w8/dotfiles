@@ -1,6 +1,12 @@
 require("nvchad.configs.lspconfig").defaults()
 vim.diagnostic.config { virtual_text = false }
 
+vim.filetype.add {
+  extension = {
+    ron = "ron",
+  },
+}
+
 require("mason-lspconfig").setup {
   automatic_enable = {
     exclude = {
@@ -13,6 +19,14 @@ require("mason-lspconfig").setup {
 vim.lsp.config("*", {
   root_markers = { ".git" },
 })
+
+vim.lsp.config("ron_lsp", {
+  cmd = { "ron-lsp" }, -- adjust to the actual binary name Mason installed / that's on your $PATH
+  filetypes = { "ron" },
+  root_markers = { ".git", "Cargo.toml" },
+})
+
+vim.lsp.enable("ron_lsp")
 
 -- mason_lsp.setup_handlers({
 --   function(server_name)

@@ -7,6 +7,17 @@
 # font-size=12
 # adjust-cell-height=20%
 
+# deprature
+# font-family = "DepartureMono Nerd Font"
+# font-style = "Medium"
+# font-family-bold = "DepartureMono Nerd Font"
+# font-style-bold = "Bold"
+# font-family-bold-italic = "DepartureMono Nerd Font"
+# font-style-bold-italic = "Bold Italic"
+# font-family-italic = "DepartureMono Nerd Font"
+# font-style-italic = "Italic"
+# font-size=14
+
 # font-family = "GohuFont 11 Nerd Font"
 # font-size=11
 
@@ -25,10 +36,10 @@
 
 # Maple
 font-family = "Maple Mono NF"
-font-style = "Medium"
-font-style-bold = "Bold"
-font-family-italic = "Maple Mono NF"
-font-style-italic = "Italic"
+# font-style = "Medium"
+# font-style-bold = "Bold"
+# font-family-italic = "Maple Mono NF"
+# font-style-italic = "Italic"
 font-size=13
 
 # Iosevka
@@ -50,8 +61,8 @@ theme = catppuccin-mocha.conf
 window-decoration = none
 custom-shader = cursor_warp.glsl
 # client
-background-opacity = 0.90
-background-blur = true
+# background-opacity = 0.90
+# background-blur = true
 window-padding-balance = true
 window-save-state = always
 mouse-hide-while-typing

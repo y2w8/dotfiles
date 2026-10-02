@@ -14,13 +14,13 @@ window-rule {
   //  max-height 173
 }
 window-rule {
-  match app-id="Alacritty" title="^(filechooser|float-terminal)$"
+  match title="^(filechooser|float-terminal)$"
   open-floating true
   default-column-width { proportion 0.75; }
   default-window-height { proportion 0.75; }
 }
 window-rule {
-  match app-id="Alacritty" title="^(launcher|clipboard)$"
+  match title="^(launcher|clipboard)$"
   open-floating true
   default-column-width { proportion 0.50; }
   default-window-height { proportion 0.75; }

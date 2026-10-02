@@ -254,25 +254,25 @@ return {
 
   { "folke/todo-comments.nvim", event = "VeryLazy", opts = require "configs.extra.todo-comments" },
 
-  { "nvzone/volt", lazy = true },
-
-  {
-    "gisketch/triforce.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("triforce").setup {
-        keymap = {
-          show_profile = "<leader>tp",
-        },
-      }
-    end,
-  },
-
-  -- Discord RPC
-  {
-    "vyfor/cord.nvim",
-    enabled = not vim.g.is_firenvim,
-    event = "VeryLazy",
-    build = ":Cord update",
-  },
+  -- { "nvzone/volt", lazy = true },
+  --
+  -- {
+  --   "gisketch/triforce.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("triforce").setup {
+  --       keymap = {
+  --         show_profile = "<leader>tp",
+  --       },
+  --     }
+  --   end,
+  -- },
+  --
+  -- -- Discord RPC
+  -- {
+  --   "vyfor/cord.nvim",
+  --   enabled = not vim.g.is_firenvim,
+  --   event = "VeryLazy",
+  --   build = ":Cord update",
+  -- },
 }

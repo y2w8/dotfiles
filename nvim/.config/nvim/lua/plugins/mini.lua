@@ -20,18 +20,6 @@ return {
   },
 
   {
-    "nvim-mini/mini.splitjoin",
-    version = false,
-    event = "VeryLazy",
-    opts = {
-      mappings = {
-        toggle = "gS",
-        split = "",
-        join = "",
-      },
-    },
-  },
-  {
     "echasnovski/mini.surround",
     event = "VeryLazy",
     opts = {

@@ -14,6 +14,16 @@ return {
     end,
   },
 
+  {
+    "Interlude-Software/lazyissues",
+    cmd = "LazyIssues",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    keys = {
+      { "<leader>i", "<cmd>LazyIssues<cr>", desc = "Issues" },
+    },
+    opts = {}, -- lazy calls require("lazyissues").setup(opts) for you
+  },
+
   -- {
   --   "pwntester/octo.nvim",
   --   cmd = "Octo",

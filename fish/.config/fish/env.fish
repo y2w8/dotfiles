@@ -55,11 +55,12 @@ set -gx FZF_CTRL_R_OPTS "$FZF_DEFAULT_OPTS --info inline --no-sort --no-preview"
 set -gx MANPAGER "less -R --use-color -Dd+r -Du+b" # colored man pages
 
 # colored less + termcap vars
-set -gx LESS "R --use-color -Dd+r -Du+b"
-set -gx LESS_TERMCAP_mb "$(printf '%b' '[1;31m')"
-set -gx LESS_TERMCAP_md "$(printf '%b' '[1;36m')"
-set -gx LESS_TERMCAP_me "$(printf '%b' '[0m')"
-set -gx LESS_TERMCAP_so "$(printf '%b' '[01;44;33m')"
-set -gx LESS_TERMCAP_se "$(printf '%b' '[0m')"
-set -gx LESS_TERMCAP_us "$(printf '%b' '[1;32m')"
-set -gx LESS_TERMCAP_ue "$(printf '%b' '[0m')"
+if status is-interactive
+    set -gx LESS_TERMCAP_mb (printf '\e[1;31m')
+    set -gx LESS_TERMCAP_md (printf '\e[1;36m')
+    set -gx LESS_TERMCAP_me (printf '\e[0m')
+    set -gx LESS_TERMCAP_so (printf '\e[01;44;33m')
+    set -gx LESS_TERMCAP_se (printf '\e[0m')
+    set -gx LESS_TERMCAP_us (printf '\e[1;32m')
+    set -gx LESS_TERMCAP_ue (printf '\e[0m')
+end
